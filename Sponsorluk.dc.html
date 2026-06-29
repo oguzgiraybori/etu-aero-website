@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800;900&family=Saira:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;background:#05060e;}
+body{margin:0;background:#05060e;color:#EAECF5;font-family:'Saira',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+@keyframes etuFloat{0%,100%{transform:translateY(var(--amp,0.13em));}50%{transform:translateY(calc(var(--amp,0.13em) * -1));}}
+::selection{background:#2E6BE0;color:#fff;}
+body::-webkit-scrollbar{width:10px;}
+body::-webkit-scrollbar-track{background:#070a16;}
+body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
+input::placeholder,textarea::placeholder{color:#5c6391;}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#05060e;min-height:100vh;">
+
+<div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:rgba(255,255,255,0.05);"><div ref="{{ progressRef }}" style="height:100%;width:0%;background:linear-gradient(90deg,#2E6BE0,#E0202E);box-shadow:0 0 12px rgba(46,107,224,.6);"></div></div>
+
+<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,5vw,54px);border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s;background:rgba(7,9,18,0.82);backdrop-filter:blur(14px);">
+  <a href="ETU%20Aero.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <img src="assets/etu-emblem.png" alt="ETU Aero amblemi" style="height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(46,107,224,.5));">
+    <img src="assets/etu-wordmark-light.png" alt="ETU AERO" style="height:13px;width:auto;opacity:.9;">
+  </a>
+  <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:4px;">
+      <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
+        <a href="{{ lk.h }}" style="text-decoration:none;color:#AEB6D6;font-family:'Saira';font-weight:600;font-size:13.5px;letter-spacing:.06em;padding:9px 13px;border-radius:2px;transition:color .25s,background .25s;" style-hover="color:#FFFFFF;background:rgba(46,107,224,0.12);">{{ lk.t }}</a>
+      </sc-for>
+      <a href="#iletisim" style="margin-left:8px;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:14px;letter-spacing:.1em;color:#fff;padding:11px 20px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:0 6px 22px rgba(46,107,224,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">SPONSOR OL</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menü" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:22px;line-height:1;width:46px;height:46px;border-radius:3px;cursor:pointer;">≡</button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:160;background:rgba(5,6,14,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:88px clamp(22px,8vw,60px) 40px;gap:2px;">
+    <button onClick="{{ toggleMenu }}" aria-label="Kapat" style="position:absolute;top:22px;right:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:20px;width:46px;height:46px;border-radius:3px;cursor:pointer;">✕</button>
+    <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
+      <a href="{{ lk.h }}" onClick="{{ toggleMenu }}" style="font-family:'Saira Condensed';font-size:30px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:#EAECF5;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.07);transform:skewX(-7deg);">{{ lk.t }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<!-- HEADER -->
+<section data-screen-label="Sponsorluk başlık" style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,6vw,90px) clamp(40px,6vh,70px);background:radial-gradient(120% 100% at 50% 0%,#0b1c47 0%,#070c1d 50%,#05060e 100%);overflow:hidden;">
+  <div data-parallax="0.05" style="position:absolute;top:30px;right:-2vw;font-family:'Saira Condensed';font-weight:900;font-size:clamp(110px,24vw,330px);color:rgba(46,107,224,0.04);line-height:.8;pointer-events:none;transform:skewX(-9deg);">+</div>
+  <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3em;color:#3D8BFF;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#2E6BE0);"></span><span>04 / DESTEKÇİLER</span></div>
+    <div style="margin-top:14px;">{{ tTitle }}</div>
+    <p style="margin:22px 0 30px;max-width:60ch;font-size:clamp(16px,1.9vw,21px);line-height:1.6;color:#AEB6D6;font-weight:300;">Markanızı geleceğin mühendislerinin ve milli teknoloji hamlesinin yanına yazın. Zifir'i birlikte havalandıralım.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="#paketler" style="text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:16px;letter-spacing:.08em;color:#fff;padding:14px 28px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-2px);">PAKETLERİ GÖR</a>
+      <a href="#iletisim" style="text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:16px;letter-spacing:.08em;color:#EAECF5;padding:14px 28px;border:1px solid rgba(255,255,255,0.2);border-radius:2px;transition:background .25s;" style-hover="background:rgba(46,107,224,0.12);">İLETİŞİME GEÇ</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEDEN -->
+<section data-screen-label="Neden" style="padding:clamp(70px,10vh,120px) clamp(20px,6vw,90px);background:linear-gradient(180deg,#05060e,#070b1c);border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div data-reveal="up" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;color:#3D8BFF;margin-bottom:14px;">// NEDEN ETU AERO?</div>
+    <h2 data-reveal="up" style="margin:0 0 44px;font-family:'Saira Condensed';font-weight:800;font-size:clamp(28px,4vw,46px);letter-spacing:.01em;color:#EAECF5;transform:skewX(-6deg);max-width:20ch;">Bir takımdan fazlası — bir yatırım.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+      <div data-reveal="up" style="position:relative;padding:30px 26px;border:1px solid rgba(255,255,255,0.07);border-radius:3px;background:linear-gradient(180deg,rgba(46,107,224,0.05),rgba(255,255,255,0.012));overflow:hidden;"><div style="position:absolute;top:0;left:0;width:46px;height:2px;background:linear-gradient(90deg,#2E6BE0,transparent);"></div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#3D8BFF;">01</div><h3 style="margin:14px 0 10px;font-family:'Saira Condensed';font-weight:700;font-size:23px;color:#EAECF5;">Marka Görünürlüğü</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">TEKNOFEST, Türkiye'nin en büyük teknoloji festivali. Logonuz sahada, dijitalde ve İHA'nın üzerinde uçar.</p></div>
+      <div data-reveal="up" data-delay="80" style="position:relative;padding:30px 26px;border:1px solid rgba(255,255,255,0.07);border-radius:3px;background:linear-gradient(180deg,rgba(46,107,224,0.05),rgba(255,255,255,0.012));overflow:hidden;"><div style="position:absolute;top:0;left:0;width:46px;height:2px;background:linear-gradient(90deg,#2E6BE0,transparent);"></div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#3D8BFF;">02</div><h3 style="margin:14px 0 10px;font-family:'Saira Condensed';font-weight:700;font-size:23px;color:#EAECF5;">Genç Mühendis Havuzu</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Geleceğin yetenekleriyle erken temas. Staj, işe alım ve ortak proje fırsatları.</p></div>
+      <div data-reveal="up" data-delay="160" style="position:relative;padding:30px 26px;border:1px solid rgba(255,255,255,0.07);border-radius:3px;background:linear-gradient(180deg,rgba(46,107,224,0.05),rgba(255,255,255,0.012));overflow:hidden;"><div style="position:absolute;top:0;left:0;width:46px;height:2px;background:linear-gradient(90deg,#2E6BE0,transparent);"></div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#3D8BFF;">03</div><h3 style="margin:14px 0 10px;font-family:'Saira Condensed';font-weight:700;font-size:23px;color:#EAECF5;">AR-GE & İnovasyon</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Otonom sistemler, görüntü işleme ve savunma teknolojilerinde iş birliği ve görünür Ar-Ge desteği.</p></div>
+      <div data-reveal="up" data-delay="240" style="position:relative;padding:30px 26px;border:1px solid rgba(255,255,255,0.07);border-radius:3px;background:linear-gradient(180deg,rgba(192,24,24,0.06),rgba(255,255,255,0.012));overflow:hidden;"><div style="position:absolute;top:0;left:0;width:46px;height:2px;background:linear-gradient(90deg,#E0202E,transparent);"></div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF8A2A;">04</div><h3 style="margin:14px 0 10px;font-family:'Saira Condensed';font-weight:700;font-size:23px;color:#EAECF5;">Sosyal Sorumluluk</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Eğitime ve milli teknoloji hamlesine destek — markanızın değerlerini somut bir hikâyeye bağlayın.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAKETLER -->
+<section id="paketler" data-screen-label="Paketler" style="padding:clamp(70px,10vh,120px) clamp(20px,6vw,90px);background:#070b1c;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div data-reveal="up" style="text-align:center;margin-bottom:14px;"><div style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3em;color:#3D8BFF;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#2E6BE0);"></span><span>PAKETLER</span><span style="width:30px;height:1px;background:linear-gradient(270deg,transparent,#2E6BE0);"></span></div></div>
+    <div data-reveal="up" style="display:flex;justify-content:center;margin-bottom:14px;">{{ tTiers }}</div>
+    <p data-reveal="up" data-delay="80" style="text-align:center;max-width:54ch;margin:0 auto 50px;font-size:16px;line-height:1.6;color:#9AA2C2;font-weight:300;">Her bütçeye uygun bir destek yolu var. Kademeler birikimlidir — üst paketler alt paketlerin tüm ayrıcalıklarını kapsar.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;align-items:start;">
+      <sc-for list="{{ tiers }}" as="ti" hint-placeholder-count="4">
+        <div data-reveal="up" data-delay="{{ ti.delay }}" style="{{ ti.cardStyle }}">
+          <sc-if value="{{ ti.featured }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:0;right:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:#fff;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);padding:6px 12px;border-bottom-left-radius:3px;">ANA SPONSOR</div></sc-if>
+          <div style="height:4px;width:54px;border-radius:2px;background:{{ ti.accent }};margin-bottom:18px;"></div>
+          <div style="font-family:'Saira Condensed';font-weight:800;font-size:30px;letter-spacing:.03em;color:{{ ti.accent }};transform:skewX(-7deg);">{{ ti.name }}</div>
+          <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7d88b5;">{{ ti.note }}</div>
+          <div style="margin-top:22px;display:flex;flex-direction:column;gap:11px;">
+            <sc-for list="{{ ti.perks }}" as="pk" hint-placeholder-count="4">
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.45;color:#C7D0EC;"><span style="flex:none;margin-top:2px;color:#2E6BE0;font-weight:700;">✓</span><span>{{ pk }}</span></div>
+            </sc-for>
+          </div>
+          <a href="#iletisim" style="margin-top:24px;display:block;text-align:center;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:15px;letter-spacing:.08em;color:{{ ti.btnColor }};padding:13px;background:{{ ti.btnBg }};border:1px solid {{ ti.btnBorder }};border-radius:2px;transition:filter .25s;" style-hover="filter:brightness(1.18);">SPONSOR OL</a>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal="up" style="margin-top:34px;text-align:center;"><a href="#" style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#9AA2C2;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.18);padding-bottom:4px;" style-hover="color:#fff;">↓ SPONSORLUK DOSYASINI İNDİR (PDF)</a></div>
+  </div>
+</section>
+
+<!-- MEVCUT SPONSORLAR -->
+<section data-screen-label="Mevcut sponsorlar" style="padding:clamp(70px,10vh,110px) clamp(20px,6vw,90px);background:#05060e;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div data-reveal="up" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;color:#3D8BFF;margin-bottom:10px;">// MEVCUT SPONSORLARIMIZ</div>
+    <h2 data-reveal="up" style="margin:0 0 36px;font-family:'Saira Condensed';font-weight:800;font-size:clamp(26px,3.5vw,42px);color:#EAECF5;transform:skewX(-6deg);">Bu yolda bize güvenenler</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;">
+      <sc-for list="{{ slots5 }}" as="i" hint-placeholder-count="5">
+        <div data-reveal="scale" style="height:108px;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.028) 0 11px,rgba(255,255,255,0.01) 11px 22px);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">SPONSOR LOGOSU</span></div>
+      </sc-for>
+      <a href="#iletisim" data-reveal="scale" style="height:108px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid rgba(46,107,224,0.4);border-radius:3px;background:rgba(46,107,224,0.08);text-decoration:none;transition:background .25s;" style-hover="background:rgba(46,107,224,0.16);"><span style="font-family:'Saira Condensed';font-weight:700;font-size:18px;color:#fff;">SİZ?</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;color:#9FB0DC;">BURADA OLABİLİR</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- İLETİŞİM / FORM -->
+<section id="iletisim" data-screen-label="İletişim formu" style="padding:clamp(70px,10vh,120px) clamp(20px,6vw,90px);background:linear-gradient(180deg,#05060e,#080d20);border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,70px);align-items:start;">
+    <div data-reveal="up">
+      <div style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3em;color:#3D8BFF;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#2E6BE0);"></span><span>İLETİŞİM</span></div>
+      <div style="margin-top:14px;">{{ tContact }}</div>
+      <p style="margin:22px 0 28px;max-width:42ch;font-size:16px;line-height:1.6;color:#AEB6D6;font-weight:300;">Paketleri konuşalım, size özel bir iş birliği tasarlayalım. Formu doldurun, en kısa sürede dönelim.</p>
+      <a href="mailto:sponsorluk@etuaero.com" style="display:block;font-size:18px;color:#EAECF5;text-decoration:none;margin-bottom:8px;">sponsorluk@etuaero.com</a>
+      <div style="font-size:14px;color:#7d88b5;line-height:1.7;">Üniversite · Şehir · Türkiye</div>
+      <div style="margin-top:22px;display:flex;gap:10px;">
+        <a href="#" aria-label="Instagram" style="width:42px;height:42px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">ig</a>
+        <a href="#" aria-label="LinkedIn" style="width:42px;height:42px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">in</a>
+        <a href="#" aria-label="X" style="width:42px;height:42px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">X</a>
+      </div>
+    </div>
+    <form onSubmit="{{ onSubmit }}" data-reveal="up" data-delay="100" style="border:1px solid rgba(255,255,255,0.08);border-radius:4px;background:rgba(255,255,255,0.015);padding:clamp(24px,3vw,38px);">
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <label style="display:flex;flex-direction:column;gap:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#7d88b5;">AD SOYAD</span><input name="ad" required placeholder="Adınız" style="background:#0a0e1f;border:1px solid rgba(255,255,255,0.12);border-radius:2px;color:#EAECF5;font-family:'Saira';font-size:15px;padding:13px 14px;outline:none;transition:border-color .2s;" style-focus="border-color:#2E6BE0;"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#7d88b5;">KURUM / ŞİRKET</span><input name="kurum" placeholder="Şirket adı" style="background:#0a0e1f;border:1px solid rgba(255,255,255,0.12);border-radius:2px;color:#EAECF5;font-family:'Saira';font-size:15px;padding:13px 14px;outline:none;transition:border-color .2s;" style-focus="border-color:#2E6BE0;"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#7d88b5;">E-POSTA</span><input name="email" type="email" required placeholder="ornek@sirket.com" style="background:#0a0e1f;border:1px solid rgba(255,255,255,0.12);border-radius:2px;color:#EAECF5;font-family:'Saira';font-size:15px;padding:13px 14px;outline:none;transition:border-color .2s;" style-focus="border-color:#2E6BE0;"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#7d88b5;">MESAJ</span><textarea name="mesaj" rows="4" placeholder="İlgilendiğiniz paket ve sorularınız..." style="background:#0a0e1f;border:1px solid rgba(255,255,255,0.12);border-radius:2px;color:#EAECF5;font-family:'Saira';font-size:15px;padding:13px 14px;outline:none;resize:vertical;transition:border-color .2s;" style-focus="border-color:#2E6BE0;"></textarea></label>
+        <button type="submit" style="margin-top:4px;cursor:pointer;font-family:'Saira Condensed';font-weight:700;font-size:17px;letter-spacing:.08em;color:#fff;padding:15px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);border:none;border-radius:2px;box-shadow:0 8px 24px rgba(46,107,224,.32);transition:filter .25s,transform .2s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">GÖNDER →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="position:relative;padding:clamp(56px,7vh,90px) clamp(20px,6vw,90px) 36px;background:#070a16;border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
+      <div>
+        <img src="assets/etu-logo-light.png" alt="ETU AERO" style="height:72px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(46,107,224,.25));">
+        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">Savaşan İHA takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:#3D8BFF;margin-bottom:18px;">// İLETİŞİM</div>
+        <a href="mailto:iletisim@etuaero.com" style="display:block;font-size:16px;color:#D4DAF0;text-decoration:none;margin-bottom:10px;">iletisim@etuaero.com</a>
+        <div style="font-size:14px;color:#7d88b5;line-height:1.7;">Üniversite · Şehir<br>Türkiye</div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:#3D8BFF;margin-bottom:18px;">// SAYFALAR</div>
+        <a href="ETU%20Aero.dc.html#zifir" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
+        <a href="ETU%20Aero.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
+        <a href="Takim.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Takım</a>
+        <a href="ETU%20Aero.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Ana Sayfa</a>
+      </div>
+    </div>
+    <div style="margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
+      <span>© {{ year }} ETU AERO · TÜM HAKLARI SAKLIDIR</span>
+      <span>ZİFİR · GÖKLERİN YENİ GÖLGESİ</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: (typeof window !== 'undefined' ? window.innerWidth : 1280), menuOpen: false };
+  rootRef = React.createRef();
+  navRef = React.createRef();
+  progressRef = React.createRef();
+
+  _h(n){ return ('0' + Math.max(0, Math.min(255, Math.round(n))).toString(16)).slice(-2); }
+  lerpHex(a, b, t){
+    const pa = [parseInt(a.slice(1,3),16), parseInt(a.slice(3,5),16), parseInt(a.slice(5,7),16)];
+    const pb = [parseInt(b.slice(1,3),16), parseInt(b.slice(3,5),16), parseInt(b.slice(5,7),16)];
+    return '#' + this._h(pa[0]+(pb[0]-pa[0])*t) + this._h(pa[1]+(pb[1]-pa[1])*t) + this._h(pa[2]+(pb[2]-pa[2])*t);
+  }
+  rampAt(cols, t){ if (t<=0) return cols[0]; if (t>=1) return cols[cols.length-1]; const seg=(cols.length-1)*t, i=Math.floor(seg); return this.lerpHex(cols[i], cols[i+1], seg-i); }
+
+  wv(text, o){
+    o = o || {};
+    const amp = o.amp != null ? o.amp : 0.12;
+    const size = o.size || 'clamp(40px,7vw,98px)';
+    const weight = o.weight || 800;
+    const skew = o.skew != null ? o.skew : -9;
+    const speed = o.speed || 3.2;
+    const color = o.color || '#EAECF5';
+    const cols = o.ramp || null;
+    const ls = o.ls || '-0.01em';
+    const lh = o.lh || 0.9;
+    const fam = "'Saira Condensed', system-ui, sans-serif";
+    const totalVis = Array.from(text).filter(c => c !== ' ').length;
+    let vi = -1;
+    const mkLetter = (ch, key) => {
+      vi++;
+      const col = cols ? this.rampAt(cols, totalVis > 1 ? vi/(totalVis-1) : 0) : color;
+      const inner = React.createElement('span', { style: { display:'inline-block', '--amp': amp+'em', animation:'etuFloat '+speed+'s ease-in-out infinite', animationDelay:(-vi*0.16).toFixed(2)+'s' } }, ch);
+      return React.createElement('span', { key:key, style:{ display:'inline-block', transform:'skewX('+skew+'deg)', color:col } }, inner);
+    };
+    const words = text.split(' ');
+    const kids = [];
+    words.forEach((word, wi) => {
+      kids.push(React.createElement('span', { key:'w'+wi, style:{ display:'inline-block', whiteSpace:'nowrap' } }, Array.from(word).map((ch, ci) => mkLetter(ch, wi+'-'+ci))));
+      if (wi < words.length - 1) kids.push(' ');
+    });
+    return React.createElement('span', { style:{ display:'inline-block', fontFamily:fam, fontWeight:weight, fontSize:size, lineHeight:lh, letterSpacing:ls, whiteSpace:'normal' } }, kids);
+  }
+
+  componentDidMount(){
+    this._disposers = [];
+    this.initReveal();
+    this._onScroll = () => { if (this._tk) return; this._tk = requestAnimationFrame(() => { this._tk = null; this.handleScroll(); }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => { if (Math.abs(window.innerWidth - this.state.vw) > 40) this.setState({ vw: window.innerWidth }); };
+    window.addEventListener('resize', this._onResize);
+    this.handleScroll();
+  }
+  componentWillUnmount(){
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    (this._disposers || []).forEach(fn => { try { fn(); } catch(e){} });
+  }
+
+  initReveal(){
+    const root = this.rootRef.current; if (!root) return;
+    const els = root.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting){ const el = e.target; const d = parseFloat(el.getAttribute('data-delay')||'0'); el.style.transitionDelay = d+'ms'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(el => {
+      el.style.willChange = 'opacity,transform';
+      el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)';
+      el.style.opacity = '0';
+      const dir = el.getAttribute('data-reveal');
+      el.style.transform = dir === 'scale' ? 'scale(.94)' : 'translateY(40px) skewX(-3deg)';
+      io.observe(el);
+    });
+    this._disposers.push(() => io.disconnect());
+  }
+  handleScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    const n = this.navRef.current;
+    if (n){ const s = y > 24; n.style.borderBottomColor = s ? 'rgba(255,255,255,0.07)' : 'transparent'; n.style.paddingTop = s ? '12px' : '18px'; n.style.paddingBottom = s ? '12px' : '18px'; }
+    const p = this.progressRef.current;
+    if (p){ const max = document.documentElement.scrollHeight - window.innerHeight; p.style.width = (max>0 ? (y/max*100) : 0) + '%'; }
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+    const f = e.target;
+    const get = (k) => (f.elements[k] && f.elements[k].value || '').trim();
+    const ad = get('ad'), kurum = get('kurum'), email = get('email'), mesaj = get('mesaj');
+    const subject = encodeURIComponent('Sponsorluk Başvurusu — ' + (kurum || ad || 'ETU Aero'));
+    const body = encodeURIComponent('Ad Soyad: ' + ad + '\nKurum: ' + kurum + '\nE-posta: ' + email + '\n\nMesaj:\n' + mesaj);
+    window.location.href = 'mailto:sponsorluk@etuaero.com?subject=' + subject + '&body=' + body;
+  }
+
+  renderVals(){
+    const mob = this.state.vw < 880;
+    const links = [
+      { t:'HAKKIMIZDA', h:'ETU%20Aero.dc.html#hakkimizda' },
+      { t:'ZİFİR', h:'ETU%20Aero.dc.html#zifir' },
+      { t:'YARIŞMA', h:'ETU%20Aero.dc.html#yarisma' },
+      { t:'SPONSORLUK', h:'Sponsorluk.dc.html' },
+      { t:'HABERLER', h:'ETU%20Aero.dc.html#haberler' },
+      { t:'GALERİ', h:'ETU%20Aero.dc.html#galeri' },
+      { t:'TAKIM', h:'Takim.dc.html' }
+    ];
+    const baseCard = 'position:relative;padding:30px 26px;border-radius:3px;overflow:hidden;';
+    const mk = (name, accent, note, perks, opts) => {
+      opts = opts || {};
+      const featured = !!opts.featured;
+      return {
+        name, accent, note, perks,
+        featured,
+        delay: opts.delay || 0,
+        cardStyle: baseCard + (featured
+          ? 'border:1px solid rgba(46,107,224,0.5);background:linear-gradient(180deg,rgba(46,107,224,0.14),rgba(255,255,255,0.012));box-shadow:0 0 44px rgba(46,107,224,0.16);'
+          : 'border:1px solid rgba(255,255,255,0.08);background:linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.008));'),
+        btnColor: featured ? '#fff' : '#C7D0EC',
+        btnBg: featured ? 'linear-gradient(120deg,#1d4fb0,#2E6BE0)' : 'transparent',
+        btnBorder: featured ? 'transparent' : 'rgba(255,255,255,0.2)'
+      };
+    };
+    const tiers = [
+      mk('BRONZ', '#C8814B', 'Başlangıç desteği', ['Web sitesinde logo', 'Sosyal medyada teşekkür paylaşımı'], { delay:0 }),
+      mk('GÜMÜŞ', '#C9D2E8', 'Görünür destek', ['Bronz ayrıcalıklarının tümü', 'Etkinlik & stantta logo', 'Takım kıyafetinde küçük logo'], { delay:80 }),
+      mk('ALTIN', '#FFC24B', 'Güçlü iş birliği', ['Gümüş ayrıcalıklarının tümü', 'İHA gövdesinde orta boy logo', 'Teknik raporlarda görünürlük', 'Atölye ziyareti'], { delay:160 }),
+      mk('PLATİN', '#7FB0FF', 'Ana sponsor', ['Altın ayrıcalıklarının tümü', 'İHA üzerinde en büyük logo', 'Özel içerik & röportaj', 'Tüm mecralarda öncelikli yer', 'İsim hakkı opsiyonu'], { featured:true, delay:240 })
+    ];
+    return {
+      rootRef: this.rootRef, navRef: this.navRef, progressRef: this.progressRef,
+      isMobile: mob, desktopNav: !mob, menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      onSubmit: (e) => this.onSubmit(e),
+      links, tiers, slots5: [0,1,2,3,4], year: 2026,
+      tTitle: this.wv('SPONSORLUK', { size:'clamp(44px,7.5vw,116px)', color:'#FFFFFF', skew:-10, ls:'-0.02em' }),
+      tTiers: this.wv('PAKETLER', { size:'clamp(34px,5vw,72px)', color:'#FFFFFF', skew:-9 }),
+      tContact: this.wv('SPONSOR OL', { size:'clamp(34px,5vw,72px)', color:'#EAECF5', skew:-9 })
+    };
+  }
+}
+</script>
+</body>
+</html>
