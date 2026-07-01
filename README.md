@@ -7,11 +7,7 @@ Bu klasör, 5 konsept arasından **01 — Koyu Komuta Merkezi** yönünün tam s
 
 | Hero | Hakkımızda |
 |---|---|
-| ![Hero](screenshots/01-hero.png) | ![Hakkımızda](screenshots/02-hero.png) |
-
-| Sponsorlar | İletişim |
-|---|---|
-| ![Sponsorlar](screenshots/03-hero.png) | ![İletişim](screenshots/04-hero.png) |
+| ![Hero](screenshots/01-hero.png) |
 
 ## Konsept
 
