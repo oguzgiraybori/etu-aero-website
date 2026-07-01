@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ETU Aero, Savaşan İHA kategorisi için Zifir adlı insansız hava aracını geliştiren Teknofest takımı."
+    />
+    <title>ETU Aero | Zifir</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-reveal>
+        <a class="brand" href="index.html" aria-label="ETU Aero ana sayfa">
+          <img src="assets/etu-aero-logo.jpeg" alt="ETU Aero logosu" />
+          <span>ETU Aero</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Ana menü">
+          <a href="#zifir">Zifir</a>
+          <a href="#sponsorluk">Sponsorluk</a>
+          <a href="#yol-haritasi">Yol Haritası</a>
+          <a href="team.html">Takım</a>
+          <a class="nav-cta" href="#iletisim">İletişim</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero section" id="zifir">
+          <canvas class="sky-canvas" aria-hidden="true"></canvas>
+
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">Teknofest Savaşan İHA Takımı</p>
+            <h1>Zifir</h1>
+            <p class="hero-line">Sessizlikte Yükselir.</p>
+            <p class="hero-text">
+              ETU Aero, otonom sistemler, uçuş kontrolü ve takım mühendisliğiyle
+              yarının yarışmacı İHA platformunu geliştirmek için yola çıktı.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#sponsorluk">Sponsor Ol</a>
+              <a class="button ghost" href="team.html">Takımı Gör</a>
+            </div>
+          </div>
+
+          <div class="showcase" data-reveal>
+            <div class="hangar">
+              <div class="scanline"></div>
+              <div class="drone-shadow"></div>
+              <div class="drone-silhouette" aria-label="Zifir İHA silüeti yakında açıklanacak">
+                <span class="wing left"></span>
+                <span class="wing right"></span>
+                <span class="body"></span>
+                <span class="tail"></span>
+                <span class="rotor r1"></span>
+                <span class="rotor r2"></span>
+                <span class="rotor r3"></span>
+                <span class="rotor r4"></span>
+              </div>
+              <div class="platform">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <p class="model-note">Zifir tasarımı yakında açıklanacak</p>
+          </div>
+
+          <aside class="sponsor-rail" aria-label="Sponsorluk özeti" data-reveal>
+            <span>Açık çağrı</span>
+            <strong>Sponsorluk görüşmelerine açığız.</strong>
+            <a href="#sponsorluk">Paketleri incele</a>
+          </aside>
+        </section>
+
+        <section class="sponsor-section section" id="sponsorluk">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Sponsorluk</p>
+            <h2>İlk destekçilerimiz, ilk uçuşumuzun parçası olacak.</h2>
+          </div>
+
+          <div class="sponsor-grid">
+            <article class="sponsor-card" data-reveal>
+              <span class="tier">Görünürlük</span>
+              <h3>Logo ve medya alanı</h3>
+              <p>
+                Website, sunum dosyaları, sosyal medya duyuruları ve etkinlik
+                görsellerinde destekçi markalara yer ayrılır.
+              </p>
+            </article>
+            <article class="sponsor-card" data-reveal>
+              <span class="tier">Teknik destek</span>
+              <h3>Malzeme ve üretim</h3>
+              <p>
+                Kompozit, elektronik, prototipleme, test ekipmanı ve yazılım
+                alanlarında iş birliklerine açığız.
+              </p>
+            </article>
+            <article class="sponsor-card accent" data-reveal>
+              <span class="tier">Birlikte gelişim</span>
+              <h3>Ar-Ge ortaklığı</h3>
+              <p>
+                Savunma, havacılık ve robotik ekosistemindeki kurumlarla
+                uzun vadeli teknik paylaşım hedefliyoruz.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="mission-section section">
+          <div class="large-statement" data-reveal>
+            <span>ETU Aero</span>
+            <h2>Yeni kurulduk. Hızlı öğreniyoruz. Disiplinli uçuyoruz.</h2>
+          </div>
+          <div class="mission-copy" data-reveal>
+            <p>
+              Takımımızın ilk dönemi, temel sistem mimarisi, prototip doğrulama,
+              uçuş emniyeti ve görev algoritmaları üzerine kurulu. Amacımız
+              sahaya çıkmadan önce her kararı testle güçlendirmek.
+            </p>
+          </div>
+        </section>
+
+        <section class="roadmap-section section" id="yol-haritasi">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Yol Haritasi</p>
+            <h2>Zifir için ilk sezon planı.</h2>
+          </div>
+
+          <div class="timeline">
+            <article data-reveal>
+              <span>01</span>
+              <h3>Takım yapısı</h3>
+              <p>Alt ekipler, görev dağılımı, dokümantasyon düzeni ve teknik karar süreci.</p>
+            </article>
+            <article data-reveal>
+              <span>02</span>
+              <h3>Sistem mimarisi</h3>
+              <p>Uçuş kontrol, haberleşme, güç, mekanik ve görev bilgisayarı katmanları.</p>
+            </article>
+            <article data-reveal>
+              <span>03</span>
+              <h3>Prototip testleri</h3>
+              <p>Yer testleri, sensör kalibrasyonu, simüle görevler ve emniyet kontrolleri.</p>
+            </article>
+            <article data-reveal>
+              <span>04</span>
+              <h3>Yarışma hazırlığı</h3>
+              <p>Teknik raporlar, saha denemeleri, medya kitleri ve sponsor raporlaması.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="team-preview section">
+          <div class="team-preview-copy" data-reveal>
+            <p class="eyebrow">Takım</p>
+            <h2>Uçuşu bir ekip tasarlar.</h2>
+            <p>
+              Takım üyeleri, alt ekipler ve sosyal medya bağlantıları için ayrı
+              bir takım sayfası hazırlandı. Şimdilik placeholder bilgiler var;
+              gerçek liste geldiğinde kolayca değiştirilebilir.
+            </p>
+            <a class="button primary" href="team.html">Takım Sayfasına Git</a>
+          </div>
+          <div class="mini-roster" data-reveal aria-hidden="true">
+            <span>EA</span>
+            <span>AV</span>
+            <span>YK</span>
+            <span>MS</span>
+            <span>+8</span>
+          </div>
+        </section>
+
+        <section class="contact-section section" id="iletisim">
+          <div data-reveal>
+            <p class="eyebrow">İletişim</p>
+            <h2>ETU Aero ile tanışın.</h2>
+          </div>
+          <div class="contact-panel" data-reveal>
+            <a href="mailto:info@etuaero.org">info@etuaero.org</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>ETU Aero</span>
+        <span>Zifir geliştirme süreci devam ediyor.</span>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
