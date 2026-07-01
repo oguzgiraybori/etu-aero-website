@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #070b16; }
+  ::selection { background: #d2232a; color: #fff; }
+  @keyframes k1scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(3000%); } }
+  @keyframes k1pulse { 0%,100% { opacity: .4; transform: translate(-50%,-50%) scale(1); } 50% { opacity: .9; transform: translate(-50%,-50%) scale(1.07); } }
+  @keyframes k1grid { 0% { background-position: 0 0; } 100% { background-position: 56px 56px; } }
+  @keyframes k1blink { 0%,49% { opacity: 1; } 50%,100% { opacity: .15; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #070b16; color: #fff; overflow-x: hidden;">
+
+  <!-- ===== NAV ===== -->
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; background: rgba(7,11,22,.82); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.07);">
+    <a href="#hero" style="display: flex; align-items: center; gap: 13px; text-decoration: none;">
+      <div style="width: 46px; height: 46px; border-radius: 11px; background: #fff; padding: 4px; display: flex; box-shadow: 0 0 0 1px rgba(56,224,255,.3);"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+      <div>
+        <div style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; color: #fff; font-size: 17px; letter-spacing: 2px;">ETU AERO</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #38e0ff; letter-spacing: 2px;">SAVAŞAN İHA</div>
+      </div>
+    </a>
+    <div style="display: flex; align-items: center; gap: 30px;">
+      <a href="#hakkimizda" style="font-family: 'Chakra Petch', sans-serif; color: #aeb6c8; font-size: 14px; letter-spacing: .5px; text-decoration: none;">Hakkımızda</a>
+      <a href="#takim" style="font-family: 'Chakra Petch', sans-serif; color: #aeb6c8; font-size: 14px; letter-spacing: .5px; text-decoration: none;">Takım</a>
+      <a href="#sponsorlar" style="font-family: 'Chakra Petch', sans-serif; color: #aeb6c8; font-size: 14px; letter-spacing: .5px; text-decoration: none;">Sponsorlar</a>
+      <a href="#iletisim" style="font-family: 'Chakra Petch', sans-serif; color: #aeb6c8; font-size: 14px; letter-spacing: .5px; text-decoration: none;">İletişim</a>
+      <a href="#iletisim" style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; color: #fff; font-size: 13px; letter-spacing: 1px; background: #d2232a; padding: 11px 22px; border-radius: 8px; text-decoration: none;">SPONSOR OL</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="hero" style="position: relative; overflow: hidden; padding: 0;">
+    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(56,224,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(56,224,255,.06) 1px, transparent 1px); background-size: 56px 56px; animation: k1grid 6s linear infinite;"></div>
+    <div style="position: absolute; top: -160px; right: -120px; width: 620px; height: 620px; background: radial-gradient(circle, rgba(210,35,42,.28), transparent 65%); filter: blur(12px);"></div>
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, #38e0ff, transparent); opacity: .45; animation: k1scan 6s linear infinite;"></div>
+
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; padding: 90px 48px 96px; align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; border: 1px solid rgba(56,224,255,.3); padding: 7px 14px; border-radius: 100px; margin-bottom: 28px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #38e0ff; animation: k1blink 1.4s steps(1) infinite;"></span>SİSTEM AKTİF · TEKNOFEST 2026</div>
+        <h1 style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 82px; line-height: .95; margin: 0 0 24px; letter-spacing: -1px;">HEDEF<br><span style="color: #d2232a;">ZİRVE.</span></h1>
+        <p style="font-size: 18px; line-height: 1.7; color: #9aa3b8; max-width: 440px; margin: 0 0 34px;">Yapay zekâ destekli görüntü işleme ve otonom kilitlenme sistemleriyle gökyüzünde rekabet eden Eskişehir Teknik Üniversitesi Savaşan İHA takımı.</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="#iletisim" style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; color: #fff; font-size: 15px; letter-spacing: 1px; background: #d2232a; padding: 16px 32px; border-radius: 9px; text-decoration: none;">SPONSOR OL →</a>
+          <a href="#takim" style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; color: #fff; font-size: 15px; letter-spacing: 1px; border: 1px solid rgba(255,255,255,.2); padding: 16px 32px; border-radius: 9px; text-decoration: none;">TAKIMI TANI</a>
+        </div>
+      </div>
+
+      <div style="position: relative; aspect-ratio: 4/3; border: 1px solid rgba(56,224,255,.25); border-radius: 14px; overflow: hidden; background: repeating-linear-gradient(135deg, #0d1424 0 16px, #0a1020 16px 32px);">
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; color: #2f3a55; font-size: 13px; letter-spacing: 1px;">[ İHA / DRONE GÖRSELİ ]</div>
+        <div style="position: absolute; top: 14px; left: 14px; width: 26px; height: 26px; border-top: 2px solid #38e0ff; border-left: 2px solid #38e0ff;"></div>
+        <div style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-top: 2px solid #38e0ff; border-right: 2px solid #38e0ff;"></div>
+        <div style="position: absolute; bottom: 14px; left: 14px; width: 26px; height: 26px; border-bottom: 2px solid #38e0ff; border-left: 2px solid #38e0ff;"></div>
+        <div style="position: absolute; bottom: 14px; right: 14px; width: 26px; height: 26px; border-bottom: 2px solid #38e0ff; border-right: 2px solid #38e0ff;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; width: 130px; height: 130px; border: 1.5px solid #d2232a; border-radius: 50%; animation: k1pulse 2.4s ease-in-out infinite;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 180px; height: 1px; background: rgba(210,35,42,.5);"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 1px; height: 180px; background: rgba(210,35,42,.5);"></div>
+        <div style="position: absolute; top: 16px; right: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #38e0ff; text-align: right; line-height: 1.7;">LAT 39.7506<br>LON 30.4863<br>ALT 120m</div>
+        <div style="position: absolute; bottom: 16px; left: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #d2232a; letter-spacing: 1px;">● KİLİTLENİYOR</div>
+      </div>
+    </div>
+
+    <!-- telemetry strip -->
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08);">
+      <div style="padding: 26px 32px; border-right: 1px solid rgba(255,255,255,.08);"><div style="font-family: 'Chakra Petch', sans-serif; font-size: 34px; font-weight: 700;">18</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7388; letter-spacing: 1px;">TAKIM ÜYESİ</div></div>
+      <div style="padding: 26px 32px; border-right: 1px solid rgba(255,255,255,.08);"><div style="font-family: 'Chakra Petch', sans-serif; font-size: 34px; font-weight: 700;">5</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7388; letter-spacing: 1px;">DİSİPLİN</div></div>
+      <div style="padding: 26px 32px; border-right: 1px solid rgba(255,255,255,.08);"><div style="font-family: 'Chakra Petch', sans-serif; font-size: 34px; font-weight: 700; color: #38e0ff;">TOP 10</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7388; letter-spacing: 1px;">TEKNOFEST HEDEFİ</div></div>
+      <div style="padding: 26px 32px;"><div style="font-family: 'Chakra Petch', sans-serif; font-size: 34px; font-weight: 700; color: #d2232a;">2023</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7388; letter-spacing: 1px;">KURULUŞ</div></div>
+    </div>
+  </header>
+
+  <!-- ===== HAKKIMIZDA ===== -->
+  <section id="hakkimizda" style="max-width: 1200px; margin: 0 auto; padding: 100px 48px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; margin-bottom: 16px;">// 01 — HAKKIMIZDA</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <h2 style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 46px; line-height: 1.08; margin: 0; letter-spacing: -.5px;">Gökyüzünü <span style="color: #d2232a;">kod</span> ve <span style="color: #38e0ff;">mühendislikle</span> yönetiyoruz.</h2>
+      <div>
+        <p style="font-size: 17px; line-height: 1.8; color: #9aa3b8; margin: 0 0 20px;">ETU AERO, Eskişehir Teknik Üniversitesi çatısı altında Teknofest Savaşan İHA yarışması için kurulmuş, disiplinler arası bir öğrenci takımıdır. Aviyonik, gömülü yazılım, görüntü işleme, aerodinamik ve mekanik alanlarından öğrencileri bir araya getiriyoruz.</p>
+        <p style="font-size: 17px; line-height: 1.8; color: #9aa3b8; margin: 0;">Amacımız; tamamen öğrenci tasarımı otonom bir savaşan İHA platformu geliştirerek gerçek zamanlı hedef tespiti ve kilitlenme görevlerini en yüksek doğrulukla tamamlamak.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 48px;">
+      <div style="border: 1px solid rgba(255,255,255,.09); border-radius: 14px; padding: 28px; background: rgba(255,255,255,.02);"><div style="font-family: 'IBM Plex Mono', monospace; color: #38e0ff; font-size: 12px; margin-bottom: 12px;">01</div><div style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 8px;">Otonom Uçuş</div><div style="font-size: 14px; color: #7d8699; line-height: 1.6;">Kendi uçuş kontrol yazılımımızla GPS destekli otonom görev icrası.</div></div>
+      <div style="border: 1px solid rgba(255,255,255,.09); border-radius: 14px; padding: 28px; background: rgba(255,255,255,.02);"><div style="font-family: 'IBM Plex Mono', monospace; color: #38e0ff; font-size: 12px; margin-bottom: 12px;">02</div><div style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 8px;">Görüntü İşleme</div><div style="font-size: 14px; color: #7d8699; line-height: 1.6;">Yapay zekâ ile gerçek zamanlı hedef tespiti ve otonom kilitlenme.</div></div>
+      <div style="border: 1px solid rgba(255,255,255,.09); border-radius: 14px; padding: 28px; background: rgba(255,255,255,.02);"><div style="font-family: 'IBM Plex Mono', monospace; color: #38e0ff; font-size: 12px; margin-bottom: 12px;">03</div><div style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 8px;">Özgün Tasarım</div><div style="font-size: 14px; color: #7d8699; line-height: 1.6;">Aerodinamik gövde ve kompozit üretim; %100 takım işçiliği.</div></div>
+    </div>
+  </section>
+
+  <!-- ===== TAKIM ===== -->
+  <section id="takim" style="border-top: 1px solid rgba(255,255,255,.07); background: #0a0f1e;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 48px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; margin-bottom: 16px;">// 02 — EKİP</div>
+      <h2 style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 46px; margin: 0 0 12px; letter-spacing: -.5px;">Takımı tanıyın</h2>
+      <p style="font-size: 17px; color: #9aa3b8; margin: 0 0 48px; max-width: 520px;">Beş alt ekip, tek hedef. Görsel gelene kadar isim ve roller placeholder'dır.</p>
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 18px;">
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="8">
+          <div style="border: 1px solid rgba(255,255,255,.09); border-radius: 14px; overflow: hidden; background: rgba(255,255,255,.02);">
+            <div style="aspect-ratio: 1/1; background: repeating-linear-gradient(135deg,#0d1424 0 14px,#0a1020 14px 28px); display: flex; align-items: center; justify-content: center; position: relative;">
+              <span style="font-family: 'IBM Plex Mono', monospace; color: #2f3a55; font-size: 11px;">[ FOTO ]</span>
+              <span style="position: absolute; top: 10px; left: 10px; width: 18px; height: 18px; border-top: 2px solid #38e0ff; border-left: 2px solid #38e0ff;"></span>
+            </div>
+            <div style="padding: 16px 18px;">
+              <div style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 16px;">{{ m.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #38e0ff; letter-spacing: .5px; margin-top: 3px;">{{ m.role }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPONSORLAR ===== -->
+  <section id="sponsorlar" style="max-width: 1200px; margin: 0 auto; padding: 100px 48px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; margin-bottom: 16px;">// 03 — SPONSORLUK</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 56px;">
+      <h2 style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 46px; margin: 0; line-height: 1.08; letter-spacing: -.5px;">Bizimle <span style="color: #d2232a;">yükselin</span></h2>
+      <p style="font-size: 17px; line-height: 1.8; color: #9aa3b8; margin: 0;">Sponsorlarımız yalnızca bir logo değil; Türkiye'nin havacılık geleceğine yatırım yapan ortaklarımızdır. Aracımızda, üniforma ve standımızda, tüm dijital kanallarımızda görünürlük sunuyoruz.</p>
+    </div>
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7388; letter-spacing: 2px; margin-bottom: 18px;">MEVCUT DESTEKÇİLERİMİZ</div>
+    <div style="display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 64px;">
+      <sc-for list="{{ sponsors }}" as="s" hint-placeholder-count="10">
+        <div style="height: 72px; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.02); font-family: 'IBM Plex Mono', monospace; color: #4a5470; font-size: 12px;">SPONSOR</div>
+      </sc-for>
+    </div>
+
+    <!-- packages -->
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;">
+      <div style="border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 32px; background: rgba(255,255,255,.02);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #cd7f32; letter-spacing: 2px; margin-bottom: 10px;">GÜMÜŞ</div>
+        <div style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">Destekçi</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #9aa3b8; line-height: 2.1;"><li>◦ Web sitesinde logo</li><li>◦ Sosyal medya teşekkürü</li><li>◦ Takım bülteni</li></ul>
+      </div>
+      <div style="border: 1.5px solid #38e0ff; border-radius: 16px; padding: 32px; background: rgba(56,224,255,.05); position: relative;">
+        <div style="position: absolute; top: -11px; left: 32px; background: #38e0ff; color: #070b16; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 5px;">EN POPÜLER</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; margin-bottom: 10px;">ALTIN</div>
+        <div style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">Ana Sponsor</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #c7cdda; line-height: 2.1;"><li>◦ Araç üzerinde orta boy logo</li><li>◦ Üniforma & stant görünürlüğü</li><li>◦ Tüm dijital kanallar</li><li>◦ Etkinlik davetleri</li></ul>
+      </div>
+      <div style="border: 1px solid rgba(210,35,42,.4); border-radius: 16px; padding: 32px; background: rgba(210,35,42,.05);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #d2232a; letter-spacing: 2px; margin-bottom: 10px;">PLATİN</div>
+        <div style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">İsim Sponsoru</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #c7cdda; line-height: 2.1;"><li>◦ Araçta en büyük logo</li><li>◦ Takım adıyla anılma</li><li>◦ Özel içerik & mentorluk</li><li>◦ Tüm etkinliklerde öncelik</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== İLETİŞİM ===== -->
+  <section id="iletisim" style="border-top: 1px solid rgba(255,255,255,.07); background: #0a0f1e;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px;">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #38e0ff; letter-spacing: 2px; margin-bottom: 16px;">// 04 — İLETİŞİM</div>
+        <h2 style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 46px; margin: 0 0 22px; line-height: 1.08; letter-spacing: -.5px;">Kanalı açın.</h2>
+        <p style="font-size: 17px; line-height: 1.8; color: #9aa3b8; margin: 0 0 32px;">Sponsorluk, iş birliği veya basın için bize ulaşın. En kısa sürede dönüş yaparız.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 14px;">
+          <div style="color: #c7cdda;"><span style="color: #38e0ff;">E-POSTA</span> &nbsp; info@etuaero.com</div>
+          <div style="color: #c7cdda;"><span style="color: #38e0ff;">KONUM</span> &nbsp;&nbsp;&nbsp; Eskişehir Teknik Üniv., Eskişehir</div>
+          <div style="color: #c7cdda;"><span style="color: #38e0ff;">SOSYAL</span> &nbsp;&nbsp; @etuaero (Instagram · LinkedIn · X)</div>
+        </div>
+      </div>
+      <form onsubmit="{{ onSubmit }}" style="border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 32px; background: rgba(255,255,255,.02); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #38e0ff; letter-spacing: 1px;">AD SOYAD</label><input required placeholder="Adınız" style="background: #070b16; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #38e0ff; letter-spacing: 1px;">E-POSTA</label><input required type="email" placeholder="ornek@firma.com" style="background: #070b16; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #38e0ff; letter-spacing: 1px;">MESAJ</label><textarea required rows="4" placeholder="Mesajınız..." style="background: #070b16; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px; resize: vertical;"></textarea></div>
+        <button type="submit" style="font-family: 'Chakra Petch', sans-serif; font-weight: 600; color: #fff; font-size: 15px; letter-spacing: 1px; background: #d2232a; border: none; padding: 15px; border-radius: 9px; cursor: pointer;">GÖNDER →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="border-top: 1px solid rgba(255,255,255,.07); padding: 40px 48px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; border-radius: 9px; background: #fff; padding: 3px; display: flex;"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+        <span style="font-family: 'Chakra Petch', sans-serif; font-weight: 700; letter-spacing: 1px;">ETU AERO</span>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6b7388;">© 2026 ETU AERO · Eskişehir Teknik Üniversitesi · Savaşan İHA</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      members: [
+        { name: "Ad Soyad", role: "Takım Kaptanı" },
+        { name: "Ad Soyad", role: "Aviyonik" },
+        { name: "Ad Soyad", role: "Gömülü Yazılım" },
+        { name: "Ad Soyad", role: "Görüntü İşleme" },
+        { name: "Ad Soyad", role: "Mekanik" },
+        { name: "Ad Soyad", role: "Aerodinamik" },
+        { name: "Ad Soyad", role: "Sponsorluk" },
+        { name: "Ad Soyad", role: "Sosyal Medya" },
+      ],
+      sponsors: Array.from({ length: 10 }),
+      onSubmit: (e) => { e.preventDefault(); alert("Teşekkürler! Mesajınız alındı (demo). Gerçek gönderim için handoff'taki form notuna bakın."); },
+    };
+  }
+}
+</script>
+</body>
+</html>
