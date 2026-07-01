@@ -7,11 +7,8 @@ Bu klasör, 5 konsept arasından **03 — Enerjik Diyagonal** yönünün tam say
 
 | Hero | Hakkımızda |
 |---|---|
-| ![Hero](screenshots/01-view.png) | ![Hakkımızda](screenshots/02-view.png) |
+| ![Hero](screenshots/01-view.png) |
 
-| Sponsorlar | İletişim |
-|---|---|
-| ![Sponsorlar](screenshots/03-view.png) | ![İletişim](screenshots/04-view.png) |
 
 ## Konsept
 
