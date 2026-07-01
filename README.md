@@ -7,11 +7,9 @@ Bu klasör, 5 konsept arasından **04 — Teknik Blueprint** yönünün tam sayf
 
 | Hero | Hakkımızda |
 |---|---|
-| ![Hero](screenshots/01-view.png) | ![Hakkımızda](screenshots/02-view.png) |
+| ![Hero](screenshots/01-view.png) |
 
-| Sponsorlar | İletişim |
-|---|---|
-| ![Sponsorlar](screenshots/03-view.png) | ![İletişim](screenshots/04-view.png) |
+
 
 ## Konsept
 
