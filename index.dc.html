@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0c1b3a; }
+  ::selection { background: #6fa8ff; color: #0c1b3a; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } svg * { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #0c1b3a; color: #fff; overflow-x: hidden; position: relative;">
+  <!-- global blueprint grid -->
+  <div style="position: fixed; inset: 0; background-image: linear-gradient(rgba(120,170,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(120,170,255,.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; z-index: 0;"></div>
+
+  <div style="position: relative; z-index: 1;">
+  <!-- NAV -->
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 52px; background: rgba(12,27,58,.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(120,170,255,.2);">
+    <a href="#hero" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+      <div style="width: 44px; height: 44px; border-radius: 8px; background: #fff; padding: 4px; display: flex;"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+      <div>
+        <span style="font-family: 'Oxanium', sans-serif; font-weight: 800; color: #fff; font-size: 19px; letter-spacing: 1px;">ETU AERO</span>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6fa8ff; letter-spacing: 1px;">REV.2026 / UAV-PROGRAM</div>
+      </div>
+    </a>
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <a href="#hakkimizda" style="font-family: 'Oxanium', sans-serif; font-weight: 600; color: #b9c8e6; font-size: 15px; text-decoration: none;">Hakkımızda</a>
+      <a href="#takim" style="font-family: 'Oxanium', sans-serif; font-weight: 600; color: #b9c8e6; font-size: 15px; text-decoration: none;">Takım</a>
+      <a href="#sponsorlar" style="font-family: 'Oxanium', sans-serif; font-weight: 600; color: #b9c8e6; font-size: 15px; text-decoration: none;">Sponsorlar</a>
+      <a href="#iletisim" style="font-family: 'Oxanium', sans-serif; font-weight: 600; color: #b9c8e6; font-size: 15px; text-decoration: none;">İletişim</a>
+      <a href="#iletisim" style="font-family: 'Oxanium', sans-serif; font-weight: 700; color: #0c1b3a; font-size: 14px; background: #6fa8ff; padding: 11px 22px; border-radius: 6px; text-decoration: none;">Sponsor Ol</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 80px 52px; align-items: center;">
+    <div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 22px;">// FIG.01 — SAVAŞAN İHA PLATFORMU</div>
+      <h1 style="font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 62px; line-height: 1.02; margin: 0 0 22px; letter-spacing: -.5px;">Milimetrik mühendislik, <span style="color: #6fa8ff;">maksimum</span> performans.</h1>
+      <p style="font-size: 17px; line-height: 1.7; color: #93a4c6; max-width: 460px; margin: 0 0 32px;">Aerodinamik, gömülü yazılım ve otonom uçuş kontrolünü tek bir platformda buluşturuyoruz. Her parça hesaplanmış, her uçuş kanıtlanmış.</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="#iletisim" style="font-family: 'Oxanium', sans-serif; font-weight: 700; color: #0c1b3a; font-size: 15px; background: #6fa8ff; padding: 15px 30px; border-radius: 8px; text-decoration: none;">Sponsor Ol</a>
+        <a href="#hakkimizda" style="font-family: 'Oxanium', sans-serif; font-weight: 700; color: #fff; font-size: 15px; border: 1px solid rgba(120,170,255,.4); padding: 15px 30px; border-radius: 8px; text-decoration: none;">Teknik Föy →</a>
+      </div>
+    </div>
+    <div style="position: relative; aspect-ratio: 4/3; border: 1px solid rgba(120,170,255,.35); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(120,170,255,.03);">
+      <svg width="100%" height="100%" viewBox="0 0 320 240" style="position: absolute; inset: 0;">
+        <line x1="40" y1="120" x2="280" y2="120" stroke="#6fa8ff" stroke-width="1" stroke-dasharray="6 6" opacity=".5"><animate attributeName="stroke-dashoffset" from="0" to="-240" dur="6s" repeatCount="indefinite"/></line>
+        <circle cx="160" cy="120" r="62" fill="none" stroke="#6fa8ff" stroke-width="1.2" opacity=".7"/>
+        <circle cx="160" cy="120" r="62" fill="none" stroke="#6fa8ff" stroke-width="3" stroke-dasharray="4 24" opacity=".9"><animateTransform attributeName="transform" type="rotate" from="0 160 120" to="360 160 120" dur="14s" repeatCount="indefinite"/></circle>
+        <rect x="120" y="80" width="80" height="80" fill="none" stroke="#6fa8ff" stroke-width="1" opacity=".4"/>
+        <circle cx="160" cy="120" r="4" fill="#d2232a"/>
+      </svg>
+      <div style="position: absolute; bottom: 14px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6fa8ff;">Ø 1200mm</div>
+      <div style="position: absolute; top: 14px; right: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93a4c6;">[ İHA ŞEMASI ]</div>
+    </div>
+  </header>
+
+  <!-- SPECS STRIP -->
+  <section style="border-top: 1px solid rgba(120,170,255,.2); border-bottom: 1px solid rgba(120,170,255,.2);">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr);">
+      <div style="padding: 26px 40px; border-right: 1px solid rgba(120,170,255,.2);"><div style="font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800;">18</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7fa8; letter-spacing: 1px;">TAKIM ÜYESİ</div></div>
+      <div style="padding: 26px 40px; border-right: 1px solid rgba(120,170,255,.2);"><div style="font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800;">5</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7fa8; letter-spacing: 1px;">DİSİPLİN</div></div>
+      <div style="padding: 26px 40px; border-right: 1px solid rgba(120,170,255,.2);"><div style="font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800; color: #6fa8ff;">100%</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7fa8; letter-spacing: 1px;">ÖĞRENCİ ÜRETİMİ</div></div>
+      <div style="padding: 26px 40px;"><div style="font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800; color: #d2232a;">2023</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7fa8; letter-spacing: 1px;">KURULUŞ</div></div>
+    </div>
+  </section>
+
+  <!-- HAKKIMIZDA -->
+  <section id="hakkimizda" style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 16px;">// 01 — HAKKIMIZDA</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <h2 style="font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 46px; line-height: 1.06; margin: 0; letter-spacing: -.5px;">Hesaplanmış her detay, <span style="color: #6fa8ff;">kanıtlanmış</span> her uçuş.</h2>
+      <div>
+        <p style="font-size: 17px; line-height: 1.8; color: #93a4c6; margin: 0 0 20px;">ETU AERO, Eskişehir Teknik Üniversitesi bünyesinde Teknofest Savaşan İHA yarışması için kurulmuş, mühendislik odaklı bir öğrenci takımıdır. Aviyonik, gömülü yazılım, görüntü işleme, aerodinamik ve mekanik ekipleriyle uçtan uca kendi platformunu geliştirir.</p>
+        <p style="font-size: 17px; line-height: 1.8; color: #93a4c6; margin: 0;">Tasarım kararlarımızı simülasyon ve test verisiyle doğrular; otonom uçuş ve gerçek zamanlı hedef takibini yüksek doğrulukla hedefleriz.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px;">
+      <div style="border: 1px solid rgba(120,170,255,.25); border-radius: 12px; padding: 26px; background: rgba(120,170,255,.03);"><div style="font-family: 'IBM Plex Mono', monospace; color: #6fa8ff; font-size: 12px; margin-bottom: 12px;">SYS-01</div><div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px;">Uçuş Kontrol</div><div style="font-size: 14px; color: #7d8fb3; line-height: 1.6;">Kendi geliştirdiğimiz otopilot ve GPS destekli görev yönetimi.</div></div>
+      <div style="border: 1px solid rgba(120,170,255,.25); border-radius: 12px; padding: 26px; background: rgba(120,170,255,.03);"><div style="font-family: 'IBM Plex Mono', monospace; color: #6fa8ff; font-size: 12px; margin-bottom: 12px;">SYS-02</div><div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px;">Görüntü İşleme</div><div style="font-size: 14px; color: #7d8fb3; line-height: 1.6;">Yapay zekâ ile gerçek zamanlı hedef tespiti ve kilitlenme.</div></div>
+      <div style="border: 1px solid rgba(120,170,255,.25); border-radius: 12px; padding: 26px; background: rgba(120,170,255,.03);"><div style="font-family: 'IBM Plex Mono', monospace; color: #6fa8ff; font-size: 12px; margin-bottom: 12px;">SYS-03</div><div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px;">Aerodinamik Gövde</div><div style="font-size: 14px; color: #7d8fb3; line-height: 1.6;">CFD ile optimize edilmiş kompozit tasarım ve üretim.</div></div>
+    </div>
+  </section>
+
+  <!-- TAKIM -->
+  <section id="takim" style="border-top: 1px solid rgba(120,170,255,.2); background: rgba(120,170,255,.02);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 16px;">// 02 — EKİP</div>
+      <h2 style="font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 46px; margin: 0 0 12px; letter-spacing: -.5px;">Takımı tanıyın</h2>
+      <p style="font-size: 17px; color: #93a4c6; margin: 0 0 48px; max-width: 520px;">İsim ve foto placeholder — gerçek veriyle değiştirilecek.</p>
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;">
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="8">
+          <div style="border: 1px solid rgba(120,170,255,.25); border-radius: 12px; overflow: hidden; background: rgba(12,27,58,.5);">
+            <div style="aspect-ratio: 1/1; background: rgba(120,170,255,.05); display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="#6fa8ff" stroke-width="1" stroke-dasharray="3 5" opacity=".5"/><circle cx="30" cy="22" r="8" fill="none" stroke="#6fa8ff" stroke-width="1.2" opacity=".6"/><path d="M16 44 Q30 32 44 44" fill="none" stroke="#6fa8ff" stroke-width="1.2" opacity=".6"/></svg>
+              <span style="position: absolute; bottom: 8px; right: 10px; font-family: 'IBM Plex Mono', monospace; color: #4a5f8a; font-size: 10px;">[FOTO]</span>
+            </div>
+            <div style="padding: 16px 18px; border-top: 1px solid rgba(120,170,255,.2);">
+              <div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 16px;">{{ m.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6fa8ff; letter-spacing: .5px; margin-top: 3px;">{{ m.role }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORLAR -->
+  <section id="sponsorlar" style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 16px;">// 03 — SPONSORLUK</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 52px;">
+      <h2 style="font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 46px; margin: 0; line-height: 1.06; letter-spacing: -.5px;">Mühendisliğe <span style="color: #6fa8ff;">yatırım</span> yapın</h2>
+      <p style="font-size: 17px; line-height: 1.8; color: #93a4c6; margin: 0;">Sponsorlarımız aracımızda, teknik dokümanlarımızda, üniforma ve standımızda görünürlük kazanır. Somut mühendislik çıktısı olan bir takıma destek olun.</p>
+    </div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6b7fa8; letter-spacing: 2px; margin-bottom: 18px;">// DESTEKÇİLER</div>
+    <div style="display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 60px;">
+      <sc-for list="{{ sponsors }}" as="s" hint-placeholder-count="10">
+        <div style="height: 72px; border: 1px solid rgba(120,170,255,.25); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(120,170,255,.03); font-family: 'IBM Plex Mono', monospace; color: #4a5f8a; font-size: 12px;">SPONSOR</div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;">
+      <div style="border: 1px solid rgba(120,170,255,.25); border-radius: 14px; padding: 32px; background: rgba(120,170,255,.03);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #94a3b8; letter-spacing: 2px; margin-bottom: 10px;">TIER-C / GÜMÜŞ</div>
+        <div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">Destekçi</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #93a4c6; line-height: 2.1;"><li>› Web sitesinde logo</li><li>› Sosyal medya teşekkürü</li><li>› Takım bülteni</li></ul>
+      </div>
+      <div style="border: 1.5px solid #6fa8ff; border-radius: 14px; padding: 32px; background: rgba(111,168,255,.08); position: relative;">
+        <div style="position: absolute; top: -11px; left: 32px; background: #6fa8ff; color: #0c1b3a; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 4px 10px; border-radius: 5px;">ÖNERİLEN</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 10px;">TIER-B / ALTIN</div>
+        <div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">Ana Sponsor</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #c2d2ee; line-height: 2.1;"><li>› Araç üzerinde orta boy logo</li><li>› Üniforma & stant görünürlüğü</li><li>› Tüm dijital kanallar</li><li>› Etkinlik davetleri</li></ul>
+      </div>
+      <div style="border: 1px solid rgba(210,35,42,.4); border-radius: 14px; padding: 32px; background: rgba(210,35,42,.05);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #d2232a; letter-spacing: 2px; margin-bottom: 10px;">TIER-A / PLATİN</div>
+        <div style="font-family: 'Oxanium', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 18px;">İsim Sponsoru</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #c2d2ee; line-height: 2.1;"><li>› Araçta en büyük logo</li><li>› Takım adıyla anılma</li><li>› Özel içerik & mentorluk</li><li>› Tüm etkinliklerde öncelik</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" style="border-top: 1px solid rgba(120,170,255,.2); background: rgba(120,170,255,.02);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px;">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6fa8ff; letter-spacing: 2px; margin-bottom: 16px;">// 04 — İLETİŞİM</div>
+        <h2 style="font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 46px; margin: 0 0 22px; line-height: 1.06; letter-spacing: -.5px;">İletişime geçin</h2>
+        <p style="font-size: 17px; line-height: 1.8; color: #93a4c6; margin: 0 0 32px;">Sponsorluk, iş birliği veya basın talepleriniz için bize ulaşın. En kısa sürede geri dönüş yaparız.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 14px;">
+          <div style="color: #c2d2ee;"><span style="color: #6fa8ff;">E-POSTA</span> &nbsp; info@etuaero.com</div>
+          <div style="color: #c2d2ee;"><span style="color: #6fa8ff;">KONUM</span> &nbsp;&nbsp;&nbsp; Eskişehir Teknik Üniv., Eskişehir</div>
+          <div style="color: #c2d2ee;"><span style="color: #6fa8ff;">SOSYAL</span> &nbsp;&nbsp; @etuaero</div>
+        </div>
+      </div>
+      <form onsubmit="{{ onSubmit }}" style="border: 1px solid rgba(120,170,255,.25); border-radius: 14px; padding: 32px; background: rgba(12,27,58,.5); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6fa8ff; letter-spacing: 1px;">AD SOYAD</label><input required placeholder="Adınız" style="background: #0c1b3a; border: 1px solid rgba(120,170,255,.3); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6fa8ff; letter-spacing: 1px;">E-POSTA</label><input required type="email" placeholder="ornek@firma.com" style="background: #0c1b3a; border: 1px solid rgba(120,170,255,.3); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6fa8ff; letter-spacing: 1px;">MESAJ</label><textarea required rows="4" placeholder="Mesajınız..." style="background: #0c1b3a; border: 1px solid rgba(120,170,255,.3); border-radius: 8px; padding: 13px 15px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px; resize: vertical;"></textarea></div>
+        <button type="submit" style="font-family: 'Oxanium', sans-serif; font-weight: 700; color: #0c1b3a; font-size: 15px; background: #6fa8ff; border: none; padding: 15px; border-radius: 9px; cursor: pointer;">GÖNDER →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid rgba(120,170,255,.2); padding: 40px 52px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; background: #fff; border-radius: 8px; padding: 3px; display: flex;"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+        <span style="font-family: 'Oxanium', sans-serif; font-weight: 800; letter-spacing: 1px;">ETU AERO</span>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6b7fa8;">© 2026 ETU AERO · Eskişehir Teknik Üniversitesi · Savaşan İHA</div>
+    </div>
+  </footer>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      members: [
+        { name: "Ad Soyad", role: "TAKIM KAPTANI" },
+        { name: "Ad Soyad", role: "AVİYONİK" },
+        { name: "Ad Soyad", role: "GÖMÜLÜ YAZILIM" },
+        { name: "Ad Soyad", role: "GÖRÜNTÜ İŞLEME" },
+        { name: "Ad Soyad", role: "MEKANİK" },
+        { name: "Ad Soyad", role: "AERODİNAMİK" },
+        { name: "Ad Soyad", role: "SPONSORLUK" },
+        { name: "Ad Soyad", role: "SOSYAL MEDYA" },
+      ],
+      sponsors: Array.from({ length: 10 }),
+      onSubmit: (e) => { e.preventDefault(); alert("Teşekkürler! Mesajınız alındı (demo). Gerçek gönderim için handoff'taki form notuna bakın."); },
+    };
+  }
+}
+</script>
+</body>
+</html>
