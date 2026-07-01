@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #14224f; }
+  ::selection { background: #d2232a; color: #fff; }
+  @keyframes k3slide { 0%,100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #14224f; color: #fff; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 52px; background: rgba(20,34,79,.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08);">
+    <a href="#hero" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+      <div style="width: 44px; height: 44px; border-radius: 10px; background: #fff; padding: 4px; display: flex;"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+      <span style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; color: #fff; font-size: 24px; letter-spacing: 1px;">ETU AERO</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <a href="#hakkimizda" style="font-family: 'Saira Condensed', sans-serif; font-weight: 600; color: #aeb6c8; font-size: 17px; letter-spacing: .5px; text-transform: uppercase; text-decoration: none;">Hakkımızda</a>
+      <a href="#takim" style="font-family: 'Saira Condensed', sans-serif; font-weight: 600; color: #aeb6c8; font-size: 17px; letter-spacing: .5px; text-transform: uppercase; text-decoration: none;">Takım</a>
+      <a href="#sponsorlar" style="font-family: 'Saira Condensed', sans-serif; font-weight: 600; color: #aeb6c8; font-size: 17px; letter-spacing: .5px; text-transform: uppercase; text-decoration: none;">Sponsorlar</a>
+      <a href="#iletisim" style="font-family: 'Saira Condensed', sans-serif; font-weight: 600; color: #aeb6c8; font-size: 17px; letter-spacing: .5px; text-transform: uppercase; text-decoration: none;">İletişim</a>
+      <a href="#iletisim" style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #fff; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; background: #d2232a; padding: 11px 24px; border-radius: 7px; text-decoration: none;">Sponsor Ol</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero" style="position: relative; overflow: hidden; padding: 0;">
+    <div style="position: absolute; top: 0; right: 0; bottom: 0; width: 52%; background: linear-gradient(120deg, transparent 0 30%, #d2232a 30% 33%, transparent 33% 40%, #e8eaee 40% 100%);"></div>
+    <div style="position: absolute; top: -40px; right: -60px; width: 460px; height: 820px; background: repeating-linear-gradient(120deg, rgba(210,35,42,0) 0 26px, rgba(210,35,42,.10) 26px 30px);"></div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 76px 52px 90px;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: #d2232a; color: #fff; font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; border-radius: 6px; margin-bottom: 26px;">⚡ Teknofest 2026 · Savaşan İHA</div>
+      <h1 style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 118px; line-height: .86; margin: 0 0 10px; text-transform: uppercase; letter-spacing: -1px;">Daha hızlı.<br>Daha akıllı.<br><span style="color: #d2232a;">Daha yüksek.</span></h1>
+      <p style="font-size: 19px; line-height: 1.6; color: #b9c0d2; max-width: 500px; margin: 26px 0 34px; font-weight: 500;">Genç mühendislerin enerjisiyle gökyüzünü zorluyoruz. ETU AERO'nun yolculuğuna sponsor olarak ortak ol.</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="#iletisim" style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #fff; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; background: #d2232a; padding: 16px 34px; border-radius: 8px; text-decoration: none;">Sponsor Ol →</a>
+        <a href="#takim" style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #fff; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; border: 2px solid rgba(255,255,255,.25); padding: 15px 34px; border-radius: 8px; text-decoration: none;">Takımı Tanı</a>
+      </div>
+    </div>
+    <!-- stats bar -->
+    <div style="position: relative; background: #d2232a;">
+      <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr);">
+        <div style="padding: 22px 52px; border-right: 1px solid rgba(255,255,255,.18);"><div style="font-family: 'Saira Condensed', sans-serif; font-size: 38px; font-weight: 800; line-height: 1;">18</div><div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: .85;">Takım üyesi</div></div>
+        <div style="padding: 22px 40px; border-right: 1px solid rgba(255,255,255,.18);"><div style="font-family: 'Saira Condensed', sans-serif; font-size: 38px; font-weight: 800; line-height: 1;">5</div><div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: .85;">Disiplin</div></div>
+        <div style="padding: 22px 40px; border-right: 1px solid rgba(255,255,255,.18);"><div style="font-family: 'Saira Condensed', sans-serif; font-size: 38px; font-weight: 800; line-height: 1;">2023</div><div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: .85;">Kuruluş</div></div>
+        <div style="padding: 22px 40px;"><div style="font-family: 'Saira Condensed', sans-serif; font-size: 38px; font-weight: 800; line-height: 1;">100%</div><div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: .85;">Öğrenci üretimi</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HAKKIMIZDA -->
+  <section id="hakkimizda" style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+    <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #d2232a; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">Hakkımızda</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <h2 style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 60px; line-height: .96; margin: 0; text-transform: uppercase; letter-spacing: -.5px;">Gökyüzü bizim <span style="color: #d2232a;">oyun sahamız</span></h2>
+      <div>
+        <p style="font-size: 17px; line-height: 1.8; color: #b9c0d2; margin: 0 0 20px;">ETU AERO; Eskişehir Teknik Üniversitesi'nde Teknofest Savaşan İHA yarışması için kurulmuş, enerjisi yüksek bir öğrenci takımıdır. Aviyonikten görüntü işlemeye beş disiplinde çalışan mühendis adaylarından oluşuyoruz.</p>
+        <p style="font-size: 17px; line-height: 1.8; color: #b9c0d2; margin: 0;">Otonom uçuş ve gerçek zamanlı hedef takibi yapan, %100 öğrenci tasarımı bir savaşan İHA geliştiriyoruz. Hızlı öğreniyor, hızlı üretiyoruz.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 48px;">
+      <div style="border-left: 4px solid #d2232a; background: rgba(255,255,255,.04); border-radius: 0 12px 12px 0; padding: 26px 28px;"><div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; margin-bottom: 8px;">Otonom Uçuş</div><div style="font-size: 15px; color: #9aa3b8; line-height: 1.6;">GPS destekli, kendi yazılımımızla otonom görev icrası.</div></div>
+      <div style="border-left: 4px solid #d2232a; background: rgba(255,255,255,.04); border-radius: 0 12px 12px 0; padding: 26px 28px;"><div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; margin-bottom: 8px;">Görüntü İşleme</div><div style="font-size: 15px; color: #9aa3b8; line-height: 1.6;">Yapay zekâ ile hedef tespiti ve otonom kilitlenme.</div></div>
+      <div style="border-left: 4px solid #d2232a; background: rgba(255,255,255,.04); border-radius: 0 12px 12px 0; padding: 26px 28px;"><div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; margin-bottom: 8px;">Özgün Tasarım</div><div style="font-size: 15px; color: #9aa3b8; line-height: 1.6;">Aerodinamik gövde ve kompozit üretim, baştan sona.</div></div>
+    </div>
+  </section>
+
+  <!-- TAKIM -->
+  <section id="takim" style="background: #0f1a3d; border-top: 1px solid rgba(255,255,255,.08);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+      <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #d2232a; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">Ekip</div>
+      <h2 style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 60px; margin: 0 0 12px; text-transform: uppercase; letter-spacing: -.5px;">Takımı tanı</h2>
+      <p style="font-size: 17px; color: #9aa3b8; margin: 0 0 48px; max-width: 520px;">İsim ve foto placeholder — gerçek veriyle değiştirilecek.</p>
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 18px;">
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="8">
+          <div style="background: rgba(255,255,255,.04); border-radius: 14px; overflow: hidden;">
+            <div style="aspect-ratio: 1/1; background: linear-gradient(150deg,#1c2c5e,#243a78); display: flex; align-items: center; justify-content: center; position: relative;"><span style="font-family: 'Saira Condensed', sans-serif; color: #5a688f; font-size: 15px; letter-spacing: 1px;">[ FOTO ]</span><span style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #d2232a;"></span></div>
+            <div style="padding: 16px 18px;">
+              <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase;">{{ m.name }}</div>
+              <div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; color: #d2232a; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-top: 2px;">{{ m.role }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORLAR -->
+  <section id="sponsorlar" style="max-width: 1200px; margin: 0 auto; padding: 100px 52px;">
+    <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #d2232a; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">Sponsorluk</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 52px;">
+      <h2 style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 60px; margin: 0; text-transform: uppercase; line-height: .96; letter-spacing: -.5px;">Bizimle <span style="color: #d2232a;">yüksel</span></h2>
+      <p style="font-size: 17px; line-height: 1.8; color: #b9c0d2; margin: 0;">Sponsorlarımız aracımızda, üniformamızda ve tüm sosyal medya kanallarımızda görünür. Genç bir takımın enerjisine ortak olun.</p>
+    </div>
+    <div style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; color: #6b7388; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px;">Destekçilerimiz</div>
+    <div style="display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 60px;">
+      <sc-for list="{{ sponsors }}" as="s" hint-placeholder-count="10">
+        <div style="height: 72px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); font-family: 'Saira Condensed', sans-serif; color: #5a688f; font-size: 15px; letter-spacing: 1px;">SPONSOR</div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;">
+      <div style="background: rgba(255,255,255,.04); border-radius: 16px; padding: 32px; border-top: 4px solid #94a3b8;">
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 15px; color: #94a3b8; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Gümüş</div>
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 30px; text-transform: uppercase; margin-bottom: 18px;">Destekçi</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; color: #9aa3b8; line-height: 2.1;"><li>› Web sitesinde logo</li><li>› Sosyal medya teşekkürü</li><li>› Takım bülteni</li></ul>
+      </div>
+      <div style="background: #d2232a; border-radius: 16px; padding: 32px; border-top: 4px solid #fff; position: relative;">
+        <div style="position: absolute; top: -12px; right: 24px; background: #fff; color: #d2232a; font-family: 'Saira Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 5px;">En Popüler</div>
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 15px; color: rgba(255,255,255,.85); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Altın</div>
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 30px; text-transform: uppercase; margin-bottom: 18px;">Ana Sponsor</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; color: #ffe0e1; line-height: 2.1;"><li>› Araç üzerinde orta boy logo</li><li>› Üniforma & stant görünürlüğü</li><li>› Tüm dijital kanallar</li><li>› Etkinlik davetleri</li></ul>
+      </div>
+      <div style="background: rgba(255,255,255,.04); border-radius: 16px; padding: 32px; border-top: 4px solid #14224f; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);">
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 15px; color: #8fa0d8; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Platin</div>
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 30px; text-transform: uppercase; margin-bottom: 18px;">İsim Sponsoru</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; color: #9aa3b8; line-height: 2.1;"><li>› Araçta en büyük logo</li><li>› Takım adıyla anılma</li><li>› Özel içerik & mentorluk</li><li>› Tüm etkinliklerde öncelik</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" style="background: #0f1a3d; border-top: 1px solid rgba(255,255,255,.08);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 100px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px;">
+      <div>
+        <div style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 16px; color: #d2232a; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">İletişim</div>
+        <h2 style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 60px; margin: 0 0 22px; text-transform: uppercase; line-height: .96; letter-spacing: -.5px;">Hadi konuşalım</h2>
+        <p style="font-size: 17px; line-height: 1.8; color: #b9c0d2; margin: 0 0 32px;">Sponsorluk, iş birliği veya basın için bize yazın. Hızlıca dönüş yaparız.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; font-size: 16px;">
+          <div><span style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #d2232a; text-transform: uppercase; letter-spacing: 1px; margin-right: 12px;">E-posta</span>info@etuaero.com</div>
+          <div><span style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #d2232a; text-transform: uppercase; letter-spacing: 1px; margin-right: 12px;">Konum</span>Eskişehir Teknik Üniversitesi</div>
+          <div><span style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #d2232a; text-transform: uppercase; letter-spacing: 1px; margin-right: 12px;">Sosyal</span>@etuaero</div>
+        </div>
+      </div>
+      <form onsubmit="{{ onSubmit }}" style="background: rgba(255,255,255,.04); border-radius: 16px; padding: 34px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #9aa3b8;">Ad Soyad</label><input required placeholder="Adınız" style="background: #14224f; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 14px 16px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #9aa3b8;">E-posta</label><input required type="email" placeholder="ornek@firma.com" style="background: #14224f; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 14px 16px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><label style="font-family: 'Saira Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #9aa3b8;">Mesaj</label><textarea required rows="4" placeholder="Mesajınız..." style="background: #14224f; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; padding: 14px 16px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px; resize: vertical;"></textarea></div>
+        <button type="submit" style="font-family: 'Saira Condensed', sans-serif; font-weight: 700; color: #fff; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; background: #d2232a; border: none; padding: 16px; border-radius: 9px; cursor: pointer;">Gönder →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #14224f; padding: 40px 52px; border-top: 3px solid #d2232a;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; background: #fff; border-radius: 8px; padding: 3px; display: flex;"><img src="assets/etu-aero-logo.jpeg" alt="ETU AERO" style="width: 100%; height: 100%; object-fit: contain;"></div>
+        <span style="font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 1px;">ETU AERO</span>
+      </div>
+      <div style="font-size: 13px; color: #8592b5;">© 2026 ETU AERO · Eskişehir Teknik Üniversitesi · Savaşan İHA</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      members: [
+        { name: "Ad Soyad", role: "Takım Kaptanı" },
+        { name: "Ad Soyad", role: "Aviyonik" },
+        { name: "Ad Soyad", role: "Gömülü Yazılım" },
+        { name: "Ad Soyad", role: "Görüntü İşleme" },
+        { name: "Ad Soyad", role: "Mekanik" },
+        { name: "Ad Soyad", role: "Aerodinamik" },
+        { name: "Ad Soyad", role: "Sponsorluk" },
+        { name: "Ad Soyad", role: "Sosyal Medya" },
+      ],
+      sponsors: Array.from({ length: 10 }),
+      onSubmit: (e) => { e.preventDefault(); alert("Teşekkürler! Mesajınız alındı (demo). Gerçek gönderim için handoff'taki form notuna bakın."); },
+    };
+  }
+}
+</script>
+</body>
+</html>
