@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;background:#070b16;}
+body{margin:0;background:#070b16;color:#EAECF5;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+@keyframes etuFloat{0%,100%{transform:translateY(var(--amp,0.04em));}50%{transform:translateY(calc(var(--amp,0.04em) * -1));}}
+@keyframes ovIn{from{opacity:0;transform:translateY(24px) scale(.99);}to{opacity:1;transform:none;}}
+::selection{background:#d2232a;color:#fff;}
+body::-webkit-scrollbar{width:10px;}
+body::-webkit-scrollbar-track{background:#070b16;}
+body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#070b16;min-height:100vh;">
+
+<div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:rgba(255,255,255,0.05);"><div ref="{{ progressRef }}" style="height:100%;width:0%;background:linear-gradient(90deg,#38e0ff,#d2232a);box-shadow:0 0 12px rgba(56,224,255,.6);"></div></div>
+
+<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,5vw,54px);border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s;background:rgba(7,11,22,0.82);backdrop-filter:blur(14px);">
+  <a href="ETU%20Aero.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <img src="assets/etu-emblem.png" alt="ETU Aero amblemi" style="height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(56,224,255,.5));">
+    <img src="assets/etu-wordmark-light.png" alt="ETU AERO" style="height:13px;width:auto;opacity:.9;">
+  </a>
+  <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:4px;">
+      <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
+        <a href="{{ lk.h }}" style="text-decoration:none;color:#AEB6D6;font-family:'Manrope';font-weight:600;font-size:13.5px;letter-spacing:.06em;padding:9px 13px;border-radius:2px;transition:color .25s,background .25s;" style-hover="color:#FFFFFF;background:rgba(56,224,255,0.12);">{{ lk.t }}</a>
+      </sc-for>
+      <a href="Sponsorluk.dc.html#iletisim" style="margin-left:8px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:14px;letter-spacing:.1em;color:#fff;padding:11px 20px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:0 6px 22px rgba(56,224,255,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">SPONSOR OL</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menü" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:22px;line-height:1;width:46px;height:46px;border-radius:3px;cursor:pointer;">≡</button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:160;background:rgba(7,11,22,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:88px clamp(22px,8vw,60px) 40px;gap:2px;">
+    <button onClick="{{ toggleMenu }}" aria-label="Kapat" style="position:absolute;top:22px;right:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:20px;width:46px;height:46px;border-radius:3px;cursor:pointer;">✕</button>
+    <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
+      <a href="{{ lk.h }}" onClick="{{ toggleMenu }}" style="font-family:'Chakra Petch';font-size:30px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:#EAECF5;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.07);transform:skewX(-7deg);">{{ lk.t }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<!-- HEADER -->
+<section data-screen-label="Takım başlık" style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,6vw,90px) clamp(30px,5vh,50px);background:radial-gradient(120% 100% at 50% 0%,#0a2740 0%,#0a1424 50%,#070b16 100%);overflow:hidden;">
+  <div data-parallax="0.05" style="position:absolute;top:40px;right:-2vw;font-family:'Chakra Petch';font-weight:900;font-size:clamp(120px,26vw,340px);color:rgba(56,224,255,0.04);line-height:.8;pointer-events:none;transform:skewX(-9deg);">07</div>
+  <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>07 / İNSAN KAYNAĞI</span></div>
+    <div style="margin-top:14px;">{{ tTeam }}</div>
+    <p style="margin:22px 0 0;max-width:60ch;font-size:clamp(16px,1.9vw,21px);line-height:1.6;color:#AEB6D6;font-weight:300;">Zifir'i tasarlayan, kodlayan ve uçuracak ekip. Dört departman, tek bir takım. Bir kişiye tıklayarak tüm bilgilerine ulaşabilirsiniz.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div style="position:sticky;top:70px;z-index:60;background:rgba(7,11,22,0.86);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;padding:14px clamp(20px,6vw,90px);display:flex;gap:8px;overflow-x:auto;">
+    <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+      <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+    </sc-for>
+  </div>
+</div>
+
+<!-- GRID -->
+<section data-screen-label="Takım üyeleri" style="padding:clamp(40px,7vh,70px) clamp(20px,6vw,90px) clamp(80px,12vh,130px);background:#070b16;">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;">
+      <sc-for list="{{ members }}" as="m" hint-placeholder-count="14">
+        <div onClick="{{ m.open }}" data-reveal="up" data-delay="{{ m.delay }}" style="position:relative;border:1px solid rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;background:linear-gradient(180deg,rgba(56,224,255,0.04),rgba(255,255,255,0.012));cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s;" style-hover="transform:translateY(-6px);border-color:rgba(56,224,255,0.45);box-shadow:0 18px 44px rgba(0,0,0,0.45),0 0 0 1px rgba(56,224,255,0.18);">
+          <div style="position:relative;height:248px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0 12px,rgba(255,255,255,0.01) 12px 24px);border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div style="position:absolute;top:10px;left:10px;width:18px;height:18px;border-left:1px solid rgba(110,205,235,.4);border-top:1px solid rgba(110,205,235,.4);"></div>
+            <div style="position:absolute;bottom:10px;right:10px;width:18px;height:18px;border-right:1px solid rgba(110,205,235,.4);border-bottom:1px solid rgba(110,205,235,.4);"></div>
+            <sc-if value="{{ m.badgeShow }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ m.badgeStyle }}">{{ m.badge }}</div>
+            </sc-if>
+            <div style="width:74px;height:74px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:linear-gradient(135deg,#0f2a3e,#0a1220);display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;color:#4d5680;">FOTO</span>
+            </div>
+            <div style="position:absolute;bottom:10px;left:12px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;color:#38e0ff;opacity:.85;">DETAY →</div>
+          </div>
+          <div style="padding:20px 18px;">
+            <div style="font-family:'Chakra Petch';font-weight:700;font-size:21px;letter-spacing:.01em;color:#EAECF5;line-height:1.05;">{{ m.name }}</div>
+            <sc-if value="{{ m.roleShow }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#38e0ff;text-transform:uppercase;line-height:1.4;">{{ m.role }}</div>
+            </sc-if>
+            <div style="margin-top:12px;display:inline-block;padding:5px 10px;border:1px solid rgba(56,224,255,0.28);border-radius:2px;background:rgba(56,224,255,0.06);font-family:'Manrope';font-weight:600;font-size:11px;letter-spacing:.04em;color:#8fd6ee;">{{ m.deptLabel }}</div>
+            <div style="margin-top:16px;display:flex;gap:8px;">
+              <sc-if value="{{ m.linkedinShow }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ m.linkedin }}" target="_blank" rel="noopener" onClick="{{ stop }}" aria-label="LinkedIn" style="width:32px;height:32px;border:1px solid rgba(255,255,255,0.12);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA2C2;text-decoration:none;transition:all .2s;" style-hover="background:rgba(56,224,255,0.16);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.67 1.81-2.67 3.68V24H8V8.25z"/></svg></a>
+              </sc-if>
+              <sc-if value="{{ m.githubShow }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ m.github }}" target="_blank" rel="noopener" onClick="{{ stop }}" aria-label="GitHub" style="width:32px;height:32px;border:1px solid rgba(255,255,255,0.12);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA2C2;text-decoration:none;transition:all .2s;" style-hover="background:rgba(56,224,255,0.16);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 00.5 12a11.5 11.5 0 007.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.28-1.7-1.28-1.7-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0023.5 12 11.5 11.5 0 0012 .5z"/></svg></a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL OVERLAY -->
+<sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeDetail }}" style="position:fixed;inset:0;z-index:180;background:rgba(4,7,14,0.82);backdrop-filter:blur(9px);display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,5vh,70px) clamp(14px,5vw,40px);overflow-y:auto;">
+    <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:920px;background:linear-gradient(180deg,#0a1024,#070b16);border:1px solid rgba(56,224,255,0.28);border-radius:6px;box-shadow:0 40px 100px rgba(0,0,0,0.6);overflow:hidden;animation:ovIn .4s cubic-bezier(.16,1,.3,1);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#38e0ff,#d2232a,#d2232a);"></div>
+      <button onClick="{{ closeDetail }}" aria-label="Kapat" style="position:absolute;top:16px;right:16px;z-index:3;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#EAECF5;font-size:18px;width:42px;height:42px;border-radius:3px;cursor:pointer;transition:background .2s;" style-hover="background:rgba(210,35,42,0.25);">✕</button>
+
+      <div style="display:grid;grid-template-columns:{{ sel.gridCols }};gap:0;">
+        <!-- left: photo + identity -->
+        <div style="position:relative;padding:clamp(24px,3vw,36px);background:radial-gradient(120% 90% at 30% 0%,rgba(56,224,255,0.12),transparent 70%);border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="position:relative;width:100%;aspect-ratio:1/1;max-width:220px;border-radius:4px;border:1px solid rgba(255,255,255,0.12);background:repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0 12px,rgba(255,255,255,0.01) 12px 24px);display:flex;align-items:center;justify-content:center;">
+            <span style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#3a4470;"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.7-8 6v2h16v-2c0-3.3-3.6-6-8-6z"/></svg></span>
+            <sc-if value="{{ sel.badgeShow }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ sel.badgeStyle }}">{{ sel.badge }}</div>
+            </sc-if>
+          </div>
+          <div style="margin-top:20px;font-family:'Chakra Petch';font-weight:800;font-size:clamp(26px,3.4vw,36px);line-height:1;color:#fff;">{{ sel.name }}</div>
+          <sc-if value="{{ sel.roleShow }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#38e0ff;text-transform:uppercase;line-height:1.5;">{{ sel.role }}</div>
+          </sc-if>
+          <div style="margin-top:12px;display:inline-block;padding:6px 12px;border:1px solid rgba(56,224,255,0.32);border-radius:2px;background:rgba(56,224,255,0.08);font-family:'Manrope';font-weight:600;font-size:12px;letter-spacing:.04em;color:#8fd6ee;">{{ sel.deptLabel }}</div>
+
+          <div style="margin-top:22px;display:flex;gap:9px;flex-wrap:wrap;">
+            <sc-if value="{{ sel.linkedinShow }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ sel.linkedin }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;font-family:'Manrope';font-weight:600;font-size:13px;color:#D4DAF0;text-decoration:none;transition:all .2s;" style-hover="background:rgba(56,224,255,0.16);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.67 1.81-2.67 3.68V24H8V8.25z"/></svg>LinkedIn ↗</a>
+            </sc-if>
+            <sc-if value="{{ sel.githubShow }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ sel.github }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;font-family:'Manrope';font-weight:600;font-size:13px;color:#D4DAF0;text-decoration:none;transition:all .2s;" style-hover="background:rgba(56,224,255,0.16);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 00.5 12a11.5 11.5 0 007.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.28-1.7-1.28-1.7-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0023.5 12 11.5 11.5 0 0012 .5z"/></svg>GitHub ↗</a>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ sel.contactShow }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#d2232a;margin-bottom:10px;">// KAPTAN İLETİŞİM</div>
+              <a href="{{ sel.emailHref }}" style="display:block;font-size:15px;color:#D4DAF0;text-decoration:none;margin-bottom:6px;">{{ sel.email }}</a>
+              <a href="{{ sel.phoneHref }}" style="display:block;font-size:15px;color:#D4DAF0;text-decoration:none;">{{ sel.phone }}</a>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- right: detail fields -->
+        <div style="padding:clamp(24px,3vw,40px);min-width:0;">
+          <sc-if value="{{ sel.bioShow }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-bottom:26px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:12px;">// HAKKINDA</div>
+              <p style="margin:0;font-size:15.5px;line-height:1.7;color:#C7D0EC;font-weight:300;">{{ sel.bio }}</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ sel.skillsShow }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-bottom:26px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:12px;">// TEKNİK YETKİNLİKLER</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ sel.skills }}" as="sk" hint-placeholder-count="5">
+                  <span style="display:inline-block;padding:7px 12px;border:1px solid rgba(56,224,255,0.3);border-radius:2px;background:rgba(56,224,255,0.06);font-family:'Manrope';font-weight:500;font-size:13px;color:#CDD6F2;">{{ sk }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ sel.expShow }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:12px;">// DENEYİM / STAJ</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <sc-for list="{{ sel.experience }}" as="ex" hint-placeholder-count="2">
+                  <div style="display:flex;align-items:flex-start;gap:11px;font-size:14.5px;line-height:1.5;color:#B8C2E0;font-weight:300;"><span style="flex:none;margin-top:7px;width:6px;height:6px;border-radius:50%;background:#d2232a;box-shadow:0 0 8px rgba(210,35,42,.6);"></span><span>{{ ex }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<!-- FOOTER -->
+<footer data-screen-label="İletişim" style="position:relative;padding:clamp(60px,8vh,100px) clamp(20px,6vw,90px) 36px;background:#070b16;border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
+      <div>
+        <img src="assets/etu-logo-light.png" alt="ETU AERO" style="height:74px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(56,224,255,.25));">
+        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">İnsansız hava araçları takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// İLETİŞİM</div>
+        <div style="font-family:'Chakra Petch';font-weight:700;font-size:18px;color:#EAECF5;">Eren Can Dönertaş</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:#38e0ff;margin:4px 0 12px;">TAKIM KAPTANI</div>
+        <a href="mailto:eren208can@gmail.com" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:7px;">eren208can@gmail.com</a>
+        <a href="tel:+905425623440" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:12px;">0 542 562 34 40</a>
+        <div style="font-size:14px;color:#7d88b5;line-height:1.7;">TOBB ETU · Ankara<br>Türkiye</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// TAKİP ET</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="#" aria-label="Instagram" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.8.22 2.43.47.66.25 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.63.42 1.36.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.8-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.9-1.77 1.15-.63.25-1.36.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.8-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.63-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.47-2.43.25-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.63-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.98.04-1.51.21-1.86.35-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.31.88-.35 1.86-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.98.21 1.51.35 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.31 1.86.35 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.98-.04 1.51-.21 1.86-.35.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.31-.88.35-1.86.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.98-.21-1.51-.35-1.86a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.35-.14-.88-.31-1.86-.35-1.05-.05-1.37-.06-4.04-.06zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.67 1.81-2.67 3.68V24H8V8.25z"/></svg></a>
+          <a href="#" aria-label="YouTube" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// SAYFALAR</div>
+        <a href="ETU%20Aero.dc.html#zifir" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
+        <a href="ETU%20Aero.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
+        <a href="Sponsorluk.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Sponsorluk</a>
+        <a href="ETU%20Aero.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Ana Sayfa</a>
+      </div>
+    </div>
+    <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
+      <span>© {{ year }} ETU AERO · TÜM HAKLARI SAKLIDIR</span>
+      <span>ZİFİR · GÖKLERİN YENİ GÖLGESİ</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: (typeof window !== 'undefined' ? window.innerWidth : 1280), menuOpen: false, team: 'all', selected: null };
+  rootRef = React.createRef();
+  navRef = React.createRef();
+  progressRef = React.createRef();
+
+  _h(n){ return ('0' + Math.max(0, Math.min(255, Math.round(n))).toString(16)).slice(-2); }
+  lerpHex(a, b, t){
+    const pa = [parseInt(a.slice(1,3),16), parseInt(a.slice(3,5),16), parseInt(a.slice(5,7),16)];
+    const pb = [parseInt(b.slice(1,3),16), parseInt(b.slice(3,5),16), parseInt(b.slice(5,7),16)];
+    return '#' + this._h(pa[0]+(pb[0]-pa[0])*t) + this._h(pa[1]+(pb[1]-pa[1])*t) + this._h(pa[2]+(pb[2]-pa[2])*t);
+  }
+  rampAt(cols, t){ if (t<=0) return cols[0]; if (t>=1) return cols[cols.length-1]; const seg=(cols.length-1)*t, i=Math.floor(seg); return this.lerpHex(cols[i], cols[i+1], seg-i); }
+
+  wv(text, o){
+    o = o || {};
+    const amp = o.amp != null ? o.amp : 0.04;
+    const size = o.size || 'clamp(40px,7vw,98px)';
+    const weight = o.weight || 800;
+    const skew = o.skew != null ? o.skew : -9;
+    const speed = o.speed || 3.2;
+    const color = o.color || '#EAECF5';
+    const cols = o.ramp || null;
+    const ls = o.ls || '-0.01em';
+    const lh = o.lh || 0.9;
+    const fam = "'Chakra Petch', system-ui, sans-serif";
+    const totalVis = Array.from(text).filter(c => c !== ' ').length;
+    let vi = -1;
+    const mkLetter = (ch, key) => {
+      vi++;
+      const col = cols ? this.rampAt(cols, totalVis > 1 ? vi/(totalVis-1) : 0) : color;
+      const inner = React.createElement('span', { style: { display:'inline-block', '--amp': amp+'em', animation:'etuFloat '+speed+'s ease-in-out infinite', animationDelay:(-vi*0.16).toFixed(2)+'s' } }, ch);
+      return React.createElement('span', { key:key, style:{ display:'inline-block', transform:'skewX('+skew+'deg)', color:col } }, inner);
+    };
+    const words = text.split(' ');
+    const kids = [];
+    words.forEach((word, wi) => {
+      kids.push(React.createElement('span', { key:'w'+wi, style:{ display:'inline-block', whiteSpace:'nowrap' } }, Array.from(word).map((ch, ci) => mkLetter(ch, wi+'-'+ci))));
+      if (wi < words.length - 1) kids.push(' ');
+    });
+    return React.createElement('span', { style:{ display:'inline-block', fontFamily:fam, fontWeight:weight, fontSize:size, lineHeight:lh, letterSpacing:ls, whiteSpace:'normal' } }, kids);
+  }
+
+  roster(){
+    // department keys: yonetim, yazilim, elektrik, makine
+    return [
+      { name:'Eren Can Dönertaş', role:'Takım Kaptanı', dept:'yonetim', depts:['yonetim','yazilim'],
+        badge:'TAKIM KAPTANI', badgeColor:'red', captain:true,
+        email:'eren208can@gmail.com', phone:'0 542 562 34 40',
+        skills:'Python, C, C++, Sponsorluk-İletişim, Algoritma, Sunum, Git',
+        exp:'Solarity AI (12.12.2025 – 19.04.2026)\nTUSAŞ (12.05.2026 – )',
+        github:'https://github.com/Eren-Can-Donertas', linkedin:'https://www.linkedin.com/in/eren-can-donertas/',
+        bio:'ETU Aero takım kaptanı ve algoritma/yazılım tarafında görev alan Eren Can Dönertaş, TOBB ETU Bilgisayar bölümü öğrencisidir. Python ve C++ alanlarında yazılım geliştirme; algoritma tasarımı, veri analizi, simülasyon ve otonom sistemler konularında çalışmaktadır. TUSAŞ staj deneyimi ve girişimcilik çalışmaları sayesinde savunma, havacılık ve teknoloji ekosistemine yakın bir perspektif kazanmıştır. Zifir projesinde takım koordinasyonu, teknik yol haritası, sponsor iletişimi, otonom görev algoritmaları ve hedef tespit/takip altyapısı üzerine katkı sağlamayı hedeflemektedir.' },
+
+      { name:'Ahmet Arhan Gürsoy', role:'Elektronik Takım Kaptanı', dept:'yonetim', depts:['yonetim','elektrik'],
+        badge:'ELEKTRONİK KAPTANI', badgeColor:'blue',
+        skills:'LTSpice, Altium Designer, Elektronik Devre Tasarımı, Sosyal Medya',
+        exp:'Teknofest 2025',
+        github:'https://github.com/aarhang', linkedin:'https://www.linkedin.com/in/ahmetarhangursoy/',
+        bio:'ETU Aero Elektronik Takım Kaptanı olan ve elektronik devre tasarımcısı olarak görev yapan Arhan Gürsoy, TOBB Ekonomi ve Teknoloji Üniversitesi Elektrik & Elektronik Mühendisliği 3. sınıf öğrencisidir. LTSpice ve Altium Designer gibi donanım tasarım uygulamalarında yetkinliği olup, daha önce Teknofest 2025 İnsanlık Yararına Teknoloji yarışması finallerine katılmıştır ve hem takım yönetimi, hem de devre tasarımı anlamında tecrübeler edinmiştir. Zifir projesi boyunca hem İHA\'nın tüm elektronik altyapısını sağlayarak hedefe ulaşılmasını, hem de yarışma sürecinin tamamında kaliteli içerikler üretmeyi amaçlamaktadır.' },
+
+      { name:'Kemal Hud Yetgin', role:'Mekanik Takım Kaptanı', dept:'yonetim', depts:['yonetim','makine'],
+        badge:'MEKANİK KAPTANI', badgeColor:'blue',
+        skills:'SolidWorks Tasarım, ANSYS Analiz',
+        exp:'TÜBİTAK SAGE (05.05.2025 – 14.08.2025)\nMETALWORM Eklemeli İmalat (15.09.2025 – 15.03.2026)',
+        github:'https://github.com/hudyetgin', linkedin:'https://www.linkedin.com/in/kemal-hud-yetgin-44b894244/',
+        bio:'Mekanik takımı kaptanı olarak görev yapan Hud Yetgin, Makine Mühendisliği 4. sınıf öğrencisidir. Daha önce Teknofest Savaşan İHA yarışmasında mekanik takımında tasarım görevini üstlenmiştir. Bu takımda daha da deneyimlenerek yarışmalarda dereceye girmeyi hedeflemektedir.' },
+
+      { name:'Yusuf Yankı Ütgün', role:'Yazılım Ekip Lideri', dept:'yonetim', depts:['yonetim','yazilim'],
+        badge:'YAZILIM KAPTANI', badgeColor:'blue',
+        skills:'ROS, Docker, Gazebo, Python',
+        exp:'Havelsan (11.05.2026 – günümüz)',
+        github:'https://github.com/yusufYankiUtgun', linkedin:'https://www.linkedin.com/in/yusuf-yanki-utgun',
+        bio:'Yazılım ekibinin koordinasyonunu ve süreçlerin takibini üstlenir. Birinci önceliği yazılım ekibinin hazırladığı modüllerin önce simülasyon ortamında, sonrasında ise gerçek dünyada sorunsuz bir şekilde çalışmasının sağlanmasıdır; bu hedef doğrultusunda yazılım ekibinin hazırladığı modüllerin test edilebileceği uygun simülasyon ortamını geliştirir.' },
+
+      { name:'Enes Kerem Göksu', role:'Computer Vision', dept:'yazilim',
+        skills:'Python, C, C++, Git, YOLO, OpenCV',
+        exp:'AI Studio (12.05.2026 – )',
+        github:'https://github.com/enescs', linkedin:'https://www.linkedin.com/in/enes-kerem-göksu-198428407',
+        bio:'ETU Aero Bilgisayar takımında computer vision bölümünde görev yapan Enes Kerem Göksu, TOBB Ekonomi ve Teknoloji Üniversitesi Bilgisayar Mühendisliği 3. sınıf öğrencisidir. Bilgisayarla görü alanında veri mühendisliği ve model eğitimi süreçlerinde bulunur.' },
+
+      { name:'Oğuz Giray Bori', role:'Sunucu Haberleşmesi + YKİ Arayüzü', dept:'yazilim',
+        skills:'Java, Python, C, C++, Docker',
+        exp:'TUSAŞ (12.05.2026 – )',
+        github:'https://github.com/oguzgiraybori', linkedin:'https://www.linkedin.com/in/oguz-giray-bori',
+        bio:'ETU Aero Bilgisayar takımında sunucu haberleşmesi ve YKİ arayüzü alanında görev yapan Oğuz Giray Bori, TOBB ETU Bilgisayar Mühendisliği 3. sınıf öğrencisi olmakta olup bilgisayar ağları ve siber güvenlik alanlarıyla ilgilenmektedir. TUSAŞ stajı sayesinde havacılık alanında deneyim kazanmıştır. Takımdaki görevi, İHA modüllerinin arayüz ve sunucu ile haberleşmesinin sağlanmasıdır.' },
+
+      { name:'Yiğit Eren Yılmaz', role:'Otonom Görev Algoritmaları', dept:'yazilim',
+        skills:'Python, C, Algoritma, Git, ROS',
+        exp:'Havelsan (11.05.2026 – )',
+        github:'https://github.com/yigiterenyilmaz', linkedin:'https://www.linkedin.com/in/yiğit-eren-yilmaz-807045352/',
+        bio:'ETU Aero Teknofest takımında Görev Bilgisayarı ve Otonom Sistemler alanında görev alacaktır.' },
+
+      { name:'Yusuf Enes Kütük', role:'Computer Vision', dept:'yazilim',
+        skills:'Python, C, Git, YOLO, OpenCV',
+        exp:'Roketsan (11.05.2026 – )',
+        github:'https://github.com/yusuffeness', linkedin:'https://www.linkedin.com/in/yusuf-enes',
+        bio:'' },
+
+      { name:'Nihad Mahmood', role:'Haberleşme Sistemleri', dept:'elektrik',
+        skills:'Diyagramla devre ve mimari tasarımı, GNU Radio, Python, C/C++, Güç ve Isı Hesaplamaları, Analog Devre Tasarımı, Analog-Dijital Sinyal İşleme',
+        exp:'Ankara Arçelik Bulaşık Makinesi İşletmesi (12.01.2026 – 20.04.2026)',
+        github:'https://github.com/nihatgn', linkedin:'https://www.linkedin.com/in/nihad-mahmood-309136294',
+        bio:'Haberleşme Sistemleri Tasarım ve Entegrasyon Sorumlusu olarak görev yapan Nihad Mahmood, TOBB Ekonomi ve Teknoloji Üniversitesi Elektrik ve Elektronik Mühendisliği 4. sınıf öğrencisidir. Daha önce Uluslararası Sabit Kanat İnsansız Hava Aracı (İHA) yarışmasında yer alarak aracın güç mimarisini başarıyla tasarlamış ve donanım süreçlerinde önemli tecrübeler edinmiştir. Bu proje kapsamında, güç mimarisi ve elektronik altyapı süreçlerine katkı sağlamaya devam etmenin yanı sıra; odak noktasını haberleşme teknolojilerine genişleterek bu alanda kendini geliştirmeyi ve yeni sorumluluklar üstlenmeyi amaçlamaktadır. İHA ile yer istasyonu arasındaki kesintisiz veri aktarımının sağlanması, telemetri altyapılarının tasarlanması ve bu sistemlerin araca sorunsuz entegre edilmesi üzerine çalışmaktadır.' },
+
+      { name:'Zeren Betül Dilek', role:'Donanım Tasarım – Güç', dept:'elektrik',
+        skills:'LTSpice',
+        exp:'Roketsan (11.05.2026 – )',
+        github:'', linkedin:'', bio:'' },
+
+      { name:'Burak Boz', role:'Haberleşme', dept:'elektrik',
+        skills:'LTSpice, MATLAB, CST Studio',
+        exp:'Sağlamtek (11.05.2026 – )',
+        github:'https://github.com/burak0b', linkedin:'https://www.linkedin.com/in/burak-boz-956678297',
+        bio:'' },
+
+      { name:'Selim Aşcı', role:'', dept:'makine',
+        skills:'Tasarım, Aerodinamik Tasarım ve Analiz, SolidWorks, ANSYS SpaceClaim, ANSYS Fluent, ANSYS Workbench, Pointwise, ANSYS Mesher',
+        exp:'TUSAŞ Hidrolik Sistem Mühendisliği (Aday Müh.)\nRoketsan aerotermal analiz ve tasarım',
+        github:'', linkedin:'https://www.linkedin.com/in/selim-aşcı-b427a4310',
+        bio:'' },
+
+      { name:'Mustafa Ozan Tatar', role:'', dept:'makine',
+        skills:'Tasarım, Dinamik/Yapısal Analiz, Topoloji Optimizasyonu',
+        exp:'',
+        github:'', linkedin:'https://www.linkedin.com/in/mustafa-ozan-tatar-0a87223a8',
+        bio:'Mekanik biriminde çalışan Mustafa Ozan Tatar, Makine Mühendisliği 3. sınıf öğrencisidir. Daha önce Teknofest roket yarışmasında tasarım ve yapısal analiz görevlerini üstlenmiştir. Bu takımda yeni beceriler geliştirmek istemektedir.' },
+
+      { name:'Atahan Karakaş', role:'', dept:'makine',
+        skills:'SolidWorks Tasarım, MATLAB & Simulink Performans Analizleri ve Simülasyon',
+        exp:'FNSS Savunma Sistemleri – Analiz, Modelleme ve Simülasyon Birimi (12.01.2026 – 20.04.2026)',
+        github:'https://github.com/atahankarakas', linkedin:'https://www.linkedin.com/in/atahan-karakaş-204806293',
+        bio:'' }
+    ];
+  }
+
+  componentDidMount(){
+    this._disposers = [];
+    this.initReveal();
+    this._onScroll = () => { if (this._tk) return; this._tk = requestAnimationFrame(() => { this._tk = null; this.handleScroll(); }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => { if (Math.abs(window.innerWidth - this.state.vw) > 40) this.setState({ vw: window.innerWidth }); };
+    window.addEventListener('resize', this._onResize);
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.selected != null) this.setState({ selected: null }); };
+    window.addEventListener('keydown', this._onKey);
+    this.handleScroll();
+  }
+  componentDidUpdate(){ this.initReveal(); }
+  componentWillUnmount(){
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._onKey) window.removeEventListener('keydown', this._onKey);
+    (this._disposers || []).forEach(fn => { try { fn(); } catch(e){} });
+  }
+
+  initReveal(){
+    const root = this.rootRef.current; if (!root) return;
+    const els = root.querySelectorAll('[data-reveal]:not([data-revealed])');
+    if (!els.length) return;
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting){ const el = e.target; const d = parseFloat(el.getAttribute('data-delay')||'0'); el.style.transitionDelay = d+'ms'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(el => {
+      el.setAttribute('data-revealed','1');
+      el.style.willChange = 'opacity,transform';
+      el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px) skewX(-3deg)';
+      io.observe(el);
+    });
+    this._disposers.push(() => io.disconnect());
+  }
+  handleScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    const n = this.navRef.current;
+    if (n){ const s = y > 24; n.style.borderBottomColor = s ? 'rgba(255,255,255,0.07)' : 'transparent'; n.style.paddingTop = s ? '12px' : '18px'; n.style.paddingBottom = s ? '12px' : '18px'; }
+    const p = this.progressRef.current;
+    if (p){ const max = document.documentElement.scrollHeight - window.innerHeight; p.style.width = (max>0 ? (y/max*100) : 0) + '%'; }
+  }
+
+  badgeStyleFor(color, big){
+    return {
+      position:'absolute', top: big ? '12px' : '12px', left:'12px',
+      padding: big ? '5px 11px' : '4px 9px', borderRadius:'2px',
+      fontFamily:"'IBM Plex Mono', monospace", fontSize: big ? '10px' : '9px', letterSpacing:'.14em', color:'#fff',
+      background: color === 'red' ? 'linear-gradient(120deg,#8f171c,#d2232a)' : 'linear-gradient(120deg,#a51a20,#d2232a)',
+      boxShadow:'0 4px 12px rgba(0,0,0,.4)'
+    };
+  }
+
+  renderVals(){
+    const mob = this.state.vw < 880;
+    const links = [
+      { t:'HAKKIMIZDA', h:'ETU%20Aero.dc.html#hakkimizda' },
+      { t:'ZİFİR', h:'ETU%20Aero.dc.html#zifir' },
+      { t:'YARIŞMA', h:'ETU%20Aero.dc.html#yarisma' },
+      { t:'SPONSORLUK', h:'Sponsorluk.dc.html' },
+      { t:'HABERLER', h:'ETU%20Aero.dc.html#haberler' },
+      { t:'GALERİ', h:'ETU%20Aero.dc.html#galeri' },
+      { t:'TAKIM', h:'Takim.dc.html' }
+    ];
+    const deptLabels = { yonetim:'YÖNETİM', yazilim:'BİLGİSAYAR / YAZILIM', elektrik:'ELEKTRİK-ELEKTRONİK', makine:'MAKİNE' };
+    const cur = this.state.team;
+    const tabDefs = [
+      { key:'all', label:'TÜMÜ' },
+      { key:'yonetim', label:'YÖNETİM' },
+      { key:'yazilim', label:'BİLGİSAYAR / YAZILIM' },
+      { key:'elektrik', label:'ELEKTRİK-ELEKTRONİK' },
+      { key:'makine', label:'MAKİNE' }
+    ];
+    const tabBase = { whiteSpace:'nowrap', cursor:'pointer', fontFamily:"'Manrope'", fontWeight:600, fontSize:'12.5px', letterSpacing:'.06em', padding:'9px 16px', borderRadius:'2px', transition:'all .25s' };
+    const tabs = tabDefs.map(t => ({
+      key: t.key, label: t.label,
+      onClick: () => this.setState({ team: t.key }),
+      style: cur === t.key
+        ? Object.assign({}, tabBase, { color:'#fff', background:'linear-gradient(120deg,#a51a20,#d2232a)', border:'1px solid transparent', boxShadow:'0 6px 18px rgba(56,224,255,.32)' })
+        : Object.assign({}, tabBase, { color:'#9AA2C2', background:'transparent', border:'1px solid rgba(255,255,255,0.12)' })
+    }));
+
+    const all = this.roster();
+    const members = [];
+    all.forEach((m, idx) => {
+      const dArr = m.depts || [m.dept];
+      if (cur !== 'all' && !dArr.includes(cur)) return;
+      members.push({
+        name: m.name,
+        role: m.role, roleShow: !!m.role,
+        deptLabel: deptLabels[m.dept] || '',
+        badge: m.badge || '', badgeShow: !!m.badge,
+        badgeStyle: m.badge ? this.badgeStyleFor(m.badgeColor, false) : {},
+        linkedin: m.linkedin, linkedinShow: !!m.linkedin,
+        github: m.github, githubShow: !!m.github,
+        delay: (members.length % 4) * 70,
+        open: () => this.setState({ selected: idx })
+      });
+    });
+
+    // selected detail
+    const si = this.state.selected;
+    const s = (si != null) ? all[si] : null;
+    let sel = {};
+    if (s){
+      const skills = (s.skills || '').split(',').map(x => x.trim()).filter(Boolean);
+      const experience = (s.exp || '').split('\n').map(x => x.trim()).filter(Boolean);
+      sel = {
+        name: s.name,
+        role: s.role, roleShow: !!s.role,
+        deptLabel: deptLabels[s.dept] || '',
+        badge: s.badge || '', badgeShow: !!s.badge,
+        badgeStyle: s.badge ? this.badgeStyleFor(s.badgeColor, true) : {},
+        linkedin: s.linkedin, linkedinShow: !!s.linkedin,
+        github: s.github, githubShow: !!s.github,
+        bio: s.bio || '', bioShow: !!s.bio,
+        skills, skillsShow: skills.length > 0,
+        experience, expShow: experience.length > 0,
+        contactShow: !!s.captain,
+        email: s.email || '', emailHref: 'mailto:' + (s.email || ''),
+        phone: s.phone || '', phoneHref: 'tel:+90' + (s.phone || '').replace(/\D/g,'').replace(/^0/, ''),
+        gridCols: mob ? '1fr' : '340px 1fr'
+      };
+    }
+
+    return {
+      rootRef: this.rootRef, navRef: this.navRef, progressRef: this.progressRef,
+      isMobile: mob, desktopNav: !mob, menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      closeDetail: () => this.setState({ selected: null }),
+      hasSelection: si != null,
+      links, tabs, members, sel, year: 2026,
+      tTeam: this.wv('TAKIM', { size:'clamp(46px,8vw,118px)', color:'#FFFFFF', skew:-10, ls:'-0.02em' })
+    };
+  }
+}
+</script>
+</body>
+</html>
