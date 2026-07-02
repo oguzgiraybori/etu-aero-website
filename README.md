@@ -14,9 +14,9 @@
 
 ## 🚀 Hakkında
 
-ETU Aero, savaşan insansız hava araçları üzerine çalışan, yeni kurulmuş bir üniversite takımıdır. İlk İHA'mız **Zifir**, otonom hava muharebesinde gökyüzünün en sessiz, en hızlı gölgesi olmak için tasarlanıyor.
+ETU Aero, insansız hava araçları üzerine çalışan, yeni kurulmuş bir üniversite takımıdır. İlk İHA'mız **Zifir**, otonom hava muharebesinde gökyüzünün en sessiz, en hızlı gölgesi olmak için tasarlanıyor.
 
-Bu site; sürükle-döndür özellikli **3B tanıtım sahnesi**, sponsorluk paketleri, takım tanıtımı, yarışma yol haritası ve galeri bölümlerini içeren, tamamen statik (sunucu gerektirmeyen) bir web sitesidir.
+Bu site; sürükle-döndür özellikli **3B tanıtım sahnesi**, sponsorluk paketleri, tıklanınca açılan detay kartlı takım tanıtımı, yarışma yol haritası ve galeri bölümlerini içeren, tamamen statik (sunucu gerektirmeyen) bir web sitesidir.
 
 ---
 
@@ -53,10 +53,11 @@ Tüm site, takım logosuyla **bütünleşik** bir tasarım sistemi üzerine kuru
 ```
 ├── index.html              → ana sayfaya yönlendirir
 ├── ETU Aero.dc.html        → Ana sayfa (3B sahne + tüm bölümler)
-├── Takim.dc.html           → Takım sayfası
+├── Takim.dc.html           → Takım sayfası (14 üye, 4 departman filtresi, detay kartları)
 ├── Sponsorluk.dc.html      → Sponsorluk detay sayfası
 ├── support.js              → çalışma zamanı (gerekli)
-├── assets/                 → logo ve amblem görselleri
+├── assets/                 → logo ve amblem görselleri (gerekli)
+├── docs/                   → DEPLOY.md — yayına alma rehberi
 └── screenshots/            → README görselleri
 ```
 
@@ -64,12 +65,21 @@ Tüm site, takım logosuyla **bütünleşik** bir tasarım sistemi üzerine kuru
 
 ---
 
-## 🌐 Yayına Alma (GitHub Pages)
+## 🌐 Yayına Alma
 
-1. Bu depoyu (repository) oluşturun ve tüm dosyaları yükleyin.
-2. **Settings → Pages** bölümüne gidin.
-3. **Branch** olarak `main` seçip **Save** deyin.
-4. Birkaç dakika içinde siteniz `https://<kullanıcı-adı>.github.io/<depo-adı>/` adresinde yayında olur. `index.html` sayesinde doğrudan ana sayfa açılır.
+Site tamamen statik dosyalardan oluşur; kurulum gerektirmez. En kolay yollar:
+
+- **GitHub Pages** (önerilen, ücretsiz, kalıcı)
+- **Netlify Drop** (klasörü sürükle-bırak, en hızlı)
+- **Vercel**
+
+İkisi de dakikalar içinde yayına alır. Adım adım anlatım, kontrol listesi ve sorun giderme için:
+
+➡️ **[docs/DEPLOY.md](docs/DEPLOY.md)** — tam yayına alma rehberi
+
+> **Özet (GitHub Pages):** Depoyu oluştur → tüm dosyaları yükle → **Settings → Pages** → Branch: `main` → **Save**. Birkaç dakikada `https://<kullanıcı>.github.io/<depo>/` adresinde yayında.
+
+> ⚠️ `support.js` ve `assets/` klasörünü diğer dosyalarla **aynı yere** yükleyin; dosya adlarını değiştirmeyin.
 
 ---
 
@@ -77,11 +87,12 @@ Tüm site, takım logosuyla **bütünleşik** bir tasarım sistemi üzerine kuru
 
 Şu an yer tutucu (placeholder) olan ve sizin doldurmanız gereken alanlar:
 
-- [ ] Takım üyelerinin fotoğrafları, isimleri ve rolleri
-- [ ] Sosyal medya bağlantıları (Instagram, LinkedIn, X, YouTube)
-- [ ] Mevcut sponsor logoları
-- [ ] İletişim e-postası ve adres bilgisi
-- [ ] Haber/duyuru ve galeri görselleri
+- [ ] Takım üyelerinin fotoğrafları
+- [ ] Sosyal medya hesap bağlantıları (Instagram, LinkedIn, YouTube — logolar hazır, linkler eklenecek)
+- [x] ~~Takım üye bilgileri~~ — 14 üye Excel'den işlendi; kaptan (kırmızı) + bölüm kaptanları (mavi) rozetleri, tıklanınca detay kartı ✓
+- [x] ~~İletişim bilgisi~~ — Takım kaptanı Eren Can Dönertaş (e-posta + telefon), TOBB ETU · Ankara ✓
+- [x] ~~Sponsor logoları~~ — henüz sponsor yok; "ilk destekçimiz siz olun" daveti eklendi ✓
+- [ ] Haber/duyuru görselleri ve galeri fotoğrafları
 
 ---
 

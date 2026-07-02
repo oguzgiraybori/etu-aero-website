@@ -42,7 +42,7 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
       <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
         <a href="{{ lk.h }}" style="text-decoration:none;color:#AEB6D6;font-family:'Saira';font-weight:600;font-size:13.5px;letter-spacing:.06em;padding:9px 13px;border-radius:2px;transition:color .25s,background .25s;" style-hover="color:#FFFFFF;background:rgba(46,107,224,0.12);">{{ lk.t }}</a>
       </sc-for>
-      <a href="Sponsorluk.dc.html" style="margin-left:8px;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:14px;letter-spacing:.1em;color:#fff;padding:11px 20px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:0 6px 22px rgba(46,107,224,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">SPONSOR OL</a>
+      <a href="Sponsorluk.dc.html#iletisim" style="margin-left:8px;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:14px;letter-spacing:.1em;color:#fff;padding:11px 20px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:0 6px 22px rgba(46,107,224,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">SPONSOR OL</a>
     </nav>
   </sc-if>
   <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
@@ -56,7 +56,7 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
     <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
       <a href="{{ lk.h }}" onClick="{{ toggleMenu }}" style="font-family:'Saira Condensed';font-size:30px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:#EAECF5;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.07);transform:skewX(-7deg);">{{ lk.t }}</a>
     </sc-for>
-    <a href="Sponsorluk.dc.html" onClick="{{ toggleMenu }}" style="margin-top:22px;text-align:center;font-family:'Saira Condensed';font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;padding:16px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);text-decoration:none;">SPONSOR OL →</a>
+    <a href="Sponsorluk.dc.html#iletisim" onClick="{{ toggleMenu }}" style="margin-top:22px;text-align:center;font-family:'Saira Condensed';font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;padding:16px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);text-decoration:none;">SPONSOR OL →</a>
   </div>
 </sc-if>
 
@@ -97,13 +97,11 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
 
   <!-- bottom slogan overlay -->
   <div ref="{{ heroRef }}" style="position:absolute;left:0;right:0;bottom:0;z-index:6;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 clamp(18px,6vw,80px) clamp(34px,6vh,72px);pointer-events:none;">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(10px,1.4vw,13px);letter-spacing:.42em;color:#3D8BFF;margin-bottom:6px;">TEKNOFEST 2027 · SAVAŞAN İHA</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:clamp(10px,1.4vw,13px);letter-spacing:.42em;color:#3D8BFF;margin-bottom:22px;">TEKNOFEST 2027 · SAVAŞAN İHA</div>
     <div style="line-height:.82;">{{ heroWord }}</div>
     <div style="margin-top:6px;">{{ heroLine }}</div>
     <div style="margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
       <span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:6px;height:6px;background:#FF8A2A;border-radius:50%;box-shadow:0 0 10px #FF8A2A;"></span>TASARIM YAKINDA AÇIKLANACAK</span>
-      <span style="opacity:.4;">/</span>
-      <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:26px;height:26px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;animation:spin 9s linear infinite;">↻</span>SÜRÜKLE · DÖNDÜR</span>
     </div>
     <div style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#5c6391;"><span>KEŞFET</span><span style="font-size:18px;animation:chevBob 1.8s infinite;">↓</span></div>
   </div>
@@ -119,14 +117,14 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
       </div>
       <a href="#sponsorlar" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#3D8BFF;text-decoration:none;border-bottom:1px solid rgba(46,107,224,0.4);padding-bottom:3px;transition:color .25s;" style-hover="color:#fff;">TÜM PAKETLER →</a>
     </div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;margin-bottom:14px;">// BİZE GÜVENENLER</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;">
-      <sc-for list="{{ slots6 }}" as="i" hint-placeholder-count="6">
-        <div style="height:84px;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.12);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.025) 0 11px,rgba(255,255,255,0.01) 11px 22px);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;color:#4d5680;">SPONSOR LOGOSU</span>
-        </div>
-      </sc-for>
-    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;margin-bottom:14px;">// DESTEKÇİ KONTENJANI AÇIK</div>
+    <a href="Sponsorluk.dc.html#iletisim" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;text-decoration:none;padding:26px 28px;border:1px dashed rgba(46,107,224,0.4);border-radius:4px;background:linear-gradient(120deg,rgba(46,107,224,0.08),rgba(255,255,255,0.012));transition:border-color .25s,background .25s;" style-hover="border-color:rgba(46,107,224,0.75);background:linear-gradient(120deg,rgba(46,107,224,0.14),rgba(255,255,255,0.02));">
+      <div>
+        <div style="font-family:'Saira Condensed';font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#EAECF5;transform:skewX(-6deg);">Bu yolculuğun ilk destekçisi siz olun.</div>
+        <div style="margin-top:8px;font-size:14.5px;line-height:1.5;color:#9AA2C2;font-weight:300;max-width:60ch;">Zifir henüz ilk adımda — markanızı sıfırdan yükselen bir takımın hikâyesine yazın. Logonuz burada, İHA'nın üzerinde ve sahada yer alsın.</div>
+      </div>
+      <span style="flex:none;display:inline-flex;align-items:center;gap:10px;font-family:'Saira Condensed';font-weight:700;font-size:16px;letter-spacing:.08em;color:#fff;padding:13px 24px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);">SPONSOR OL →</span>
+    </a>
   </div>
 </section>
 
@@ -193,14 +191,14 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
         <div style="margin-top:14px;">{{ tAbout }}</div>
       </div>
       <div data-reveal="right" data-delay="120">
-        <p style="margin:0 0 20px;font-size:clamp(17px,1.9vw,22px);line-height:1.6;color:#D4DAF0;font-weight:300;">ETU Aero, savaşan insansız hava araçları üzerine çalışan, yeni kurulmuş bir üniversite takımıdır.</p>
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#9AA2C2;font-weight:300;">Beş alt ekip; tek bir hedef. Aerodinamikten otonom yazılıma, görüntü işlemeden saha operasyonuna kadar her disiplini bir araya getirerek TEKNOFEST 2027 Savaşan İHA yarışmasına hazırlanıyoruz. Zifir, bu ortak aklın havalanan ilk eseri olacak.</p>
+        <p style="margin:0 0 20px;font-size:clamp(17px,1.9vw,22px);line-height:1.6;color:#D4DAF0;font-weight:300;">ETU Aero, insansız hava araçları üzerine çalışan, yeni kurulmuş bir üniversite takımıdır.</p>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#9AA2C2;font-weight:300;">Dört departman; tek bir hedef. Aerodinamikten otonom yazılıma, görüntü işlemeden saha operasyonuna kadar her disiplini bir araya getirerek TEKNOFEST 2027 Savaşan İHA yarışmasına hazırlanıyoruz. Zifir, bu ortak aklın havalanan ilk eseri olacak.</p>
       </div>
     </div>
     <div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;">
       <div data-reveal="up" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="2026">0</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">KURULUŞ</div></div>
-      <div data-reveal="up" data-delay="80" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="5">0</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">ALT EKİP</div></div>
-      <div data-reveal="up" data-delay="160" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="20">0</span><span style="color:#2E6BE0;">+</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">ÜYE</div></div>
+      <div data-reveal="up" data-delay="80" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="4">0</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">DEPARTMAN</div></div>
+      <div data-reveal="up" data-delay="160" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="14">0</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">ÜYE</div></div>
       <div data-reveal="up" data-delay="240" style="padding:32px 24px;background:#070b1c;"><div style="font-family:'Saira Condensed';font-weight:800;font-size:clamp(40px,5vw,62px);color:#E0202E;line-height:1;"><span data-count="2027">0</span></div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">HEDEF · TEKNOFEST</div></div>
     </div>
   </div>
@@ -243,17 +241,22 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
 
     <div data-reveal="up" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;color:#6f7aa6;margin-bottom:18px;">// SPONSORLUK PAKETLERİ</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-      <div data-reveal="up" style="position:relative;padding:30px 26px;border:1px solid rgba(201,210,232,0.25);border-radius:3px;background:linear-gradient(180deg,rgba(201,210,232,0.05),rgba(255,255,255,0.01));overflow:hidden;">
+      <div data-reveal="up" style="position:relative;padding:30px 26px;border:1px solid rgba(200,129,75,0.3);border-radius:3px;background:linear-gradient(180deg,rgba(200,129,75,0.06),rgba(255,255,255,0.01));overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C8814B,transparent);"></div>
+        <div style="font-family:'Saira Condensed';font-weight:800;font-size:26px;letter-spacing:.04em;color:#C8814B;transform:skewX(-7deg);">BRONZ</div>
+        <div style="margin:14px 0 0;font-size:14px;line-height:1.7;color:#9AA2C2;">Web sitesinde logo · sosyal medyada teşekkür paylaşımı.</div>
+      </div>
+      <div data-reveal="up" data-delay="90" style="position:relative;padding:30px 26px;border:1px solid rgba(201,210,232,0.25);border-radius:3px;background:linear-gradient(180deg,rgba(201,210,232,0.05),rgba(255,255,255,0.01));overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C9D2E8,transparent);"></div>
         <div style="font-family:'Saira Condensed';font-weight:800;font-size:26px;letter-spacing:.04em;color:#C9D2E8;transform:skewX(-7deg);">GÜMÜŞ</div>
-        <div style="margin:14px 0 0;font-size:14px;line-height:1.7;color:#9AA2C2;">Web sitesi & sosyal medyada logo · teşekkür içeriği · etkinlik daveti.</div>
+        <div style="margin:14px 0 0;font-size:14px;line-height:1.7;color:#9AA2C2;">Bronz ayrıcalıkları + etkinlik & stantta logo · takım kıyafetinde küçük logo.</div>
       </div>
-      <div data-reveal="up" data-delay="90" style="position:relative;padding:30px 26px;border:1px solid rgba(255,194,75,0.32);border-radius:3px;background:linear-gradient(180deg,rgba(255,194,75,0.06),rgba(255,255,255,0.01));overflow:hidden;">
+      <div data-reveal="up" data-delay="180" style="position:relative;padding:30px 26px;border:1px solid rgba(255,194,75,0.32);border-radius:3px;background:linear-gradient(180deg,rgba(255,194,75,0.06),rgba(255,255,255,0.01));overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FFC24B,transparent);"></div>
         <div style="font-family:'Saira Condensed';font-weight:800;font-size:26px;letter-spacing:.04em;color:#FFC24B;transform:skewX(-7deg);">ALTIN</div>
         <div style="margin:14px 0 0;font-size:14px;line-height:1.7;color:#9AA2C2;">Gümüş ayrıcalıkları + İHA gövdesinde orta boy logo · raporlarda görünürlük.</div>
       </div>
-      <div data-reveal="up" data-delay="180" style="position:relative;padding:30px 26px;border:1px solid rgba(46,107,224,0.45);border-radius:3px;background:linear-gradient(180deg,rgba(46,107,224,0.12),rgba(255,255,255,0.01));overflow:hidden;box-shadow:0 0 40px rgba(46,107,224,0.12);">
+      <div data-reveal="up" data-delay="270" style="position:relative;padding:30px 26px;border:1px solid rgba(46,107,224,0.45);border-radius:3px;background:linear-gradient(180deg,rgba(46,107,224,0.12),rgba(255,255,255,0.01));overflow:hidden;box-shadow:0 0 40px rgba(46,107,224,0.12);">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3D8BFF,#E0202E);"></div>
         <div style="font-family:'Saira Condensed';font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;transform:skewX(-7deg);">PLATİN</div>
         <div style="margin:14px 0 0;font-size:14px;line-height:1.7;color:#C7D0EC;">Ana sponsor · İHA üzerinde en büyük logo · özel içerik · saha ziyareti & tüm görünürlük.</div>
@@ -261,7 +264,7 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
     </div>
 
     <div data-reveal="up" style="margin-top:48px;text-align:center;">
-      <a href="Sponsorluk.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#fff;padding:16px 34px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:0 10px 30px rgba(46,107,224,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-2px);">DETAYLAR & SPONSOR OL <span style="font-size:1.2em;">→</span></a>
+      <a href="Sponsorluk.dc.html#iletisim" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Saira Condensed';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#fff;padding:16px 34px;background:linear-gradient(120deg,#1d4fb0,#2E6BE0);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:0 10px 30px rgba(46,107,224,.4);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-2px);">DETAYLAR & SPONSOR OL <span style="font-size:1.2em;">→</span></a>
     </div>
   </div>
 </section>
@@ -282,7 +285,7 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
       </article>
       <article data-reveal="up" data-delay="90" style="border:1px solid rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;background:rgba(255,255,255,0.012);">
         <div style="height:160px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,rgba(46,107,224,0.06) 0 12px,rgba(255,255,255,0.01) 12px 24px);border-bottom:1px solid rgba(255,255,255,0.06);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
-        <div style="padding:24px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#3D8BFF;">EKİP · 2026</div><h3 style="margin:12px 0 0;font-family:'Saira Condensed';font-weight:700;font-size:24px;color:#EAECF5;">Alt ekipler belirlendi</h3><p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Beş disiplin: aerodinamik, aviyonik, yazılım, görüntü işleme, organizasyon.</p></div>
+        <div style="padding:24px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#3D8BFF;">EKİP · 2026</div><h3 style="margin:12px 0 0;font-family:'Saira Condensed';font-weight:700;font-size:24px;color:#EAECF5;">Departmanlar belirlendi</h3><p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Dört departman: yönetim, bilgisayar/yazılım, elektrik-elektronik, makine.</p></div>
       </article>
       <article data-reveal="up" data-delay="180" style="border:1px solid rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;background:rgba(255,255,255,0.012);">
         <div style="height:160px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,rgba(192,24,24,0.07) 0 12px,rgba(255,255,255,0.01) 12px 24px);border-bottom:1px solid rgba(255,255,255,0.06);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
@@ -302,12 +305,19 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
       </div>
       <p style="max-width:36ch;margin:0;font-size:15px;line-height:1.6;color:#9AA2C2;font-weight:300;">Atölyeden sahaya — yolculuğumuzun kareleri burada birikecek.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));grid-auto-rows:180px;gap:12px;">
-      <div data-reveal="scale" style="grid-column:span 2;grid-row:span 2;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(46,107,224,0.05) 0 14px,rgba(255,255,255,0.01) 14px 28px);"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:#4d5680;">KAPAK GÖRSELİ</span></div>
-      <div data-reveal="scale" data-delay="60" style="display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.028) 0 12px,rgba(255,255,255,0.01) 12px 24px);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
-      <div data-reveal="scale" data-delay="120" style="display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.028) 0 12px,rgba(255,255,255,0.01) 12px 24px);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
-      <div data-reveal="scale" data-delay="180" style="display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(192,24,24,0.05) 0 12px,rgba(255,255,255,0.01) 12px 24px);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
-      <div data-reveal="scale" data-delay="240" style="display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.13);border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.028) 0 12px,rgba(255,255,255,0.01) 12px 24px);"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
+    <div data-reveal="scale" style="position:relative;border:1px dashed rgba(46,107,224,0.32);border-radius:5px;overflow:hidden;background:radial-gradient(120% 130% at 50% 0%,rgba(46,107,224,0.08),rgba(255,255,255,0.008));padding:clamp(48px,9vw,96px) clamp(24px,6vw,64px);display:flex;flex-direction:column;align-items:center;text-align:center;">
+      <div data-parallax="0.04" style="position:absolute;inset:0;background-image:linear-gradient(rgba(46,107,224,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(46,107,224,0.05) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;opacity:.5;"></div>
+      <div style="position:relative;width:70px;height:70px;border-radius:50%;border:1px solid rgba(120,150,230,.3);display:flex;align-items:center;justify-content:center;color:#3D8BFF;margin-bottom:26px;">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
+      </div>
+      <div style="position:relative;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;color:#3D8BFF;margin-bottom:14px;">// ARŞİV OLUŞUYOR</div>
+      <div style="position:relative;font-family:'Saira Condensed';font-weight:800;font-size:clamp(26px,4vw,44px);line-height:1.02;color:#EAECF5;transform:skewX(-5deg);max-width:20ch;">İlk kareler yolda</div>
+      <p style="position:relative;margin:16px 0 0;max-width:52ch;font-size:clamp(15px,1.8vw,18px);line-height:1.6;color:#9AA2C2;font-weight:300;">Atölye çalışmaları, testler ve saha görüntüleri burada birikecek. Zifir'in yolculuğunu kare kare belgeliyoruz — çok yakında.</p>
+      <div style="position:relative;margin-top:30px;display:flex;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#2E6BE0;box-shadow:0 0 10px #2E6BE0;"></span>
+        <span style="width:8px;height:8px;border-radius:50%;background:rgba(46,107,224,0.35);"></span>
+        <span style="width:8px;height:8px;border-radius:50%;background:rgba(46,107,224,0.18);"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -317,14 +327,14 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
   <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;text-align:center;">
     <div data-reveal="up" style="display:flex;justify-content:center;margin-bottom:14px;"><div style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3em;color:#3D8BFF;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#2E6BE0);"></span><span>07 / İNSAN</span><span style="width:30px;height:1px;background:linear-gradient(270deg,transparent,#2E6BE0);"></span></div></div>
     <div data-reveal="up" data-delay="60" style="display:flex;justify-content:center;">{{ tTeam }}</div>
-    <p data-reveal="up" data-delay="120" style="max-width:54ch;margin:22px auto 0;font-size:clamp(16px,1.9vw,20px);line-height:1.6;color:#AEB6D6;font-weight:300;">Zifir'i tasarlayan, kodlayan ve uçuracak olan ekip. Beş alt ekip, tek bir takım.</p>
+    <p data-reveal="up" data-delay="120" style="max-width:54ch;margin:22px auto 0;font-size:clamp(16px,1.9vw,20px);line-height:1.6;color:#AEB6D6;font-weight:300;">Zifir'i tasarlayan, kodlayan ve uçuracak olan ekip. Dört departman, tek bir takım.</p>
     <div data-reveal="up" data-delay="180" style="margin-top:36px;display:flex;justify-content:center;gap:-14px;">
       <div style="display:flex;">
         <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:linear-gradient(135deg,#16224d,#0c1228);margin-left:0;"></div>
         <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:linear-gradient(135deg,#1b2f64,#0c1228);margin-left:-14px;"></div>
         <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:linear-gradient(135deg,#3a1414,#0c1228);margin-left:-14px;"></div>
         <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:linear-gradient(135deg,#16224d,#0c1228);margin-left:-14px;"></div>
-        <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:rgba(46,107,224,0.12);margin-left:-14px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9AA2C2;">+15</div>
+        <div style="width:58px;height:58px;border-radius:50%;border:2px solid #080d20;background:rgba(46,107,224,0.12);margin-left:-14px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9AA2C2;">+9</div>
       </div>
     </div>
     <div data-reveal="up" data-delay="240" style="margin-top:38px;">
@@ -339,20 +349,22 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
       <div>
         <img src="assets/etu-logo-light.png" alt="ETU AERO" style="height:74px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(46,107,224,.25));">
-        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">Savaşan İHA takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
+        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">İnsansız hava araçları takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
       </div>
       <div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:#3D8BFF;margin-bottom:18px;">// İLETİŞİM</div>
-        <a href="mailto:iletisim@etuaero.com" style="display:block;font-size:16px;color:#D4DAF0;text-decoration:none;margin-bottom:10px;">iletisim@etuaero.com</a>
-        <div style="font-size:14px;color:#7d88b5;line-height:1.7;">Üniversite · Şehir<br>Türkiye</div>
+        <div style="font-family:'Saira Condensed';font-weight:700;font-size:18px;color:#EAECF5;">Eren Can Dönertaş</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;color:#3D8BFF;margin:4px 0 12px;">TAKIM KAPTANI</div>
+        <a href="mailto:eren208can@gmail.com" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:7px;">eren208can@gmail.com</a>
+        <a href="tel:+905425623440" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:12px;">0 542 562 34 40</a>
+        <div style="font-size:14px;color:#7d88b5;line-height:1.7;">TOBB ETU · Ankara<br>Türkiye</div>
       </div>
       <div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:#3D8BFF;margin-bottom:18px;">// TAKİP ET</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="#" aria-label="Instagram" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">ig</a>
-          <a href="#" aria-label="LinkedIn" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">in</a>
-          <a href="#" aria-label="X" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">X</a>
-          <a href="#" aria-label="YouTube" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;">yt</a>
+          <a href="#" aria-label="Instagram" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.8.22 2.43.47.66.25 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.63.42 1.36.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.8-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.9-1.77 1.15-.63.25-1.36.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.8-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.63-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.47-2.43.25-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.63-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.98.04-1.51.21-1.86.35-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.31.88-.35 1.86-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.98.21 1.51.35 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.31 1.86.35 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.98-.04 1.51-.21 1.86-.35.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.31-.88.35-1.86.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.98-.21-1.51-.35-1.86a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.35-.14-.88-.31-1.86-.35-1.05-.05-1.37-.06-4.04-.06zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.67 1.81-2.67 3.68V24H8V8.25z"/></svg></a>
+          <a href="#" aria-label="YouTube" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:3px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(46,107,224,0.14);border-color:#2E6BE0;color:#fff;"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
         </div>
       </div>
       <div>
@@ -372,13 +384,7 @@ body::-webkit-scrollbar-thumb{background:#1b2752;border-radius:8px;}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;heroWord&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;ZİFİR&quot;, &quot;tsType&quot;: &quot;string&quot; },
-  &quot;heroTagline&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;GÖKLERİN YENİ GÖLGESİ&quot;, &quot;tsType&quot;: &quot;string&quot; },
-  &quot;waveAmplitude&quot;: { &quot;editor&quot;: &quot;float&quot;, &quot;default&quot;: 0.13, &quot;min&quot;: 0.04, &quot;max&quot;: 0.22, &quot;step&quot;: 0.01, &quot;tsType&quot;: &quot;number&quot; },
-  &quot;autoRotate&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
-  &quot;hologram&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
-}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroWord&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ZİFİR&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroTagline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;GÖKLERİN YENİ GÖLGESİ&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;waveAmplitude&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:0.04,&quot;min&quot;:0.04,&quot;max&quot;:0.22,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;},&quot;autoRotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;hologram&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   state = { vw: (typeof window !== 'undefined' ? window.innerWidth : 1280), menuOpen: false, stageMode: 'loading' };
 
@@ -445,6 +451,43 @@ class Component extends DCLogic {
     this.initCounters();
     this._onResizeVW = () => { if (Math.abs(window.innerWidth - this.state.vw) > 40) this.setState({ vw: window.innerWidth }); this.resize3D(); };
     window.addEventListener('resize', this._onResizeVW);
+    this.scrollToHash();
+  }
+
+  scrollToHash(){
+    const h = window.location.hash;
+    if (!h || h.length < 2) return;
+    let id;
+    try { id = decodeURIComponent(h.slice(1)); } catch(e){ id = h.slice(1); }
+    const rawId = h.slice(1);
+    const curY = () => window.scrollY || window.pageYOffset || (document.scrollingElement && document.scrollingElement.scrollTop) || document.body.scrollTop || 0;
+    const setY = (y) => {
+      try { window.scrollTo(0, y); } catch(e){}
+      try { if (document.scrollingElement) document.scrollingElement.scrollTop = y; } catch(e){}
+      try { document.documentElement.scrollTop = y; } catch(e){}
+      try { document.body.scrollTop = y; } catch(e){}
+    };
+    let tries = 0, done = false;
+    const go = () => {
+      if (done) return;
+      const el = document.getElementById(id) || document.getElementById(rawId);
+      if (el){
+        done = true;
+        const y = Math.max(0, el.getBoundingClientRect().top + curY() - 76);
+        setY(y);
+        // correction passes as fonts/images settle the layout
+        let n = 0;
+        const fix = () => {
+          const e2 = document.getElementById(id) || document.getElementById(rawId);
+          if (e2) setY(Math.max(0, e2.getBoundingClientRect().top + curY() - 76));
+          if (n++ < 4) setTimeout(fix, 120);
+        };
+        setTimeout(fix, 120);
+      } else if (tries < 40){
+        tries++; setTimeout(go, 70);
+      }
+    };
+    setTimeout(go, 60);
   }
   componentDidUpdate(prev){
     if (prev && prev.hologram !== this.props.hologram && this._wires){
@@ -520,27 +563,30 @@ class Component extends DCLogic {
   }
 
   buildShroud(THREE){
-    // Radial dome cover that sits cleanly on the platform — no hanging skirt.
-    const RINGS = 30, SEG = 72;
-    const Rx = 2.25, Rz = 2.45, H = 1.9;
+    // Low, form-fitting drape — reads as a covered aircraft, not a tent.
+    const RINGS = 32, SEG = 76;
+    const Rx = 2.1, Rz = 2.4, H = 0.52;
     const pos = [], idx = [];
     for (let i = 0; i <= RINGS; i++){
-      const v = i / RINGS;                       // 0 = apex, 1 = rim
+      const v = i / RINGS;                       // 0 = centre, 1 = rim
       for (let j = 0; j <= SEG; j++){
         const a = (j / SEG) * Math.PI * 2;
-        const ca = Math.cos(a), sa = Math.sin(a);
+        const ca = Math.cos(a), sa = Math.sin(a);   // ca → sideways (x), sa → nose/tail (z)
         const x = v * Rx * ca;
         const z = v * Rz * sa;
-        // dome profile — tall at centre, meets platform at the rim
-        let h = Math.pow(Math.max(0, Math.cos(v * Math.PI/2)), 0.92) * H;
-        // wing lobes along the x-axis (sideways)
-        h += 0.5 * Math.exp(-Math.pow((v - 0.6)/0.2, 2)) * Math.pow(Math.abs(ca), 6);
-        // nose / tail lobes along the z-axis
-        h += 0.26 * Math.exp(-Math.pow((v - 0.52)/0.24, 2)) * Math.pow(Math.abs(sa), 8);
-        // gentle cloth folds, fading out toward the rim
-        h += Math.sin(a * 5 + v * 4.0) * 0.05 * (1 - v);
-        h += Math.sin(a * 3 - v * 6.0) * 0.035 * (1 - v * 0.6);
-        const y = (i === RINGS) ? 0.02 : Math.max(0.04, h + 0.04);
+        const nx = x / Rx, nz = z / Rz;             // -1..1 in each axis
+        // low draped base that settles onto the platform at the rim
+        let h = Math.pow(Math.max(0, Math.cos(v * Math.PI/2)), 1.5) * H;
+        // low rounded fuselage ridge running nose→tail down the centre line
+        h += 0.3 * Math.exp(-Math.pow(nx / 0.24, 2)) * (0.62 + 0.38 * Math.cos(nz * 0.95));
+        // broad wing shoulders fanning out sideways — the span reads through the cover
+        h += 0.46 * Math.exp(-Math.pow((Math.abs(nx) - 0.6) / 0.32, 2)) * Math.exp(-Math.pow(nz / 0.8, 2));
+        // faint tapered nose lift
+        h += 0.1 * Math.exp(-Math.pow((nz - 0.68) / 0.2, 2)) * Math.exp(-Math.pow(nx / 0.2, 2));
+        // subtle cloth folds, fading toward the rim
+        h += Math.sin(a * 6 + v * 3.4) * 0.028 * (1 - v);
+        h += Math.sin(a * 3 - v * 5.5) * 0.02 * (1 - v * 0.6);
+        const y = (i === RINGS) ? 0.02 : Math.max(0.035, h + 0.035);
         pos.push(x, y, z);
       }
     }
@@ -578,8 +624,8 @@ class Component extends DCLogic {
     this._scene = scene;
 
     const cam = new THREE.PerspectiveCamera(40, w/h, 0.1, 100);
-    cam.position.set(0, 2.6, 7.7);
-    cam.lookAt(0, 0.5, 0);
+    cam.position.set(0, 3.0, 7.55);
+    cam.lookAt(0, -0.15, 0);
     this._cam = cam;
 
     // platform
@@ -598,7 +644,7 @@ class Component extends DCLogic {
     sweep.add(bar); sweep.position.y = -0.03; scene.add(sweep); this._sweep = sweep;
 
     // spinner with model
-    const spinner = new THREE.Group(); spinner.scale.setScalar(0.8); scene.add(spinner); this._spinner = spinner;
+    const spinner = new THREE.Group(); spinner.scale.setScalar(0.94); scene.add(spinner); this._spinner = spinner;
     const uav = this.buildUAV(THREE); uav.position.y = 0.45; uav.visible = false; spinner.add(uav); this._uav = uav;
     const shroud = this.buildShroud(THREE); spinner.add(shroud); this._shroud = shroud;
 
@@ -752,7 +798,7 @@ class Component extends DCLogic {
       capsList: ['Otonom Uçuş','Hedef Tespiti & Kilitlenme','Görüntü İşleme · YZ','Otonom Angajman','Gerçek Zamanlı Telemetri','Düşük Görünürlük'],
       slots6: [0,1,2,3,4,5],
       year: 2026,
-      heroWord: this.wv(this.props.heroWord != null ? this.props.heroWord : 'ZİFİR', { size:'clamp(78px,17vw,250px)', weight:800, amp:(this.props.waveAmplitude != null ? this.props.waveAmplitude : 0.13)*1.05, outline:true, fill:'#08080F', stroke:'#C2CCEC', strokeW:'4px', speed:3.6, ls:'-0.02em', skew:-10, shadow:'0 0 34px rgba(46,107,224,0.32), 0 12px 50px rgba(0,0,0,0.7)' }),
+      heroWord: this.wv(this.props.heroWord != null ? this.props.heroWord : 'ZİFİR', { size:'clamp(78px,17vw,250px)', weight:800, amp:(this.props.waveAmplitude != null ? this.props.waveAmplitude : 0.13)*1.05, outline:true, fill:'#1B2E63', stroke:'#C2CCEC', strokeW:'4px', speed:3.6, ls:'-0.02em', skew:-10, shadow:'0 0 34px rgba(46,107,224,0.32), 0 12px 50px rgba(0,0,0,0.7)' }),
       heroLine: this.wv(this.props.heroTagline != null ? this.props.heroTagline : 'GÖKLERİN YENİ GÖLGESİ', { size:'clamp(18px,3.4vw,42px)', weight:700, color:'#C7D0EC', speed:4, skew:-8, ls:'0.03em' }),
       tZifir: this.wv('ZİFİR', { size:'clamp(42px,7vw,98px)', outline:true, fill:'#0A0E1C', stroke:'#B6C2E6', strokeW:'2.5px', skew:-9, shadow:'0 0 22px rgba(46,107,224,0.28)' }),
       tAbout: this.wv('HAKKIMIZDA', { size:'clamp(36px,6vw,86px)' }),
