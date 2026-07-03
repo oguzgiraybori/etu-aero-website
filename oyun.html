@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ZİFİR // Test Uçuşu — ETU AERO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg:#070b16; --bg2:#0a0f1e; --ink:#EAECF5; --dim:#7d88b5;
+    --cyan:#38e0ff; --red:#d2232a; --line:rgba(255,255,255,0.08);
+  }
+  html,body{height:100%;}
+  body{
+    background:radial-gradient(125% 95% at 50% 0%,#0a2740 0%,#0a1424 44%,var(--bg) 100%);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    min-height:100svh;display:flex;flex-direction:column;align-items:center;
+    padding:16px;gap:14px;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--cyan);text-decoration:none;}
+
+  /* ---- top bar ---- */
+  .topbar{
+    width:100%;max-width:560px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.26em;color:var(--dim);}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.4s infinite;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+  .back{font-size:11px;letter-spacing:.18em;border-bottom:1px solid rgba(56,224,255,.4);padding-bottom:2px;}
+  .back:hover{color:#fff;}
+
+  /* ---- title ---- */
+  .title{width:100%;max-width:560px;}
+  .title h1{
+    font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(22px,6vw,34px);
+    letter-spacing:.02em;transform:skewX(-7deg);line-height:1;
+  }
+  .title h1 span{color:var(--cyan);}
+  .title p{margin-top:8px;font-size:11px;letter-spacing:.22em;color:var(--dim);}
+
+  /* ---- HUD ---- */
+  .hud{
+    width:100%;max-width:560px;display:flex;justify-content:space-between;gap:12px;
+    font-size:12px;letter-spacing:.16em;color:var(--dim);
+  }
+  .hud b{color:var(--ink);font-weight:600;}
+  .hud .hp{color:var(--red);letter-spacing:.1em;}
+
+  /* ---- stage ---- */
+  .stage{
+    position:relative;width:100%;max-width:560px;aspect-ratio:14/17;
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(56,224,255,0.03),transparent 40%),var(--bg2);
+    box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 0 60px rgba(0,0,0,.4);
+  }
+  /* corner brackets */
+  .stage::before,.stage::after{content:"";position:absolute;width:18px;height:18px;pointer-events:none;z-index:3;}
+  .stage::before{top:8px;left:8px;border-left:2px solid rgba(110,205,235,.35);border-top:2px solid rgba(110,205,235,.35);}
+  .stage::after{bottom:8px;right:8px;border-right:2px solid rgba(110,205,235,.35);border-bottom:2px solid rgba(110,205,235,.35);}
+  canvas{display:block;width:100%;height:100%;image-rendering:pixelated;}
+
+  /* ---- overlay (start / pause / over) ---- */
+  .overlay{
+    position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;text-align:center;padding:24px;background:rgba(7,11,22,0.82);backdrop-filter:blur(3px);
+  }
+  .overlay.hidden{display:none;}
+  .overlay h2{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(20px,6vw,30px);letter-spacing:.04em;}
+  .overlay h2.win{color:var(--cyan);}
+  .overlay h2.lose{color:var(--red);}
+  .overlay p{font-size:12px;letter-spacing:.16em;color:var(--dim);line-height:1.7;max-width:34ch;}
+  .ov-kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.34em;color:var(--cyan);}
+  .ov-kicker:empty{display:none;}
+  .ov-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:stretch;margin-top:4px;}
+  .btn{
+    font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;color:#fff;cursor:pointer;
+    padding:13px 28px;border:none;background:linear-gradient(120deg,#a51a20,var(--red));
+    clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%);
+    box-shadow:0 8px 24px rgba(56,224,255,.28);transition:filter .2s,transform .2s;
+  }
+  .btn:hover{filter:brightness(1.15);transform:translateY(-1px);}
+  /* reward-choice cards (two distinct upgrades after a boss) */
+  .btn.reward{
+    display:flex;flex-direction:column;gap:5px;text-align:left;min-width:150px;
+    padding:15px 18px;clip-path:none;border-radius:3px;
+    background:rgba(56,224,255,0.08);border:1px solid rgba(56,224,255,0.4);
+    box-shadow:none;color:var(--ink);
+  }
+  .btn.reward:hover{background:rgba(56,224,255,0.16);border-color:var(--cyan);}
+  .btn.reward .rb-t{font-size:15px;letter-spacing:.06em;color:var(--cyan);}
+  .btn.reward .rb-d{font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.04em;color:var(--dim);}
+
+  /* ---- controls help + touch pad ---- */
+  .help{width:100%;max-width:560px;font-size:11px;letter-spacing:.14em;color:var(--dim);text-align:center;line-height:1.8;}
+  kbd{
+    font-family:'IBM Plex Mono',monospace;background:rgba(255,255,255,0.06);border:1px solid var(--line);
+    border-radius:3px;padding:2px 7px;color:var(--ink);font-size:10.5px;
+  }
+  .touch{width:100%;max-width:560px;display:none;gap:10px;}
+  .touch button{
+    flex:1;padding:20px 0;font-size:22px;font-family:'IBM Plex Mono',monospace;color:var(--ink);
+    background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:6px;
+    user-select:none;-webkit-user-select:none;touch-action:manipulation;
+  }
+  .touch button.fire{color:#fff;background:linear-gradient(120deg,#a51a20,var(--red));border:none;flex:1.4;letter-spacing:.1em;font-size:15px;font-weight:700;font-family:'Chakra Petch',sans-serif;}
+  .touch button:active{filter:brightness(1.3);}
+  @media (hover:none) and (pointer:coarse){ .touch{display:flex;} .help .keys{display:none;} }
+
+  .foot{font-size:10px;letter-spacing:.2em;color:#4d5680;margin-top:2px;}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span>REC &nbsp;ZİFİR // TEST UÇUŞU</div>
+    <a class="back" href="ETU%20Aero.dc.html">← ANA ÜS</a>
+  </div>
+
+  <div class="title">
+    <h1>TEST <span>UÇUŞU</span></h1>
+    <p>GELEN DRONE DALGALARINI PÜSKÜRT — ZİFİR GÖREVDE</p>
+  </div>
+
+  <div class="hud">
+    <div>SKOR <b id="score">0</b></div>
+    <div>BÖLÜM <b id="wave">1·1</b></div>
+    <div>CAN <span class="hp" id="lives">▲▲▲</span></div>
+  </div>
+
+  <div class="stage">
+    <canvas id="game"></canvas>
+    <div class="overlay" id="overlay">
+      <div class="ov-kicker" id="ovKicker"></div>
+      <h2 id="ovTitle">ZİFİR // TEST UÇUŞU</h2>
+      <p id="ovText">Gelen drone sürülerini vur, üsse ulaşmalarına izin verme.</p>
+      <div class="ov-btns" id="ovBtns"></div>
+    </div>
+  </div>
+
+  <div class="touch">
+    <button id="tLeft" aria-label="Sol">◄</button>
+    <button class="fire" id="tFire" aria-label="Ateş">ATEŞ</button>
+    <button id="tAbility" aria-label="Özel yetenek">ÖZEL</button>
+    <button id="tRight" aria-label="Sağ">►</button>
+  </div>
+
+  <div class="help">
+    <span class="keys"><kbd>◄</kbd> <kbd>►</kbd> / <kbd>A</kbd> <kbd>D</kbd> hareket · <kbd>SPACE</kbd> ateş · <kbd>CTRL</kbd> / <kbd>SHIFT</kbd> yetenek · <kbd>P</kbd> duraklat</span>
+  </div>
+
+  <div class="foot">© 2026 ETU AERO · TEST UÇUŞU</div>
+
+<script>
+(function(){
+  "use strict";
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+
+  // ---- logical resolution (retro grid); canvas is scaled by CSS ----
+  const W = 280, H = 340;
+  function fitCanvas(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = false;
+  }
+  fitCanvas();
+  window.addEventListener('resize', fitCanvas);
+
+  // ---- palette ----
+  const C = { bg:'#0a0f1e', grid:'rgba(56,224,255,0.06)', cyan:'#38e0ff', red:'#d2232a',
+              ink:'#EAECF5', dim:'#7d88b5', shot:'#8ff0ff', ebolt:'#ff6b70' };
+
+  // ---- pixel-art sprites (each char = one pixel; '.' = empty) ----
+  const PX = 2; // logical px per sprite pixel — kept integer so blocks stay crisp
+  // classic 11x8 invader, two march frames
+  const DRONE_A = [
+    "..X.....X..",
+    "...X...X...",
+    "..XXXXXXX..",
+    ".XX.XXX.XX.",
+    "XXXXXXXXXXX",
+    "X.XXXXXXX.X",
+    "X.X.....X.X",
+    "...XX.XX..."
+  ];
+  const DRONE_B = [
+    "..X.....X..",
+    "X..X...X..X",
+    "X.XXXXXXX.X",
+    "XXX.XXX.XXX",
+    "XXXXXXXXXXX",
+    ".XXXXXXXXX.",
+    "..X.....X..",
+    ".X.......X."
+  ];
+  // 11x7 laser cannon (player)
+  const SHIP = [
+    ".....X.....",
+    "....XXX....",
+    "....XXX....",
+    ".XXXXXXXXX.",
+    "XXXXXXXXXXX",
+    "XXXXXXXXXXX",
+    "XXXXXXXXXXX"
+  ];
+  const IW = DRONE_A[0].length*PX, IH = DRONE_A.length*PX; // 22 x 16
+  const SW = SHIP[0].length*PX,   SH = SHIP.length*PX;     // 22 x 14
+
+  // 15x8 boss "mothership drone", drawn at a chunkier pixel scale
+  const BOSS_PX = 3;
+  const BOSS = [
+    "..X.........X..",
+    ".XXX.......XXX.",
+    "XXXXXXXXXXXXXXX",
+    "XX.XXX.X.XXX.XX",
+    "XXXXXXXXXXXXXXX",
+    ".X.XXXXXXXXX.X.",
+    "..X.X.X.X.X.X..",
+    "...X.......X..."
+  ];
+  const BOSS_W = BOSS[0].length*BOSS_PX, BOSS_H = BOSS.length*BOSS_PX; // 45 x 24
+
+  // ---- entities ----
+  // player carries only position/size/cooldown; its stats come from BASE + active power-ups (see POWER-UP SYSTEM)
+  const player = { x:W/2, y:H-22, w:SW, h:SH, cool:0 };
+  let invaders = [], shots = [], ebolts = [], particles = [], boss = null;
+  let powerups = [], activeFx = [];   // POWER-UP SYSTEM: falling pickups + active timed effects
+  let dir = 1, invSpeed = 0.28, dropAmt = 10, fireTimer = 0, animTick = 0;
+  let waveFireBase = 80, waveBoltV = 1.5;   // per-encounter enemy fire cadence + bolt speed
+  let score = 0, lives = 3;
+  let state = 'menu'; // menu | play | pause | over | win | reward | cine
+  const ROWS = 4, COLS = 6, GAPX = 12, GAPY = 10, MAX_LIVES = 5;
+
+  /* =====================================================================
+     CAMPAIGN ROUTE
+     4 levels; each level = WAVES_PER_LEVEL swarms then a boss.
+     Beating a boss -> pick 1 of 2 permanent upgrades -> fly-off cinematic
+     -> "Bölüm N" title card -> next level. Final boss -> victory.
+     ===================================================================== */
+  const WAVES_PER_LEVEL = 2;
+  const LEVELS = [
+    { part:1, name:'MEKANİK VADİSİ' },
+    { part:2, name:'PCB YOKUŞU' },
+    { part:3, name:'KOD TEPESİ' },
+    { part:4, name:'YARIŞMA YOLU' }
+  ];
+  let level = 0;   // 0..3  (a "level" = one chapter, separated by the fly-off cinematic)
+  let enc   = 0;   // stage within level: 0..WAVES_PER_LEVEL-1 = swarms ; == WAVES_PER_LEVEL = boss
+  let fade  = 0;   // black-screen alpha for transitions
+  let cine  = null;// between-level cinematic timeline {phase,t,isFinal}
+  let uav   = null;// fly-off ship {x,y,vx,vy,trail[]}
+  let banner= null;// between-stage announcement {t,dur}
+
+  // per-level boss stats — scales up gently, stays "generally easy"
+  function bossDef(lv){
+    const names = ['DRONE-ANA','KART-EZİCİ','DERLEYİCİ','FİNAL-DRONE'];
+    return {
+      name: names[lv] || 'DRONE',
+      maxHp:   14 + lv*6,          // 14, 20, 26, 32
+      sway:    0.018 + lv*0.004,
+      descend: 0.010 + lv*0.003,
+      baseFire:60 - lv*7           // 60, 53, 46, 39
+    };
+  }
+
+  function buildEncounter(){
+    invaders = [];
+    if(enc >= WAVES_PER_LEVEL){        // boss encounter
+      const bd = bossDef(level);
+      boss = { x:W/2, y:22, w:BOSS_W, h:BOSS_H, name:bd.name,
+               hp:bd.maxHp, maxHp:bd.maxHp, t:0, hit:0,
+               sway:bd.sway, descend:bd.descend, baseFire:bd.baseFire, fire:bd.baseFire };
+      syncHud();
+      return;
+    }
+    boss = null;                       // swarm encounter
+    const startX = (W - (COLS*IW + (COLS-1)*GAPX)) / 2, startY = 40;
+    for(let r=0;r<ROWS;r++)
+      for(let c=0;c<COLS;c++)
+        invaders.push({ x:startX + c*(IW+GAPX), y:startY + r*(IH+GAPY), w:IW, h:IH, alive:true, row:r });
+    dir = 1;
+    const diff = level*WAVES_PER_LEVEL + enc;   // global difficulty step
+    invSpeed     = 0.22 + diff*0.045;
+    waveFireBase = Math.max(30, 82 - diff*7);
+    waveBoltV    = 1.4 + level*0.2 + enc*0.1;
+    fireTimer    = 0;
+    syncHud();
+  }
+
+  // a stage (swarm) was cleared -> announce the next stage, then build it
+  function advanceEncounter(){
+    enc++;
+    score += 25;
+    shots = []; ebolts = []; invaders = []; boss = null;
+    refreshStageAbilities();                 // once-per-stage skills reset for the upcoming stage
+    startStageBanner(enc >= WAVES_PER_LEVEL);
+    syncHud();
+  }
+
+  // brief "next stage" / "boss ahead" announcement between stages of the same level
+  function startStageBanner(isBoss){
+    banner = { t:0, dur:100 };
+    state = 'banner';
+    showScreen({
+      kicker: isBoss ? 'UYARI' : 'BÖLÜM '+(level+1),
+      cls:    isBoss ? 'lose' : 'win',
+      title:  isBoss ? 'BOSS SAVAŞI YAKLAŞIYOR' : 'SONRAKI AŞAMA BAŞLIYOR',
+      text:   '', buttons: []
+    });
+  }
+  function finishBanner(){
+    hideOverlay(); banner = null; state = 'play';
+    buildEncounter();                        // now spawn the stage's enemies / boss
+  }
+  function updateBanner(){
+    banner.t++;
+    stepParticles();
+    if(banner.t >= banner.dur) finishBanner();
+  }
+
+  function resetGame(){
+    score = 0; lives = 3; level = 0; enc = 0; fade = 0; cine = null; uav = null;
+    player.x = W/2; player.y = H-22; player.cool = 0;
+    shots = []; ebolts = []; particles = [];
+    powerups = []; activeFx = [];
+    permMods = { speed:0, fireDelay:0, bulletSpeed:0, damage:0 };
+    resetAbilities();
+    buildEncounter();
+    refreshStageAbilities();
+    syncHud();
+  }
+
+  function syncHud(){
+    document.getElementById('score').textContent = score;
+    document.getElementById('wave').textContent = boss ? ((level+1)+' · BOSS') : ((level+1)+'·'+(enc+1));
+    document.getElementById('lives').textContent = lives>0 ? '▲'.repeat(lives) : '—';
+  }
+
+  // ---- input ----
+  const keys = { left:false, right:false, fire:false };
+  let ctrlDown = false, shiftDown = false;   // edge-detect so a tap = one activation
+  window.addEventListener('keydown', e=>{
+    if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') keys.left=true;
+    else if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') keys.right=true;
+    else if(e.key===' '){ keys.fire=true; e.preventDefault(); }
+    else if(e.key==='Control'){ if(!ctrlDown){ ctrlDown=true; activatePrimary(); } e.preventDefault(); }
+    else if(e.key==='Shift'){ if(!shiftDown){ shiftDown=true; activateKamikaze(); } }
+    else if(e.key==='p'||e.key==='P'){ togglePause(); }
+    else if(e.key==='Enter'){
+      if(state==='menu'||state==='over'||state==='win') startGame();
+      else if(state==='cine' && cine && cine.phase==='card') proceedCard();
+      else if(state==='banner') finishBanner();
+    }
+  });
+  window.addEventListener('keyup', e=>{
+    if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') keys.left=false;
+    else if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') keys.right=false;
+    else if(e.key===' ') keys.fire=false;
+    else if(e.key==='Control') ctrlDown=false;
+    else if(e.key==='Shift') shiftDown=false;
+  });
+  function bindTouch(id, on){
+    const el = document.getElementById(id);
+    const set = v => e => { e.preventDefault(); on(v); };
+    el.addEventListener('touchstart', set(true), {passive:false});
+    el.addEventListener('touchend', set(false));
+    el.addEventListener('touchcancel', set(false));
+    el.addEventListener('mousedown', set(true));
+    el.addEventListener('mouseup', set(false));
+    el.addEventListener('mouseleave', set(false));
+  }
+  bindTouch('tLeft', v=>keys.left=v);
+  bindTouch('tRight', v=>keys.right=v);
+  bindTouch('tFire', v=>keys.fire=v);
+  // touch special button: trigger the owned activated ability (Ctrl one, else kamikaze)
+  (function(){
+    const el = document.getElementById('tAbility');
+    const go = e => { e.preventDefault(); if(ab.dash||ab.hull) activatePrimary(); else if(ab.kamikaze) activateKamikaze(); };
+    el.addEventListener('touchstart', go, {passive:false});
+    el.addEventListener('mousedown', go);
+  })();
+
+  // ---- overlay / screens ----
+  const overlay = document.getElementById('overlay');
+  const ovKicker= document.getElementById('ovKicker');
+  const ovTitle = document.getElementById('ovTitle');
+  const ovText  = document.getElementById('ovText');
+  const ovBtns  = document.getElementById('ovBtns');
+
+  // generic screen renderer. buttons: [{label, desc?, cls?, onClick}]
+  function showScreen(opt){
+    ovKicker.textContent = opt.kicker || '';
+    ovTitle.className = opt.cls || '';
+    ovTitle.textContent = opt.title || '';
+    ovText.innerHTML = opt.text || '';
+    ovBtns.innerHTML = '';
+    (opt.buttons || []).forEach(b => {
+      const el = document.createElement('button');
+      el.className = 'btn' + (b.cls ? ' '+b.cls : '');
+      if(b.desc){ el.classList.add('reward');
+        el.innerHTML = '<span class="rb-t"></span><span class="rb-d"></span>';
+        el.children[0].textContent = b.label; el.children[1].textContent = b.desc;
+      } else { el.textContent = b.label; }
+      el.addEventListener('click', b.onClick);
+      ovBtns.appendChild(el);
+    });
+    overlay.classList.remove('hidden');
+  }
+  function hideOverlay(){ overlay.classList.add('hidden'); }
+
+  function showMenu(){
+    showScreen({ kicker:'ZİFİR // GÖREV', title:'TEST UÇUŞU',
+      text:'4 sektör, 4 boss. Her sektörde 2 dalga drone, sonra bir boss. Bossu yen, yükseltme seç, ilerle.',
+      buttons:[{ label:'GÖREVE BAŞLA', onClick:startGame }] });
+  }
+
+  function startGame(){
+    resetGame();
+    // intro chapter card for level 1, then fade in
+    fade = 1; uav = null;
+    cine = { phase:'card', t:0, isFinal:false };
+    state = 'cine';
+  }
+
+  function togglePause(){
+    if(state==='play'){ state='pause';
+      showScreen({ title:'DURAKLATILDI', text:'Devam etmek için P tuşuna bas.',
+        buttons:[{ label:'DEVAM ET', onClick:togglePause }] });
+    } else if(state==='pause'){ state='play'; hideOverlay(); }
+  }
+
+  /* =====================================================================
+     ABILITIES  — each boss drops a choice of 2. The two options of a boss
+     are mutually exclusive, so at most one uses a given key:
+       Ctrl  -> boss-1 ability (dash OR reflect-shield)
+       Shift -> Kamikaze (boss-3 option)
+       Space (hold) -> Charge shot (boss-2 option) changes fire behaviour
+     Passives (armor, momentum, combo) need no key.
+     ===================================================================== */
+  let permMods = { speed:0, fireDelay:0, bulletSpeed:0, damage:0 };
+  function permMod(m){ for(const k in m) permMods[k] = (permMods[k]||0) + m[k]; }
+
+  const ab = {};          // owned abilities: dash, hull, charge, servo, orin, kamikaze
+  let lastDir = 1, invuln = 0;
+  let dashCd = 0, dashTime = 0, dashDir = 1;               // KIVRAK KANAT
+  let armorHp = 0, reflectReady = false, reflectTime = 0;  // GÜÇLENDİRİLMİŞ GÖVDE
+  let charging = false, charge = 0, chargeCd = 0;          // GÜÇ DAĞITIM ÜNİTESİ
+  let momentum = 0;                                        // SERVO MOTOR
+  let comboHits = 0;                                       // ORIN NANO
+  let kamiReady = false, kami = null;                      // KAMİKAZE
+  const DASH_FRAMES=9, DASH_SPEED=6, DASH_CD=42;
+  const REFLECT_FRAMES=120, ARMOR_PER_STAGE=1;
+  const CHARGE_MAX=48, CHARGE_CD=10;
+  const SERVO_ACCEL=0.010, SERVO_DECAY=0.03, SERVO_SPD=1.7, SERVO_RATE=8;
+  const KAMI_SPEED=7, KAMI_BOSS_DMG=9;
+
+  function resetAbilities(){
+    for(const k in ab) delete ab[k];
+    lastDir=1; invuln=0; dashCd=0; dashTime=0;
+    armorHp=0; reflectReady=false; reflectTime=0;
+    charging=false; charge=0; chargeCd=0; momentum=0; comboHits=0;
+    kamiReady=false; kami=null;
+  }
+  // once-per-STAGE refresh: called at the start of every stage (each wave and the boss)
+  function refreshStageAbilities(){
+    momentum = 0; kami = null;
+    if(ab.hull){ armorHp = ARMOR_PER_STAGE; reflectReady = true; }
+    if(ab.kamikaze) kamiReady = true;
+  }
+
+  const REWARDS = [
+    // ---- first boss ----
+    [ { label:'KIVRAK KANAT', desc:'Ctrl: kısa dash, sırasında dokunulmaz · pasif hız',
+        apply:()=>{ ab.dash=true; permMod({ speed:+0.4 }); } },
+      { label:'GÜÇLENDİRİLMİŞ GÖVDE', desc:'Ctrl: yansıtıcı kalkan (aşamada 1×) · +1 zırh/aşama',
+        apply:()=>{ ab.hull=true; } } ],
+    // ---- second boss ----
+    [ { label:'GÜÇ DAĞITIM ÜNİTESİ', desc:'Space bas-tut: şarjlı, 3 düşman delen atış',
+        apply:()=>{ ab.charge=true; } },
+      { label:'SERVO MOTOR', desc:'Durmadan hareket = hızlan + atış hızı · hasar sıfırlar',
+        apply:()=>{ ab.servo=true; } } ],
+    // ---- third boss ----
+    [ { label:'ORIN NANO', desc:'Peş peşe 3 isabette 3. atış patlar (yüksek hasar)',
+        apply:()=>{ ab.orin=true; } },
+      { label:'KAMİKAZE', desc:'Shift: aşamada 1× ileri dal, geçtiğini yok et',
+        apply:()=>{ ab.kamikaze=true; } } ]
+  ];
+
+  function openReward(){
+    state = 'reward';
+    const pair = REWARDS[level] || REWARDS[0];
+    showScreen({ kicker:'BOSS ETKİSİZ', cls:'win', title:'YETENEK SEÇ',
+      text:'İki yetenekten birini <b>kalıcı</b> olarak al.',
+      buttons: pair.map(r => ({ label:r.label, desc:r.desc, onClick:()=>chooseReward(r) })) });
+  }
+  function chooseReward(r){ r.apply(); syncHud(); startCinematic(false); }
+
+  // ---- ability activations ----
+  function activatePrimary(){                 // Ctrl
+    if(state!=='play') return;
+    if(ab.dash){
+      if(dashCd<=0 && dashTime<=0){
+        dashDir = keys.left ? -1 : keys.right ? 1 : lastDir;
+        dashTime = DASH_FRAMES; invuln = Math.max(invuln, DASH_FRAMES+2); dashCd = DASH_CD;
+      }
+    } else if(ab.hull){
+      if(reflectReady){ reflectTime = REFLECT_FRAMES; reflectReady = false; }
+    }
+  }
+  function activateKamikaze(){                 // Shift
+    if(state!=='play') return;
+    if(ab.kamikaze && kamiReady && !kami){
+      kami = { phase:'up', baseY:player.y, bossDmgLeft:KAMI_BOSS_DMG };
+      kamiReady = false; invuln = 99999;       // immune for the whole dive
+    }
+  }
+
+  function updateKamikaze(){
+    if(kami.phase==='up'){
+      player.y -= KAMI_SPEED; kamiSweep();
+      if(state!=='play') return;
+      if(player.y < -SH) kami.phase='down';
+    } else {
+      player.y += KAMI_SPEED; kamiSweep();
+      if(state!=='play') return;
+      if(player.y >= kami.baseY){ player.y = kami.baseY; kami=null; invuln=0; }
+    }
+  }
+  function kamiSweep(){
+    const l=player.x-player.w/2, r=player.x+player.w/2, t=player.y, b=player.y+player.h;
+    for(const v of invaders){ if(v.alive && v.x<r && v.x+v.w>l && v.y<b && v.y+v.h>t){
+      v.alive=false; score+=(ROWS-v.row)*10; spawnBurst(v.x+v.w/2, v.y+v.h/2, C.cyan); } }
+    if(boss && kami.bossDmgLeft>0){
+      const bl=boss.x-boss.w/2;
+      if(r>bl && l<bl+boss.w && t<boss.y+boss.h && b>boss.y){
+        const d=Math.min(0.9, kami.bossDmgLeft); boss.hp-=d; kami.bossDmgLeft-=d; boss.hit=4;
+        if(boss.hp<=0){ kami=null; invuln=0; killBoss(); }
+      }
+    }
+  }
+
+  function updateCharge(){                     // replaces auto-fire when ab.charge
+    if(keys.fire){ charging=true; if(charge<CHARGE_MAX) charge++; }
+    else if(charging){
+      if(charge>=CHARGE_MAX && chargeCd<=0){
+        shots.push({ x:player.x, y:player.y-8, w:4, h:12, vy:-4.2, dmg:5, pierce:3, charged:true });
+        chargeCd = CHARGE_CD; player.cool = effStat('fireDelay');
+      } else if(player.cool<=0){
+        playerFire();                          // early release -> normal shot
+      }
+      charging=false; charge=0;
+    }
+  }
+
+  // ORIN NANO: count consecutively-landed fired shots; every 3rd -> explosion
+  function shotLanded(sh, x, y){
+    if(!ab.orin || sh.counted) return;
+    sh.counted = true; comboHits++;
+    if(comboHits>=3){ comboHits=0; orinExplode(x, y); }
+  }
+  function shotMissed(sh){ if(ab.orin && !sh.counted) comboHits = 0; }
+  function orinExplode(x, y){
+    const R=28;
+    for(let k=0;k<16;k++) spawnBurst(x, y, k%2 ? '#ffd166' : C.cyan);
+    for(const v of invaders){ if(v.alive){ const dx=(v.x+v.w/2)-x, dy=(v.y+v.h/2)-y;
+      if(dx*dx+dy*dy < R*R){ v.alive=false; score+=(ROWS-v.row)*10; spawnBurst(v.x+v.w/2, v.y+v.h/2, C.red); } } }
+    if(boss && Math.abs(x-boss.x)<boss.w/2+R && Math.abs(y-(boss.y+boss.h/2))<boss.h/2+R){
+      boss.hp-=4; boss.hit=4; if(boss.hp<=0) killBoss();
+    }
+  }
+
+  // ---- between-level cinematic ----
+  function startCinematic(isFinal){
+    state = 'cine';
+    hideOverlay();
+    uav = { x:player.x, y:player.y, vx:0, vy:-1.1, trail:[] };
+    cine = { phase:'flyoff', t:0, isFinal:!!isFinal };
+  }
+  function proceedCard(){
+    if(state==='cine' && cine && cine.phase==='card'){ hideOverlay(); cine.phase='in'; cine.t=0; }
+  }
+  function showChapterCard(){
+    const L = LEVELS[level];
+    showScreen({ kicker:'BÖLÜM '+L.part, title:L.name,
+      text: level===0 ? 'Görev başlıyor.' : 'Yeni sektör. Hazır ol.',
+      buttons:[{ label:'BAŞLA →', onClick:proceedCard }] });
+  }
+  function finishWin(){
+    state='win'; uav=null; cine=null; fade=0;
+    showScreen({ kicker:'ZAFER', cls:'win', title:'GÖREV TAMAMLANDI',
+      text:'Dört sektör de temizlendi. Skor: '+score,
+      buttons:[{ label:'TEKRAR OYNA', onClick:startGame }] });
+  }
+
+  function updateCine(){
+    cine.t++;
+    stepParticles();
+    if(cine.phase==='flyoff'){
+      uav.vy -= 0.22; uav.vx += 0.02;
+      uav.x += uav.vx; uav.y += uav.vy;
+      uav.trail.push({ x:uav.x, y:uav.y }); if(uav.trail.length>18) uav.trail.shift();
+      if(uav.y < -40){ cine.phase='fade'; cine.t=0; }
+    } else if(cine.phase==='fade'){
+      fade = Math.min(1, fade + 0.045);
+      if(fade>=1){
+        if(cine.isFinal){ finishWin(); return; }
+        // build next level behind the black screen
+        level++; enc=0; score += 100;
+        player.x=W/2; player.y=H-22; player.cool=0; shots=[]; ebolts=[]; particles=[];
+        buildEncounter();
+        refreshStageAbilities();      // once-per-stage abilities for the new level's first stage
+        cine.phase='card'; cine.t=0;
+      }
+    } else if(cine.phase==='card'){
+      if(cine.t===1) showChapterCard();
+      if(cine.t>170) proceedCard();      // auto-advance if the player doesn't click
+    } else if(cine.phase==='in'){
+      fade = Math.max(0, fade - 0.045);
+      if(fade<=0){ uav=null; cine=null; state='play'; }
+    }
+  }
+
+  // ---- shooting ----
+  function playerFire(){
+    if(player.cool>0) return;
+    const vy = -effStat('bulletSpeed'), dmg = effStat('damage'), n = spreadCount();
+    if(n <= 1){
+      shots.push({ x:player.x, y:player.y-8, w:2, h:8, vy, dmg });
+    } else {
+      for(let k=0;k<n;k++){
+        const off = k - (n-1)/2;
+        shots.push({ x:player.x + off*6, y:player.y-8, w:2, h:8, vy, dmg, vx:off*0.5 });
+      }
+    }
+    player.cool = effStat('fireDelay');
+  }
+
+  function spawnBurst(x,y,color){
+    for(let i=0;i<7;i++){
+      const a = Math.random()*Math.PI*2, s = 0.4+Math.random()*1.4;
+      particles.push({ x,y, vx:Math.cos(a)*s, vy:Math.sin(a)*s, life:18+Math.random()*10, color });
+    }
+  }
+
+  // ---- update ----
+  function update(){
+    if(state==='cine'){ updateCine(); return; }
+    if(state==='banner'){ updateBanner(); return; }
+    if(state!=='play') return;
+    animTick++;
+
+    // ability timers
+    if(invuln>0 && !kami) invuln--;
+    if(dashCd>0) dashCd--;
+    if(reflectTime>0) reflectTime--;
+    if(chargeCd>0) chargeCd--;
+    if(player.cool>0) player.cool--;
+
+    if(kami){                                   // KAMİKAZE dive overrides normal control
+      updateKamikaze();
+      if(state!=='play') return;
+    } else {
+      // movement (dash overrides normal move; speed is effective so abilities apply)
+      let moving = false;
+      if(dashTime>0){ player.x += dashDir*DASH_SPEED; dashTime--; moving = true; }
+      else {
+        const pspeed = effStat('speed');
+        if(keys.left){  player.x -= pspeed; lastDir=-1; moving = true; }
+        if(keys.right){ player.x += pspeed; lastDir= 1; moving = true; }
+      }
+      player.x = Math.max(player.w/2, Math.min(W-player.w/2, player.x));
+      // SERVO MOTOR momentum: builds while moving, decays when idle
+      if(ab.servo) momentum = moving ? Math.min(1, momentum+SERVO_ACCEL) : Math.max(0, momentum-SERVO_DECAY);
+      // firing
+      if(ab.charge) updateCharge();
+      else if(keys.fire) playerFire();
+    }
+
+    if(boss){
+      updateBoss();
+      if(state!=='play') return;
+    } else {
+      // invader march
+      let minX=1e9, maxX=-1e9, maxY=-1e9, aliveCount=0;
+      for(const v of invaders){ if(!v.alive) continue; aliveCount++;
+        minX=Math.min(minX,v.x); maxX=Math.max(maxX,v.x+v.w); maxY=Math.max(maxY,v.y+v.h); }
+      if(aliveCount===0){ advanceEncounter(); return; }
+
+      const speed = invSpeed * (1 + (ROWS*COLS - aliveCount)*0.03);
+      let drop=false;
+      if(dir>0 && maxX + speed >= W-6){ drop=true; dir=-1; }
+      else if(dir<0 && minX - speed <= 6){ drop=true; dir=1; }
+      for(const v of invaders){ if(!v.alive) continue;
+        if(drop) v.y += dropAmt; else v.x += dir*speed; }
+      if(maxY >= player.y-4){ loseLife(true); return; }
+
+      // enemy fire
+      fireTimer--;
+      if(fireTimer<=0){
+        const shooters = invaders.filter(v=>v.alive);
+        if(shooters.length){
+          const s = shooters[Math.floor(Math.random()*shooters.length)];
+          ebolts.push({ x:s.x+s.w/2, y:s.y+s.h, w:2, h:7, vy:waveBoltV });
+        }
+        fireTimer = waveFireBase - Math.floor(Math.random()*20);
+      }
+    }
+
+    // player shots
+    for(let i=shots.length-1;i>=0;i--){
+      const sh=shots[i]; sh.y+=sh.vy; if(sh.vx) sh.x+=sh.vx;
+      if(sh.y< -10){ shotMissed(sh); shots.splice(i,1); continue; }   // ORIN NANO: a miss breaks the combo
+      // boss hit? (uses shot damage so DAMAGE / charged shots matter)
+      if(boss){
+        const bl=boss.x-boss.w/2, bt=boss.y;
+        if(sh.x>bl && sh.x<bl+boss.w && sh.y>bt && sh.y<bt+boss.h){
+          boss.hp -= (sh.dmg||1); boss.hit=4; score+=5;
+          spawnBurst(sh.x, sh.y, C.cyan);
+          shotLanded(sh, sh.x, sh.y);
+          if(state!=='play') return;                        // boss died (hit or combo explosion)
+          if(boss && boss.hp<=0){ killBoss(); return; }
+          if(sh.pierce && sh.pierce>1) sh.pierce--; else shots.splice(i,1);
+          syncHud();
+          continue;
+        }
+      }
+      for(const v of invaders){
+        if(!v.alive) continue;
+        if(sh.x>v.x && sh.x<v.x+v.w && sh.y>v.y && sh.y<v.y+v.h){
+          v.alive=false; score += (ROWS-v.row)*10;
+          spawnBurst(v.x+v.w/2, v.y+v.h/2, C.red);
+          shotLanded(sh, v.x+v.w/2, v.y+v.h/2);             // ORIN NANO combo
+          if(state!=='play') return;                        // boss could die via combo explosion
+          if(sh.pierce && sh.pierce>1) sh.pierce--; else shots.splice(i,1);
+          syncHud();
+          break;
+        }
+      }
+    }
+
+    // enemy bolts
+    for(let i=ebolts.length-1;i>=0;i--){
+      const b=ebolts[i]; b.y+=b.vy;
+      if(b.y>H+10){ ebolts.splice(i,1); continue; }
+      // GÜÇLENDİRİLMİŞ GÖVDE: reflective shield bounces nearby bolts back up as player shots
+      if(reflectTime>0){
+        const rx=b.x-player.x, ry=b.y-(player.y+player.h/2);
+        if(rx*rx+ry*ry < 24*24){
+          ebolts.splice(i,1);
+          shots.push({ x:b.x, y:player.y-4, w:2, h:8, vy:-3.6, dmg:2 });
+          spawnBurst(b.x, b.y, C.cyan);
+          continue;
+        }
+      }
+      if(b.x>player.x-player.w/2 && b.x<player.x+player.w/2 && b.y>player.y-2 && b.y<player.y+player.h){
+        if(invuln>0){ ebolts.splice(i,1); continue; }             // dash / kamikaze i-frames
+        ebolts.splice(i,1);
+        if(fxActive('shield')){ spawnBurst(b.x, b.y, C.cyan); }               // (legacy timed powerup)
+        else if(armorHp>0){ armorHp--; momentum=0; spawnBurst(player.x, player.y, '#8ff0ff'); }  // armor soaks it
+        else { momentum=0; loseLife(false); if(state!=='play') return; break; } // loseLife() clears ebolts -> stop iterating
+      }
+    }
+
+    stepParticles();
+
+    updatePowerups();   // POWER-UP SYSTEM: move pickups, handle collection, tick effect timers
+  }
+
+  function stepParticles(){
+    for(let i=particles.length-1;i>=0;i--){
+      const p=particles[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.03; p.life--;
+      if(p.life<=0) particles.splice(i,1);
+    }
+  }
+
+  function loseLife(overrun){
+    lives--; syncHud();
+    spawnBurst(player.x, player.y, C.cyan);
+    ebolts = [];
+    if(lives<=0 || overrun){
+      state='over';
+      showScreen({ cls:'lose', title: overrun?'ÜS DÜŞTÜ':'GÖREV BAŞARISIZ',
+        text:'Skor: '+score+' · Bölüm '+(level+1)+'. Tekrar dene.',
+        buttons:[{ label:'YENİDEN BAŞLA', onClick:startGame }] });
+    }
+  }
+
+  function updateBoss(){
+    const b = boss;
+    b.t++;
+    if(b.hit>0) b.hit--;
+    // sinusoidal sweep across the top + slow descent
+    b.x = W/2 + Math.sin(b.t*b.sway) * (W/2 - b.w/2 - 6);
+    b.y += b.descend;
+    if(b.y + b.h >= player.y-4){ loseLife(true); return; }
+    // fire — enrage (3-way spread + faster) below half HP
+    b.fire--;
+    if(b.fire<=0){
+      const cx=b.x, cy=b.y+b.h, enraged = b.hp <= b.maxHp*0.5;
+      if(enraged){
+        ebolts.push({ x:cx-7, y:cy, w:2, h:7, vy:1.9 });
+        ebolts.push({ x:cx,   y:cy, w:2, h:7, vy:2.3 });
+        ebolts.push({ x:cx+7, y:cy, w:2, h:7, vy:1.9 });
+      } else {
+        ebolts.push({ x:cx, y:cy, w:2, h:7, vy:2.0 });
+      }
+      b.fire = enraged ? Math.max(20, b.baseFire-22) : b.baseFire;
+    }
+  }
+
+  function killBoss(){
+    score += 300 + boss.maxHp*15;
+    for(let k=0;k<44;k++) spawnBurst(boss.x, boss.y+boss.h/2, k%2 ? C.red : C.cyan);
+    const wasFinal = (level >= LEVELS.length-1);
+    boss = null; shots = []; ebolts = [];
+    syncHud();
+    if(wasFinal) startCinematic(true);   // final boss -> victory cinematic
+    else openReward();                   // else -> choose upgrade, then fly-off to next level
+  }
+
+  /* =====================================================================
+     POWER-UP SYSTEM  (self-contained module)
+     ---------------------------------------------------------------------
+     Everything below is data-driven and decoupled from the rest of the
+     game via a handful of clearly-marked hooks:
+       • maybeDrop(x,y) / dropPowerup(x,y)  -> spawn a falling pickup
+       • updatePowerups()                   -> call once per frame in update()
+       • drawPowerups() / drawFxHud() / drawShield() -> call in draw()
+       • effStat(key) / spreadCount() / fxActive(flag) -> read player stats
+     To disable drops entirely, set DROP_CHANCE = 0. To add a new power-up,
+     just add an entry to POWERUPS — no other code changes required.
+     ===================================================================== */
+
+  // baseline player stats; power-up "mod" values are added on top of these
+  const BASE = { speed:2.1, fireDelay:16, bulletSpeed:3.4, damage:1 };
+
+  // power-up registry. Each entry is one type of drop.
+  //   mod{}      -> additive deltas applied to BASE stats while active
+  //   spread     -> number of bullets fired at once (flag read by spreadCount)
+  //   shield     -> boolean flag read by fxActive('shield')
+  //   dur        -> effect duration in SECONDS (timed effects)
+  //   instant    -> fires onPick() immediately, no timer (e.g. heal)
+  const POWERUPS = {
+    SPEED:  { letter:'S', color:'#38e0ff', label:'MOTOR',       dur:8,  mod:{ speed:+1.1 } },
+    RAPID:  { letter:'R', color:'#ffd166', label:'SERİ ATIŞ',   dur:7,  mod:{ fireDelay:-8 } },
+    DAMAGE: { letter:'D', color:'#ff5964', label:'AĞIR HASAR',  dur:10, mod:{ damage:+2 } },
+    BULLET: { letter:'B', color:'#b56bff', label:'HIZLI MERMİ', dur:10, mod:{ bulletSpeed:+1.8 } },
+    MULTI:  { letter:'M', color:'#4dff88', label:'ÜÇLÜ ATIŞ',   dur:8,  spread:3 },
+    SHIELD: { letter:'K', color:'#8ff0ff', label:'KALKAN',      dur:6,  shield:true },
+    HEALTH: { letter:'H', color:'#4dff88', label:'ONARIM',      instant:true, onPick(){ addLife(1); } }
+  };
+  const DROP_TYPES = Object.keys(POWERUPS);
+  const DROP_CHANCE = 0;      // grunts drop nothing — power-ups come only from boss rewards
+  const FALL_SPEED  = 0.8;
+
+  // --- effective stats: BASE + permanent boss upgrades + active timed effects ---
+  function effStat(key){
+    let v = BASE[key] + (permMods[key] || 0);
+    for(const f of activeFx){ const m = POWERUPS[f.type].mod; if(m && m[key]!=null) v += m[key]; }
+    if(ab.servo){ if(key==='speed') v += momentum*SERVO_SPD; if(key==='fireDelay') v -= momentum*SERVO_RATE; }  // SERVO MOTOR
+    if(key==='fireDelay')   v = Math.max(4, v);     // clamp so fire rate stays sane
+    if(key==='speed')       v = Math.max(0.6, v);
+    if(key==='bulletSpeed') v = Math.max(1.5, v);
+    if(key==='damage')      v = Math.max(1, v);
+    return v;
+  }
+  function spreadCount(){ let s=1; for(const f of activeFx){ const sp=POWERUPS[f.type].spread; if(sp) s=Math.max(s,sp); } return s; }
+  function fxActive(flag){ return activeFx.some(f=>POWERUPS[f.type][flag]); }
+
+  function addLife(n){ lives = Math.min(MAX_LIVES, lives + n); syncHud(); }
+
+  // --- spawning ---
+  function dropPowerup(x, y, type){
+    const id = type || DROP_TYPES[Math.floor(Math.random()*DROP_TYPES.length)];
+    powerups.push({ x, y, vy:FALL_SPEED, type:id });
+  }
+  function maybeDrop(x, y){ if(Math.random() < DROP_CHANCE) dropPowerup(x, y); }
+
+  // --- apply a collected power-up ---
+  function applyPowerup(id){
+    const def = POWERUPS[id];
+    if(def.instant){ if(def.onPick) def.onPick(); return; }
+    const frames = Math.round(def.dur * 60);
+    const ex = activeFx.find(f=>f.type===id);
+    if(ex) ex.remaining = frames;          // refresh timer if already active
+    else   activeFx.push({ type:id, remaining:frames });
+  }
+
+  // --- per-frame update: fall, collect, expire ---
+  function updatePowerups(){
+    for(let i=powerups.length-1;i>=0;i--){
+      const p = powerups[i]; p.y += p.vy;
+      if(p.y > H+8){ powerups.splice(i,1); continue; }
+      // pickup is ~12x12 centered on (p.x,p.y); collect on overlap with the ship
+      if(Math.abs(p.x-player.x) < player.w/2 + 6 &&
+         p.y > player.y - 6 && p.y < player.y + player.h + 6){
+        applyPowerup(p.type);
+        spawnBurst(p.x, p.y, POWERUPS[p.type].color);
+        powerups.splice(i,1);
+      }
+    }
+    for(let i=activeFx.length-1;i>=0;i--){ if(--activeFx[i].remaining <= 0) activeFx.splice(i,1); }
+  }
+
+  // ---- draw ----
+  function drawGrid(){
+    ctx.fillStyle = C.bg; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for(let x=0;x<=W;x+=20){ ctx.moveTo(x+0.5,0); ctx.lineTo(x+0.5,H); }
+    for(let y=0;y<=H;y+=20){ ctx.moveTo(0,y+0.5); ctx.lineTo(W,y+0.5); }
+    ctx.stroke();
+  }
+
+  // tiny 3x5 pixel font for the power-up icon letters (POWER-UP SYSTEM)
+  const FONT = {
+    S:["XXX","X..","XXX","..X","XXX"], R:["XXX","X.X","XXX","XX.","X.X"],
+    D:["XX.","X.X","X.X","X.X","XX."], B:["XX.","X.X","XX.","X.X","XX."],
+    M:["X.X","XXX","XXX","X.X","X.X"], K:["X.X","XX.","X..","XX.","X.X"],
+    H:["X.X","X.X","XXX","X.X","X.X"], "+":["...",".X.","XXX",".X.","..."]
+  };
+  function drawGlyph(letter, x, y, px, color){ const g = FONT[letter]; if(g) drawSprite(g, x, y, color, px); }
+
+  // POWER-UP SYSTEM: falling pickups (colored capsule + letter)
+  function drawPowerups(){
+    for(const p of powerups){
+      const def = POWERUPS[p.type], x = Math.round(p.x)-6, y = Math.round(p.y)-6;
+      ctx.fillStyle = def.color;                 ctx.fillRect(x, y, 12, 12);
+      ctx.fillStyle = 'rgba(255,255,255,0.75)';  ctx.fillRect(x, y, 12, 1);   // top highlight
+      drawGlyph(def.letter, x+3, y+3, 2, '#0a0f1e');                          // dark letter
+    }
+  }
+
+  // POWER-UP SYSTEM: active-effect chips along the bottom-left, with a draining timer bar
+  function drawFxHud(){
+    let cx = 6;
+    for(const f of activeFx){
+      const def = POWERUPS[f.type];
+      ctx.fillStyle = def.color; ctx.fillRect(cx, H-13, 10, 10);
+      drawGlyph(def.letter, cx+2, H-11, 1, '#0a0f1e');
+      const pct = f.remaining / Math.round(def.dur*60);
+      ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(cx, H-2, 10*pct, 1);
+      cx += 14;
+    }
+  }
+
+  // POWER-UP SYSTEM: pulsing bracket around the ship while a shield is active
+  function drawShield(){
+    if(!fxActive('shield')) return;
+    const x = Math.round(player.x - player.w/2) - 2, y = Math.round(player.y) - 2;
+    ctx.strokeStyle = C.cyan; ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.45 + 0.35*Math.sin(animTick*0.3);
+    ctx.strokeRect(x+0.5, y+0.5, player.w+4, player.h+4);
+    ctx.globalAlpha = 1;
+  }
+
+  // blit a pixel-art sprite with integer alignment so blocks stay crisp
+  function drawSprite(rows, x, y, color, px){
+    px = px || PX;
+    ctx.fillStyle = color;
+    x = Math.round(x); y = Math.round(y);
+    for(let r=0;r<rows.length;r++){
+      const row = rows[r];
+      for(let c=0;c<row.length;c++){
+        if(row.charCodeAt(c) === 88 /* 'X' */) ctx.fillRect(x + c*px, y + r*px, px, px);
+      }
+    }
+  }
+
+  function drawInvader(v){
+    const frame = (Math.floor(animTick/22) & 1) ? DRONE_B : DRONE_A;
+    drawSprite(frame, v.x, v.y, v.row===0 ? C.cyan : C.red);
+  }
+
+  function drawBoss(){
+    const b = boss;
+    drawSprite(BOSS, b.x - b.w/2, b.y, b.hit>0 ? '#ffffff' : C.red, BOSS_PX);
+    // cyan sensor eyes
+    ctx.fillStyle = C.cyan;
+    ctx.fillRect(Math.round(b.x) - 12, Math.round(b.y) + 9, BOSS_PX, BOSS_PX);
+    ctx.fillRect(Math.round(b.x) + 9,  Math.round(b.y) + 9, BOSS_PX, BOSS_PX);
+    // health bar
+    const bw = W-40, pct = Math.max(0, b.hp/b.maxHp);
+    ctx.fillStyle = 'rgba(255,255,255,0.10)'; ctx.fillRect(20, 8, bw, 4);
+    ctx.fillStyle = pct>0.5 ? C.cyan : C.red;   ctx.fillRect(20, 8, bw*pct, 4);
+  }
+
+  function drawPlayer(){
+    const px = Math.round(player.x), py = Math.round(player.y);
+    // KAMİKAZE / dash streak while invulnerable-moving
+    if(kami || dashTime>0){
+      ctx.globalAlpha = 0.35; ctx.fillStyle = C.cyan;
+      for(let s=1;s<=4;s++) ctx.fillRect(px-3, py + player.h + s*4, 6, 2);
+      ctx.globalAlpha = 1;
+    }
+    // GÜÇLENDİRİLMİŞ GÖVDE armor pips (small cyan squares above the ship)
+    for(let a=0;a<armorHp;a++){ ctx.fillStyle = '#8ff0ff'; ctx.fillRect(px-6 + a*6, py-6, 3, 3); }
+    // ship — tinted lighter while invulnerable (dash / kamikaze)
+    drawSprite(SHIP, player.x - player.w/2, player.y, invuln>0 ? '#bff4ff' : C.cyan);
+    ctx.fillStyle = C.red;
+    ctx.fillRect(px - 1, py + PX, PX, PX);   // cockpit
+    // reflect shield ring
+    if(reflectTime>0){
+      ctx.strokeStyle = '#8ff0ff'; ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.4 + 0.4*Math.sin(animTick*0.4);
+      ctx.beginPath(); ctx.arc(px, py + player.h/2, 15, 0, Math.PI*2); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    // GÜÇ DAĞITIM ÜNİTESİ charge indicator (grows at the nose; bright when full)
+    if(ab.charge && charge>0){
+      const full = charge>=CHARGE_MAX, r = 1 + (charge/CHARGE_MAX)*3;
+      ctx.fillStyle = full ? '#ffffff' : '#ffd166';
+      ctx.fillRect(px - Math.round(r), py - 6 - Math.round(r), Math.round(r*2), Math.round(r*2));
+    }
+    // SERVO MOTOR speed lines when moving fast
+    if(ab.servo && momentum>0.25){
+      ctx.globalAlpha = momentum*0.5; ctx.fillStyle = C.cyan;
+      ctx.fillRect(px-8, py+player.h+2, 3, 2); ctx.fillRect(px+5, py+player.h+2, 3, 2);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // the fly-off UAV + fading trail shown during the between-level cinematic
+  function drawFlyoff(){
+    for(let i=0;i<uav.trail.length;i++){
+      const p = uav.trail[i];
+      ctx.globalAlpha = (i/uav.trail.length) * 0.6;
+      ctx.fillStyle = C.cyan;
+      ctx.fillRect(Math.round(p.x)-1, Math.round(p.y), 2, 4);
+    }
+    ctx.globalAlpha = 1;
+    drawSprite(SHIP, uav.x - SW/2, uav.y, C.cyan);
+  }
+
+  function draw(){
+    drawGrid();
+    // baseline
+    ctx.fillStyle='rgba(56,224,255,0.18)';
+    ctx.fillRect(0, player.y+player.h+3, W, 1);
+
+    for(const v of invaders) if(v.alive) drawInvader(v);
+    if(boss) drawBoss();
+    drawPowerups();   // POWER-UP SYSTEM
+
+    for(const s of shots){
+      ctx.fillStyle = s.charged ? '#ffffff' : C.shot;   // charged shots are bigger/brighter
+      ctx.fillRect(s.x - s.w/2, s.y, s.w, s.h);
+    }
+    ctx.fillStyle = C.ebolt;
+    for(const b of ebolts) ctx.fillRect(b.x-1, b.y, b.w, b.h);
+
+    for(const p of particles){
+      ctx.globalAlpha = Math.max(0, p.life/28);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, 2, 2);
+    }
+    ctx.globalAlpha = 1;
+
+    // during the fly-off/fade, show the departing UAV; otherwise the stationary ship
+    const flying = state==='cine' && cine && (cine.phase==='flyoff' || cine.phase==='fade');
+    if(flying){ if(uav) drawFlyoff(); }
+    else if(state!=='menu'){ drawShield(); drawPlayer(); }   // POWER-UP SYSTEM: shield bracket
+    drawFxHud();   // POWER-UP SYSTEM: active-effect chips
+
+    if(fade>0){ ctx.fillStyle = 'rgba(4,7,14,'+fade+')'; ctx.fillRect(0,0,W,H); }   // transition fade-to-black
+  }
+
+  // ---- loop (fixed timestep) ----
+  let last = performance.now(), acc = 0; const STEP = 1000/60;
+  function loop(now){
+    acc += now-last; last=now;
+    if(acc>200) acc=200;
+    while(acc>=STEP){ update(); acc-=STEP; }
+    draw();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // initial menu screen
+  showMenu();
+  draw();
+})();
+</script>
+</body>
+</html>
