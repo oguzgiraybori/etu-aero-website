@@ -58,7 +58,7 @@ input::placeholder,textarea::placeholder{color:#5c6391;}
 <section data-screen-label="Sponsorluk başlık" style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,6vw,90px) clamp(40px,6vh,70px);background:radial-gradient(120% 100% at 50% 0%,#0a2740 0%,#0a1424 50%,#070b16 100%);overflow:hidden;">
   <div data-parallax="0.05" style="position:absolute;top:30px;right:-2vw;font-family:'Chakra Petch';font-weight:900;font-size:clamp(110px,24vw,330px);color:rgba(56,224,255,0.04);line-height:.8;pointer-events:none;transform:skewX(-9deg);">+</div>
   <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;">
-    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>04 / DESTEKÇİLER</span></div>
+    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>DESTEKÇİLER</span></div>
     <div style="margin-top:14px;">{{ tTitle }}</div>
     <p style="margin:22px 0 30px;max-width:60ch;font-size:clamp(16px,1.9vw,21px);line-height:1.6;color:#AEB6D6;font-weight:300;">Markanızı geleceğin mühendislerinin ve milli teknoloji hamlesinin yanına yazın. Zifir'i birlikte havalandıralım.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -168,10 +168,11 @@ input::placeholder,textarea::placeholder{color:#5c6391;}
       </div>
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// SAYFALAR</div>
-        <a href="Alacakaranlik.dc.html#zifir" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
-        <a href="Alacakaranlik.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
+        <a href="Alacakaranlik.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Ana Sayfa</a>
+        <a href="Hakkimizda.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Hakkımızda</a>
+        <a href="Zifir.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
         <a href="Takim.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Takım</a>
-        <a href="Alacakaranlik.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Ana Sayfa</a>
+        <a href="oyun.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Test Uçuşu</a>
       </div>
     </div>
     <div style="margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
@@ -292,12 +293,9 @@ class Component extends DCLogic {
   renderVals(){
     const mob = this.state.vw < 880;
     const links = [
-      { t:'HAKKIMIZDA', h:'Alacakaranlik.dc.html#hakkimizda' },
-      { t:'ZİFİR', h:'Alacakaranlik.dc.html#zifir' },
-      { t:'YARIŞMA', h:'Alacakaranlik.dc.html#yarisma' },
+      { t:'HAKKIMIZDA', h:'Hakkimizda.dc.html' },
+      { t:'ZİFİR', h:'Zifir.dc.html' },
       { t:'SPONSORLUK', h:'Sponsorluk.dc.html' },
-      { t:'HABERLER', h:'Alacakaranlik.dc.html#haberler' },
-      { t:'GALERİ', h:'Alacakaranlik.dc.html#galeri' },
       { t:'TAKIM', h:'Takim.dc.html' },
       { t:'TEST UÇUŞU', h:'oyun.html' }
     ];

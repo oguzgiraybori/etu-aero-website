@@ -1,7 +1,6 @@
-# Alacakaranlık — Konsept 01: Koyu Komuta Merkezi
+# Alacakaranlık — Koyu Komuta Merkezi
 
 Teknofest **Savaşan İHA** takımı Alacakaranlık ve İHA'sı **Zifir** için tanıtım + sponsor web sitesi.
-Bu klasör, 5 konsept arasından **01 — Koyu Komuta Merkezi** yönünün tam sayfa uygulamasıdır.
 
 ## Önizleme
 
@@ -16,22 +15,32 @@ Bu klasör, 5 konsept arasından **01 — Koyu Komuta Merkezi** yönünün tam s
 - **Tipografi:** Chakra Petch (başlık) + IBM Plex Mono (telemetri/etiket) + Manrope (gövde).
 - **Animasyon:** Yüksek — HUD tarama çizgisi, nişangah pulse, hareketli grid, blink. `prefers-reduced-motion` ile kapatılır.
 
-## Bölümler
+## Sayfa yapısı
 
-Tek sayfa, sticky nav ve smooth-scroll anchor'larla:
-`Hero` (+ telemetri şeridi) · `Hakkımızda` · `Takım` (8 kart) · `Sponsorlar` (logo gridi + Gümüş/Altın/Platin paketleri) · `İletişim` (form) · Footer.
+Site çok sayfalıdır; tüm sayfalar ortak sticky nav + footer kullanır:
+
+| Sayfa | Dosya | İçerik |
+|---|---|---|
+| Ana Sayfa | `Alacakaranlik.dc.html` | 3D hero, manifesto, Zifir & takım teaser'ları, sponsor çağrısı |
+| Hakkımızda | `Hakkimizda.dc.html` | Takım tanıtımı, istatistikler, haberler, galeri |
+| Zifir | `Zifir.dc.html` | İHA teknik veriler, kabiliyetler, yarışma yol haritası (`#yarisma`) |
+| Takım | `Takim.dc.html` | Üye kartları, departman filtresi, detay overlay |
+| Sponsorluk | `Sponsorluk.dc.html` | Neden sponsor, paketler (`#paketler`), iletişim formu (`#iletisim`) |
+| Test Uçuşu | `oyun.html` | Mini oyun |
+
+`index.html` ana sayfaya yönlendirir.
 
 ## İçerik / placeholder
 
-Gerçek veriyle değiştirilecek alanlar `Alacakaranlik.dc.html` içindeki `renderVals()` bloğunda:
-- `members[]` — üye ad + rol (şu an "Ad Soyad" placeholder).
-- `sponsors[]` — 10 boş sponsor slotu.
-- Görseller: `[ İHA / DRONE GÖRSELİ ]`, `[ FOTO ]` placeholder kutuları.
+Gerçek veriyle değiştirilecek alanlar:
+- `Takim.dc.html` → `roster()` — üye bilgileri.
+- `Sponsorluk.dc.html` — sponsor slotları.
+- Görseller: haber kartları ve galeri `GÖRSEL` placeholder kutuları.
 - Logo dosyaları (`assets/etu-*.png`) hâlâ eski "ETU AERO" markasını taşıyor; yeni amblem ve wordmark ile değiştirilmeli.
 
 ## Çalıştırma
 
-`Alacakaranlik.dc.html` bu tasarım ortamının Design Component formatıdır (inline-style). `index.html` bu sayfaya yönlendirir. Üretime taşırken kök dizindeki **`handoff.md`** dosyasındaki teknik notları izleyin (stack, responsive breakpoint'ler, form backend, SEO).
+`*.dc.html` dosyaları bu tasarım ortamının Design Component formatıdır (inline-style, `support.js` ile çalışır). Üretime taşırken kök dizindeki **`handoff.md`** dosyasındaki teknik notları izleyin (stack, responsive breakpoint'ler, form backend, SEO).
 
 ---
 © 2026 Alacakaranlık · TOBB ETÜ · Savaşan İHA

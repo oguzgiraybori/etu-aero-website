@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;background:#070b16;}
+body{margin:0;background:#070b16;color:#EAECF5;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:#d2232a;color:#fff;}
+body::-webkit-scrollbar{width:10px;}
+body::-webkit-scrollbar-track{background:#070b16;}
+body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#070b16;min-height:100vh;">
+
+<div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:rgba(255,255,255,0.05);"><div ref="{{ progressRef }}" style="height:100%;width:0%;background:#38e0ff;box-shadow:0 0 8px rgba(56,224,255,.4);"></div></div>
+
+<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,5vw,54px);border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s;background:rgba(7,11,22,0.82);backdrop-filter:blur(14px);">
+  <a href="Alacakaranlik.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <img src="assets/etu-emblem.png" alt="ALACAKARANLIK amblemi" style="height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(56,224,255,.5));">
+    <img src="assets/etu-wordmark-light.png" alt="ALACAKARANLIK" style="height:13px;width:auto;opacity:.9;">
+  </a>
+  <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:4px;">
+      <sc-for list="{{ links }}" as="lk" hint-placeholder-count="5">
+        <a href="{{ lk.h }}" style="text-decoration:none;color:#AEB6D6;font-family:'Manrope';font-weight:600;font-size:13.5px;letter-spacing:.06em;padding:9px 13px;border-radius:4px;transition:color .25s,background .25s;" style-hover="color:#FFFFFF;background:rgba(56,224,255,0.12);">{{ lk.t }}</a>
+      </sc-for>
+      <a href="Sponsorluk.dc.html#iletisim" style="margin-left:8px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:14px;letter-spacing:.1em;color:#fff;padding:11px 20px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:0 6px 22px rgba(210,35,42,.3);transition:filter .25s,transform .25s;" style-hover="filter:brightness(1.15);transform:translateY(-1px);">SPONSOR OL</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menü" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:22px;line-height:1;width:46px;height:46px;border-radius:4px;cursor:pointer;">≡</button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:160;background:rgba(7,11,22,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:88px clamp(22px,8vw,60px) 40px;gap:2px;">
+    <button onClick="{{ toggleMenu }}" aria-label="Kapat" style="position:absolute;top:22px;right:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:20px;width:46px;height:46px;border-radius:4px;cursor:pointer;">✕</button>
+    <sc-for list="{{ links }}" as="lk" hint-placeholder-count="5">
+      <a href="{{ lk.h }}" onClick="{{ toggleMenu }}" style="font-family:'Chakra Petch';font-size:30px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:#EAECF5;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.07);">{{ lk.t }}</a>
+    </sc-for>
+    <a href="Sponsorluk.dc.html#iletisim" onClick="{{ toggleMenu }}" style="margin-top:22px;text-align:center;font-family:'Chakra Petch';font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;padding:16px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);text-decoration:none;">SPONSOR OL →</a>
+  </div>
+</sc-if>
+
+<!-- HEADER + ABOUT -->
+<section data-screen-label="Hakkımızda" data-counters="1" style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,6vw,90px) clamp(60px,9vh,100px);background:radial-gradient(120% 100% at 50% 0%,#0a2740 0%,#0a1424 50%,#070b16 100%);overflow:hidden;">
+  <div data-parallax="0.05" style="position:absolute;top:40px;right:-2vw;font-family:'Chakra Petch';font-weight:900;font-size:clamp(120px,26vw,340px);color:rgba(56,224,255,0.04);line-height:.8;pointer-events:none;transform:skewX(-9deg);">2026</div>
+  <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>TAKIM</span></div>
+    <div style="margin-top:14px;">{{ tAbout }}</div>
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:start;">
+      <p data-reveal="up" style="margin:0;font-size:clamp(17px,1.9vw,22px);line-height:1.6;color:#D4DAF0;font-weight:300;">Alacakaranlık, insansız hava araçları üzerine çalışan, yeni kurulmuş bir üniversite takımıdır.</p>
+      <p data-reveal="right" data-delay="120" style="margin:0;font-size:16px;line-height:1.7;color:#9AA2C2;font-weight:300;">Dört departman; tek bir hedef. Aerodinamikten otonom yazılıma, görüntü işlemeden saha operasyonuna kadar her disiplini bir araya getirerek TEKNOFEST 2027 Savaşan İHA yarışmasına hazırlanıyoruz. Zifir, bu ortak aklın havalanan ilk eseri olacak.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
+      <div data-reveal="up" style="padding:32px 24px;background:#0a0f1e;"><div style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="2026">0</span></div><div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">KURULUŞ</div></div>
+      <div data-reveal="up" data-delay="80" style="padding:32px 24px;background:#0a0f1e;"><div style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="4">0</span></div><div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">DEPARTMAN</div></div>
+      <div data-reveal="up" data-delay="160" style="padding:32px 24px;background:#0a0f1e;"><div style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(40px,5vw,62px);color:#fff;line-height:1;"><span data-count="14">0</span></div><div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">ÜYE</div></div>
+      <div data-reveal="up" data-delay="240" style="padding:32px 24px;background:#0a0f1e;"><div style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(40px,5vw,62px);color:#d2232a;line-height:1;"><span data-count="2027">0</span></div><div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7d88b5;">HEDEF · TEKNOFEST</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HABERLER -->
+<section id="haberler" data-screen-label="Haberler" style="position:relative;padding:clamp(70px,11vh,130px) clamp(20px,6vw,90px);background:#0a0f1e;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div data-reveal="up" style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:50px;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>GÜNCEL</span></div>
+        <div style="margin-top:14px;">{{ tNews }}</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <article data-reveal="up" style="border:1px solid rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;background:rgba(255,255,255,0.012);">
+        <div style="height:160px;display:flex;align-items:center;justify-content:center;background:rgba(56,224,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
+        <div style="padding:24px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#38e0ff;">DUYURU · HAZ 2026</div><h3 style="margin:12px 0 0;font-family:'Chakra Petch';font-weight:700;font-size:24px;color:#EAECF5;">Alacakaranlık resmen kuruldu</h3><p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Savaşan İHA yolculuğumuz başladı. Çekirdek ekip bir araya geldi.</p></div>
+      </article>
+      <article data-reveal="up" data-delay="90" style="border:1px solid rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;background:rgba(255,255,255,0.012);">
+        <div style="height:160px;display:flex;align-items:center;justify-content:center;background:rgba(56,224,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
+        <div style="padding:24px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#38e0ff;">EKİP · 2026</div><h3 style="margin:12px 0 0;font-family:'Chakra Petch';font-weight:700;font-size:24px;color:#EAECF5;">Departmanlar belirlendi</h3><p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Dört departman: yönetim, bilgisayar/yazılım, elektrik-elektronik, makine.</p></div>
+      </article>
+      <article data-reveal="up" data-delay="180" style="border:1px solid rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;background:rgba(255,255,255,0.012);">
+        <div style="height:160px;display:flex;align-items:center;justify-content:center;background:rgba(56,224,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;">GÖRSEL</span></div>
+        <div style="padding:24px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#38e0ff;">YOL HARİTASI · 2027</div><h3 style="margin:12px 0 0;font-family:'Chakra Petch';font-weight:700;font-size:24px;color:#EAECF5;">Hedef: TEKNOFEST 2027</h3><p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#9AA2C2;font-weight:300;">Tasarım ve üretim takvimi çıkarıldı. Zifir yola çıkıyor.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALERİ -->
+<section id="galeri" data-screen-label="Galeri" style="position:relative;padding:clamp(70px,11vh,130px) clamp(20px,6vw,90px);background:#070b16;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div data-reveal="up" style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:50px;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>ARŞİV</span></div>
+        <div style="margin-top:14px;">{{ tGallery }}</div>
+      </div>
+      <p style="max-width:36ch;margin:0;font-size:15px;line-height:1.6;color:#9AA2C2;font-weight:300;">Atölyeden sahaya — yolculuğumuzun kareleri burada birikecek.</p>
+    </div>
+    <div data-reveal="scale" style="position:relative;border:1px dashed rgba(56,224,255,0.32);border-radius:4px;overflow:hidden;background:radial-gradient(120% 130% at 50% 0%,rgba(56,224,255,0.08),rgba(255,255,255,0.008));padding:clamp(48px,9vw,96px) clamp(24px,6vw,64px);display:flex;flex-direction:column;align-items:center;text-align:center;">
+      <div style="position:relative;width:70px;height:70px;border-radius:50%;border:1px solid rgba(110,205,235,.3);display:flex;align-items:center;justify-content:center;color:#38e0ff;margin-bottom:26px;">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
+      </div>
+      <div style="position:relative;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.32em;color:#38e0ff;margin-bottom:14px;">// ARŞİV OLUŞUYOR</div>
+      <div style="position:relative;font-family:'Chakra Petch';font-weight:800;font-size:clamp(26px,4vw,44px);line-height:1.02;color:#EAECF5;transform:skewX(-5deg);max-width:20ch;">İlk kareler yolda</div>
+      <p style="position:relative;margin:16px 0 0;max-width:52ch;font-size:clamp(15px,1.8vw,18px);line-height:1.6;color:#9AA2C2;font-weight:300;">Atölye çalışmaları, testler ve saha görüntüleri burada birikecek. Zifir'in yolculuğunu kare kare belgeliyoruz — çok yakında.</p>
+      <div style="position:relative;margin-top:30px;display:flex;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#38e0ff;box-shadow:0 0 10px #38e0ff;"></span>
+        <span style="width:8px;height:8px;border-radius:50%;background:rgba(56,224,255,0.35);"></span>
+        <span style="width:8px;height:8px;border-radius:50%;background:rgba(56,224,255,0.18);"></span>
+      </div>
+    </div>
+
+    <div data-reveal="up" style="margin-top:48px;text-align:center;">
+      <a href="Takim.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#EAECF5;padding:15px 32px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;transition:background .25s,border-color .25s;" style-hover="background:rgba(56,224,255,0.12);border-color:rgba(56,224,255,0.5);">EKİBİ TANI <span style="font-size:1.2em;">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="İletişim" style="position:relative;padding:clamp(60px,8vh,100px) clamp(20px,6vw,90px) 36px;background:#070b16;border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="width:100%;max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
+      <div>
+        <img src="assets/etu-logo-light.png" alt="ALACAKARANLIK" style="height:74px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(56,224,255,.25));">
+        <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">İnsansız hava araçları takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// İLETİŞİM</div>
+        <div style="font-family:'Chakra Petch';font-weight:700;font-size:18px;color:#EAECF5;">Eren Can Dönertaş</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:#38e0ff;margin:4px 0 12px;">TAKIM KAPTANI</div>
+        <a href="mailto:eren208can@gmail.com" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:7px;">eren208can@gmail.com</a>
+        <a href="tel:+905425623440" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:12px;">0 542 562 34 40</a>
+        <div style="font-size:14px;color:#7d88b5;line-height:1.7;">TOBB ETU · Ankara<br>Türkiye</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// SAYFALAR</div>
+        <a href="Alacakaranlik.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Ana Sayfa</a>
+        <a href="Zifir.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
+        <a href="Zifir.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
+        <a href="Sponsorluk.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Sponsorluk</a>
+        <a href="Takim.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Takım</a>
+        <a href="oyun.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Test Uçuşu</a>
+      </div>
+    </div>
+    <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
+      <span>© {{ year }} ALACAKARANLIK · TÜM HAKLARI SAKLIDIR</span>
+      <span>ZİFİR · GÖKLERİN YENİ GÖLGESİ</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: (typeof window !== 'undefined' ? window.innerWidth : 1280), menuOpen: false };
+  rootRef = React.createRef();
+  navRef = React.createRef();
+  progressRef = React.createRef();
+
+  // ---- static section heading ----
+  ht(text, o){
+    o = o || {};
+    const st = {
+      display:'inline-block',
+      fontFamily:"'Chakra Petch', system-ui, sans-serif",
+      fontWeight: o.weight || 800,
+      fontSize: o.size || 'clamp(40px,7vw,98px)',
+      lineHeight: o.lh || 0.95,
+      letterSpacing: o.ls || '-0.01em',
+      color: o.color || '#EAECF5',
+      transform: 'skewX(' + (o.skew != null ? o.skew : -6) + 'deg)'
+    };
+    return React.createElement('span', { style: st }, text);
+  }
+
+  componentDidMount(){
+    this._disposers = [];
+    this.initReveal();
+    this.initCounters();
+    const root = this.rootRef.current;
+    this._para = root ? Array.prototype.slice.call(root.querySelectorAll('[data-parallax]')).map(el => ({ el, k: parseFloat(el.getAttribute('data-parallax')) || 0.08 })) : [];
+    this._onScroll = () => { if (this._tk) return; this._tk = requestAnimationFrame(() => { this._tk = null; this.handleScroll(); }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => { if (Math.abs(window.innerWidth - this.state.vw) > 40) this.setState({ vw: window.innerWidth }); };
+    window.addEventListener('resize', this._onResize);
+    this.handleScroll();
+  }
+  componentDidUpdate(){ this.initReveal(); }
+  componentWillUnmount(){
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    (this._disposers || []).forEach(fn => { try { fn(); } catch(e){} });
+  }
+
+  initReveal(){
+    const root = this.rootRef.current; if (!root) return;
+    const els = root.querySelectorAll('[data-reveal]:not([data-revealed])');
+    if (!els.length) return;
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting){ const el = e.target; const d = parseFloat(el.getAttribute('data-delay')||'0'); el.style.transitionDelay = d+'ms'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(el => {
+      el.setAttribute('data-revealed','1');
+      el.style.willChange = 'opacity,transform';
+      el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)';
+      const dir = el.getAttribute('data-reveal') || 'up';
+      el.style.opacity = '0';
+      el.style.transform = dir === 'right' ? 'translateX(28px)' : dir === 'left' ? 'translateX(-28px)' : dir === 'scale' ? 'scale(.96)' : 'translateY(28px)';
+      io.observe(el);
+    });
+    this._disposers.push(() => io.disconnect());
+  }
+  handleScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    const n = this.navRef.current;
+    if (n){ const s = y > 24; n.style.borderBottomColor = s ? 'rgba(255,255,255,0.07)' : 'transparent'; n.style.paddingTop = s ? '12px' : '18px'; n.style.paddingBottom = s ? '12px' : '18px'; }
+    const p = this.progressRef.current;
+    if (p){ const max = document.documentElement.scrollHeight - window.innerHeight; p.style.width = (max>0 ? (y/max*100) : 0) + '%'; }
+    const vh = window.innerHeight;
+    (this._para || []).forEach(o => { const r = o.el.getBoundingClientRect(); const c = r.top + r.height/2 - vh/2; o.el.style.transform = 'skewX(-9deg) translateY(' + (-c*o.k) + 'px)'; });
+  }
+
+  // ---------- counters ----------
+  initCounters(){
+    const root = this.rootRef.current; if (!root) return;
+    const sec = root.querySelector('[data-counters]'); if (!sec) return;
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting){ this.runCount(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.2 });
+    io.observe(sec);
+    this._disposers.push(() => io.disconnect());
+  }
+  runCount(sec){
+    const nums = sec.querySelectorAll('[data-count]');
+    nums.forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      const dur = 1500, t0 = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - t0)/dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * e).toString();
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  renderVals(){
+    const mob = this.state.vw < 880;
+    const links = [
+      { t:'HAKKIMIZDA', h:'Hakkimizda.dc.html' },
+      { t:'ZİFİR', h:'Zifir.dc.html' },
+      { t:'SPONSORLUK', h:'Sponsorluk.dc.html' },
+      { t:'TAKIM', h:'Takim.dc.html' },
+      { t:'TEST UÇUŞU', h:'oyun.html' }
+    ];
+    return {
+      rootRef: this.rootRef, navRef: this.navRef, progressRef: this.progressRef,
+      isMobile: mob, desktopNav: !mob, menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      links, year: 2026,
+      tAbout: this.ht('HAKKIMIZDA', { size:'clamp(42px,7.5vw,108px)', color:'#FFFFFF', ls:'-0.02em' }),
+      tNews: this.ht('HABERLER', { size:'clamp(34px,5.5vw,78px)' }),
+      tGallery: this.ht('GALERİ', { size:'clamp(34px,5.5vw,78px)' })
+    };
+  }
+}
+</script>
+</body>
+</html>
