@@ -1,8 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zifir — İHA · Alacakaranlık</title>
+<meta name="description" content="Zifir, Alacakaranlık'ın yeni nesil Savaşan İHA'sı. Otonom uçuş, hedef tespiti ve kilitlenme, görüntü işleme kabiliyetleri kademeli olarak açıklanacak.">
+<meta name="theme-color" content="#070b16">
+<link rel="icon" type="image/png" href="assets/alacakaranliklogo.png">
+<link rel="apple-touch-icon" href="assets/alacakaranliklogo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alacakaranlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:url" content="https://alacakaranlikiha.com/Zifir.dc.html">
+<link rel="canonical" href="https://alacakaranlikiha.com/Zifir.dc.html">
+<meta property="og:title" content="Zifir — İHA · Alacakaranlık">
+<meta property="og:description" content="Alacakaranlık'ın yeni nesil Savaşan İHA'sı. Teknik veriler kademeli olarak açıklanacak.">
+<meta property="og:image" content="https://alacakaranlikiha.com/assets/alacakaranliklogo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zifir — İHA · Alacakaranlık">
+<meta name="twitter:description" content="Alacakaranlık'ın yeni nesil Savaşan İHA'sı. Teknik veriler kademeli olarak açıklanacak.">
+<meta name="twitter:image" content="https://alacakaranlikiha.com/assets/alacakaranliklogo.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -20,6 +37,12 @@ body{margin:0;background:#070b16;color:#EAECF5;font-family:'Manrope',system-ui,s
 body::-webkit-scrollbar{width:10px;}
 body::-webkit-scrollbar-track{background:#070b16;}
 body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
+/* yarışma yol haritası — responsive, yatay kaydırma yok */
+[data-tl]{flex-wrap:wrap;}
+[data-tl] > [data-tl-step]{flex:0 0 50%;margin-bottom:30px;}
+[data-tl-line]{display:none;}
+@media (min-width:620px){[data-tl] > [data-tl-step]{flex:0 0 33.333%;}}
+@media (min-width:960px){[data-tl]{flex-wrap:nowrap;}[data-tl] > [data-tl-step]{flex:1 1 0;min-width:0;margin-bottom:0;}[data-tl-line]{display:block;}}
 </style>
 </helmet>
 
@@ -101,15 +124,40 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
       <p style="max-width:46ch;margin:0;font-size:16px;line-height:1.6;color:#9AA2C2;font-weight:300;">İHA'lar sahada birbirini otonom olarak tespit eder, kilitlenir ve görüntü işleme ile angaje olur. İnsan müdahalesi yok; karar veren makinedir.</p>
     </div>
 
-    <div style="overflow-x:auto;padding-bottom:14px;">
-      <div data-reveal="up" style="display:flex;min-width:max-content;gap:0;position:relative;padding-top:30px;">
-        <div style="position:absolute;top:36px;left:40px;right:40px;height:2px;background:linear-gradient(90deg,#38e0ff 0%,#d2232a 20%,rgba(255,255,255,0.08) 20%);"></div>
-        <div style="position:relative;width:200px;padding:0 18px;"><div style="position:absolute;top:0;left:40px;width:14px;height:14px;border-radius:50%;background:#38e0ff;box-shadow:0 0 16px rgba(56,224,255,.8);"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#38e0ff;">2026 · TAMAMLANDI</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">TAKIM KURULUŞU</div></div>
-        <div style="position:relative;width:200px;padding:0 18px;"><div style="position:absolute;top:-3px;left:40px;width:20px;height:20px;border-radius:50%;background:#d2232a;box-shadow:0 0 20px #d2232a;animation:recPulse 1.6s infinite;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d2232a;">2026–27 · SIRADAKİ</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">BAŞVURU</div></div>
-        <div style="position:relative;width:200px;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">ÖTR</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">ÖN TASARIM RAPORU</div></div>
-        <div style="position:relative;width:200px;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">KTR</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">KRİTİK TASARIM RAPORU</div></div>
-        <div style="position:relative;width:200px;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">ÜRETİM</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">ÜRETİM & TEST</div></div>
-        <div style="position:relative;width:210px;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #d2232a;box-shadow:0 0 14px rgba(210,35,42,.5);"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d2232a;">TEKNOFEST 2027</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">FİNALLER</div></div>
+    <div ref="{{ cdRef }}" data-reveal="up" style="margin-bottom:50px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.28em;color:#6f7aa6;margin-bottom:16px;">// FİNALLERE KALAN SÜRE</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;max-width:620px;">
+        <div style="flex:1;min-width:84px;position:relative;padding:20px 12px;border:1px solid rgba(56,224,255,0.22);border-radius:4px;background:linear-gradient(180deg,rgba(56,224,255,0.06),rgba(255,255,255,0.012));text-align:center;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:40px;height:2px;background:linear-gradient(90deg,#38e0ff,transparent);"></div>
+          <div data-cd="d" style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1;color:#EAECF5;">—</div>
+          <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7d88b5;">GÜN</div>
+        </div>
+        <div style="flex:1;min-width:84px;position:relative;padding:20px 12px;border:1px solid rgba(255,255,255,0.08);border-radius:4px;background:linear-gradient(180deg,rgba(56,224,255,0.04),rgba(255,255,255,0.012));text-align:center;">
+          <div data-cd="h" style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1;color:#EAECF5;">—</div>
+          <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7d88b5;">SAAT</div>
+        </div>
+        <div style="flex:1;min-width:84px;position:relative;padding:20px 12px;border:1px solid rgba(255,255,255,0.08);border-radius:4px;background:linear-gradient(180deg,rgba(56,224,255,0.04),rgba(255,255,255,0.012));text-align:center;">
+          <div data-cd="m" style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1;color:#EAECF5;">—</div>
+          <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7d88b5;">DAKİKA</div>
+        </div>
+        <div style="flex:1;min-width:84px;position:relative;padding:20px 12px;border:1px solid rgba(210,35,42,0.3);border-radius:4px;background:linear-gradient(180deg,rgba(210,35,42,0.06),rgba(255,255,255,0.012));text-align:center;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:40px;height:2px;background:linear-gradient(90deg,#d2232a,transparent);"></div>
+          <div data-cd="s" style="font-family:'Chakra Petch';font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1;color:#EAECF5;">—</div>
+          <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7d88b5;">SANİYE</div>
+        </div>
+      </div>
+      <div data-cd-note="1" style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#4d5680;"></div>
+    </div>
+
+    <div style="padding-bottom:6px;">
+      <div data-reveal="up" data-tl="1" style="display:flex;gap:0;position:relative;padding-top:30px;">
+        <div data-tl-line="1" style="position:absolute;top:36px;left:40px;right:40px;height:2px;background:linear-gradient(90deg,#38e0ff 0%,#d2232a 20%,rgba(255,255,255,0.08) 20%);"></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:0;left:40px;width:14px;height:14px;border-radius:50%;background:#38e0ff;box-shadow:0 0 16px rgba(56,224,255,.8);"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#38e0ff;">2026 · TAMAMLANDI</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">TAKIM KURULUŞU</div></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:-3px;left:40px;width:20px;height:20px;border-radius:50%;background:#d2232a;box-shadow:0 0 20px #d2232a;animation:recPulse 1.6s infinite;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d2232a;">2026–27 · SIRADAKİ</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">BAŞVURU</div></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">ÖTR</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">ÖN TASARIM RAPORU</div></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">KTR</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">KRİTİK TASARIM RAPORU</div></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #3a4470;"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#5c6391;">ÜRETİM</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#8c95bd;">ÜRETİM & TEST</div></div>
+        <div data-tl-step="1" style="position:relative;padding:0 18px;"><div style="position:absolute;top:1px;left:40px;width:14px;height:14px;border-radius:50%;background:#0a0f1e;border:2px solid #d2232a;box-shadow:0 0 14px rgba(210,35,42,.5);"></div><div style="padding-top:42px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d2232a;">TEKNOFEST 2027</div><div style="margin-top:8px;font-family:'Chakra Petch';font-weight:700;font-size:21px;color:#EAECF5;">FİNALLER</div></div>
       </div>
     </div>
 
@@ -136,6 +184,15 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
         <div style="font-size:14px;color:#7d88b5;line-height:1.7;">TOBB ETU · Ankara<br>Türkiye</div>
       </div>
       <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// TAKİP ET</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://www.instagram.com/alacakaranlik.iha/" target="_blank" rel="noopener" aria-label="Instagram" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.8.22 2.43.47.66.25 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.63.42 1.36.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.8-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.9-1.77 1.15-.63.25-1.36.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.8-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.63-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.47-2.43.25-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.63-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.98.04-1.51.21-1.86.35-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.31.88-.35 1.86-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.98.21 1.51.35 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.31 1.86.35 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.98-.04 1.51-.21 1.86-.35.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.31-.88.35-1.86.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.98-.21-1.51-.35-1.86a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.35-.14-.88-.31-1.86-.35-1.05-.05-1.37-.06-4.04-.06zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+          <a href="https://x.com/ihalacakaranlik" target="_blank" rel="noopener" aria-label="X" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/company/et&#252;-aero" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.48 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.67 1.81-2.67 3.68V24H8V8.25z"/></svg></a>
+          <a href="https://www.youtube.com/@etuaero" target="_blank" rel="noopener" aria-label="YouTube" style="width:44px;height:44px;border:1px solid rgba(255,255,255,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#AEB6D6;text-decoration:none;transition:all .25s;" style-hover="background:rgba(56,224,255,0.14);border-color:#38e0ff;color:#fff;"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+        </div>
+      </div>
+      <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// SAYFALAR</div>
         <a href="Alacakaranlik.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Ana Sayfa</a>
         <a href="Hakkimizda.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Hakkımızda</a>
@@ -160,6 +217,10 @@ class Component extends DCLogic {
   rootRef = React.createRef();
   navRef = React.createRef();
   progressRef = React.createRef();
+  cdRef = React.createRef();
+
+  // TEKNOFEST 2027 finallerine geri sayım hedefi — TAHMİNİ tarih; kesinleşince bu satırı güncelleyin (yerel saat, +03:00).
+  countdownTarget = '2027-08-27T09:00:00+03:00';
 
   // ---- static section heading ----
   ht(text, o){
@@ -189,12 +250,37 @@ class Component extends DCLogic {
     this._onResize = () => { if (Math.abs(window.innerWidth - this.state.vw) > 40) this.setState({ vw: window.innerWidth }); };
     window.addEventListener('resize', this._onResize);
     this.handleScroll();
+    this.startCountdown();
   }
   componentDidUpdate(){ this.initReveal(); }
   componentWillUnmount(){
     if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
     if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._cdInt) clearInterval(this._cdInt);
     (this._disposers || []).forEach(fn => { try { fn(); } catch(e){} });
+  }
+
+  startCountdown(){
+    const target = new Date(this.countdownTarget).getTime();
+    if (isNaN(target)) return;
+    const months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+    const pad = (n) => (n < 10 ? '0' + n : '' + n);
+    const tick = () => {
+      const root = this.cdRef.current;
+      if (!root) return;
+      let diff = target - Date.now();
+      if (diff < 0) diff = 0;
+      const day = Math.floor(diff / 86400000); diff -= day * 86400000;
+      const hr  = Math.floor(diff / 3600000);  diff -= hr * 3600000;
+      const min = Math.floor(diff / 60000);     diff -= min * 60000;
+      const sec = Math.floor(diff / 1000);
+      const set = (u, v) => { const n = root.querySelector('[data-cd="' + u + '"]'); if (n) n.textContent = v; };
+      set('d', String(day)); set('h', pad(hr)); set('m', pad(min)); set('s', pad(sec));
+      const note = root.querySelector('[data-cd-note]');
+      if (note && !note.textContent){ const td = new Date(target); note.textContent = 'HEDEF · ' + pad(td.getDate()) + ' ' + months[td.getMonth()] + ' ' + td.getFullYear(); }
+    };
+    tick();
+    this._cdInt = setInterval(tick, 1000);
   }
 
   initReveal(){
@@ -234,7 +320,7 @@ class Component extends DCLogic {
       { t:'TEST UÇUŞU', h:'oyun.html' }
     ];
     return {
-      rootRef: this.rootRef, navRef: this.navRef, progressRef: this.progressRef,
+      rootRef: this.rootRef, navRef: this.navRef, progressRef: this.progressRef, cdRef: this.cdRef,
       isMobile: mob, desktopNav: !mob, menuOpen: this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       links, year: 2026,
