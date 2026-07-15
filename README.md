@@ -36,7 +36,7 @@ Gerçek veriyle değiştirilecek alanlar:
 - `Takim.dc.html` → `roster()` — üye bilgileri.
 - `Sponsorluk.dc.html` — sponsor slotları.
 - Görseller: haber kartları ve galeri `GÖRSEL` placeholder kutuları.
-- Logo dosyaları (`assets/etu-*.png`) hâlâ eski "ETU AERO" markasını taşıyor; yeni amblem ve wordmark ile değiştirilmeli.
+- Marka görselleri: `assets/alacakaranliklogo.png` (amblem) ve `assets/alacakaranlikisim.png` (wordmark). Eski ETU AERO logoları kaldırıldı.
 
 ## Çalıştırma
 
