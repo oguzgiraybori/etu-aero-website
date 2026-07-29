@@ -30,6 +30,27 @@ Site çok sayfalıdır; tüm sayfalar ortak sticky nav + footer kullanır:
 
 `index.html` ana sayfaya yönlendirir.
 
+## Mobil düzen
+
+Masaüstü düzeni satır içi stillerde (`style="..."`) durur ve **değişmez**. Mobil,
+ayrı dosyalar yerine her sayfanın `<helmet><style>` bloğunun sonundaki
+`MOBİL DÜZEN` katmanıyla kurulur:
+
+- Kancalar `data-m="..."` özniteliğidir (`nav`, `menu`, `btn`, `mcard`, `specs`, `cd`, …).
+  Satır içi stilleri ezmek gerektiği için kurallar `!important` kullanır.
+- Kırılım noktaları: **880px** (ana mobil düzen — hamburger menü de burada devreye girer),
+  **600px** (telefon: takım kartları liste satırına döner, hero HUD koordinatları gizlenir),
+  ayrıca yan çevrilmiş telefon için `max-height:560px and (orientation:landscape)`.
+- `viewport-fit=cover` + `env(safe-area-inset-*)` ile çentikli ekranlar desteklenir;
+  `prefers-reduced-motion` animasyonları kapatır.
+- Ana sayfadaki 3B sahne CSS ile ayarlanamaz; `frameCamera()` kamerayı en-boy
+  oranına göre kurar. Dikey ekranda kamera yükselip geriye çekilir (yatay görüş
+  alanı daralınca platform kadraj dışında kalıyordu), yatayda özgün çerçeveleme
+  korunur.
+
+Yeni bir bölüm eklerken: masaüstü için satır içi stili yaz, dar ekranda bozulan
+ne varsa `data-m` kancası verip `MOBİL DÜZEN` bloğunda düzelt.
+
 ## İçerik / placeholder
 
 Gerçek veriyle değiştirilecek alanlar:
