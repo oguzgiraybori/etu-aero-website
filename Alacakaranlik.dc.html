@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alacakaranlık — Zifir · Savaşan İHA Takımı</title>
 <meta name="description" content="TOBB ETÜ Alacakaranlık, TEKNOFEST 2027 Savaşan İHA takımı. Otonom İHA'mız Zifir ile gökyüzünün en sessiz, en hızlı gölgesi olmaya geliyoruz.">
 <meta name="theme-color" content="#070b16">
@@ -40,6 +40,73 @@ body{margin:0;background:#070b16;color:#EAECF5;font-family:'Manrope',system-ui,s
 body::-webkit-scrollbar{width:10px;}
 body::-webkit-scrollbar-track{background:#070b16;}
 body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
+
+/* ===================== MOBİL DÜZEN =====================
+   Masaüstü düzeni satır içi stillerde durur; burası yalnızca dar
+   ekranlarda devreye giren ayrı bir katmandır. Satır içi stilleri
+   ezmek için !important zorunlu. Kancalar: data-m="..." */
+@media (max-width:880px){
+  html{scroll-padding-top:72px;-webkit-text-size-adjust:100%;}
+  body{-webkit-tap-highlight-color:rgba(56,224,255,.16);}
+
+  /* üst bar */
+  [data-m="nav"]{padding-left:max(14px,env(safe-area-inset-left)) !important;padding-right:max(14px,env(safe-area-inset-right)) !important;gap:10px !important;}
+  [data-m="brand"]{gap:9px !important;min-width:0;}
+  [data-m="emblem"]{height:34px !important;}
+  [data-m="wordmark"]{height:11px !important;max-width:46vw;object-fit:contain;object-position:left center;}
+  [data-m="burger"]{flex:none;width:44px !important;height:44px !important;}
+
+  /* açılır menü */
+  [data-m="menu"]{overflow-y:auto !important;-webkit-overflow-scrolling:touch;padding:80px max(20px,env(safe-area-inset-left)) calc(28px + env(safe-area-inset-bottom)) !important;}
+  [data-m="menu"] a{font-size:26px !important;padding:15px 0 !important;}
+  [data-m="menu-cta"]{margin-top:20px !important;font-size:18px !important;}
+
+  /* hero: HUD nişangah köşelerinin altına iner, çakışma biter */
+  [data-m="hud"]{top:120px !important;padding-left:26px !important;padding-right:26px !important;letter-spacing:.1em !important;}
+  [data-m="hero-copy"]{background:linear-gradient(180deg,rgba(7,11,22,0) 0%,rgba(7,11,22,.55) 34%,rgba(7,11,22,.9) 70%) !important;padding-top:56px !important;}
+  [data-m="hero-eyebrow"]{margin-bottom:16px !important;letter-spacing:.3em !important;}
+  [data-m="hero-note"]{margin-top:16px !important;font-size:10px !important;letter-spacing:.18em !important;}
+  [data-m="hero-scroll"]{margin-top:18px !important;}
+
+  /* sponsor bandı */
+  [data-m="band-head"]{flex-direction:column !important;align-items:flex-start !important;gap:6px !important;margin-bottom:18px !important;}
+  [data-m="band-link"]{min-height:44px;display:inline-flex !important;align-items:center;}
+  [data-m="cta-card"]{padding:22px 20px !important;gap:18px !important;}
+  [data-m="cta-btn"]{width:100%;justify-content:center;flex:none;}
+
+  /* manifesto: 14ch kutusu dar ekranda başlığı kırpıyordu */
+  [data-m="manifesto"]{max-width:none !important;}
+
+  /* bölüm başlığı + yanındaki açıklama alt alta */
+  [data-m="head-row"]{gap:16px !important;margin-bottom:30px !important;}
+  [data-m="head-row"] > p{max-width:none !important;}
+
+  /* birincil butonlar tam genişlik */
+  [data-m="btn"]{width:100% !important;justify-content:center !important;text-align:center !important;
+    padding-left:18px !important;padding-right:18px !important;letter-spacing:.04em !important;font-size:15px !important;}
+
+  /* footer: dokunma hedefleri en az 44px */
+  [data-m="fgrid"]{gap:34px !important;}
+  [data-m="flink"]{display:flex !important;align-items:center;min-height:44px;margin-bottom:0 !important;}
+  [data-m="fbar"]{gap:6px !important;padding-bottom:env(safe-area-inset-bottom);}
+}
+@media (max-width:600px){
+  /* koordinat satırı dar ekranda sığmıyor; durum bilgisi kalır */
+  [data-m="hud-coords"]{display:none !important;}
+}
+/* yan çevrilmiş telefon: ekran alçak, hero tipografisi sahneyi eziyordu */
+@media (max-height:560px) and (orientation:landscape){
+  [data-m="hero-copy"]{padding-top:26px !important;padding-bottom:16px !important;}
+  [data-m="hero-word"] > span{font-size:clamp(48px,9vw,88px) !important;}
+  [data-m="hero-eyebrow"]{margin-bottom:8px !important;}
+  [data-m="hero-note"]{margin-top:10px !important;}
+  [data-m="hero-scroll"]{display:none !important;}
+  [data-m="hud"]{top:70px !important;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  html{scroll-behavior:auto;}
+}
 </style>
 <script src="https://unpkg.com/three@0.137.0/build/three.min.js"></script>
 </helmet>
@@ -48,10 +115,10 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
 
 <div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:rgba(255,255,255,0.05);"><div ref="{{ progressRef }}" style="height:100%;width:0%;background:#38e0ff;box-shadow:0 0 8px rgba(56,224,255,.4);"></div></div>
 
-<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,5vw,54px);border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s;">
-  <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
-    <img src="assets/alacakaranliklogo.png" alt="ALACAKARANLIK amblemi" style="height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(56,224,255,.5));">
-    <img src="assets/alacakaranlikisim.png" alt="ALACAKARANLIK" style="height:13px;width:auto;opacity:.9;filter:invert(1);">
+<header data-m="nav" ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,5vw,54px);border-bottom:1px solid transparent;transition:background .4s,padding .4s,border-color .4s;">
+  <a data-m="brand" href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <img data-m="emblem" src="assets/alacakaranliklogo.png" alt="ALACAKARANLIK amblemi" style="height:40px;width:auto;filter:drop-shadow(0 0 14px rgba(56,224,255,.5));">
+    <img data-m="wordmark" src="assets/alacakaranlikisim.png" alt="ALACAKARANLIK" style="height:13px;width:auto;opacity:.9;filter:invert(1);">
   </a>
   <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:4px;">
@@ -62,17 +129,17 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
     </nav>
   </sc-if>
   <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-    <button onClick="{{ toggleMenu }}" aria-label="Menü" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:22px;line-height:1;width:46px;height:46px;border-radius:4px;cursor:pointer;">≡</button>
+    <button data-m="burger" onClick="{{ toggleMenu }}" aria-label="Menü" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:22px;line-height:1;width:46px;height:46px;border-radius:4px;cursor:pointer;">≡</button>
   </sc-if>
 </header>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;z-index:160;background:rgba(7,11,22,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:88px clamp(22px,8vw,60px) 40px;gap:2px;">
+  <div data-m="menu" style="position:fixed;inset:0;z-index:160;background:rgba(7,11,22,0.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:88px clamp(22px,8vw,60px) 40px;gap:2px;">
     <button onClick="{{ toggleMenu }}" aria-label="Kapat" style="position:absolute;top:22px;right:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#EAECF5;font-size:20px;width:46px;height:46px;border-radius:4px;cursor:pointer;">✕</button>
     <sc-for list="{{ links }}" as="lk" hint-placeholder-count="7">
       <a href="{{ lk.h }}" onClick="{{ toggleMenu }}" style="font-family:'Chakra Petch';font-size:30px;font-weight:700;letter-spacing:.02em;text-decoration:none;color:#EAECF5;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.07);">{{ lk.t }}</a>
     </sc-for>
-    <a href="Sponsorluk.dc.html#iletisim" onClick="{{ toggleMenu }}" style="margin-top:22px;text-align:center;font-family:'Chakra Petch';font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;padding:16px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);text-decoration:none;">SPONSOR OL →</a>
+    <a data-m="menu-cta" href="Sponsorluk.dc.html#iletisim" onClick="{{ toggleMenu }}" style="margin-top:22px;text-align:center;font-family:'Chakra Petch';font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;padding:16px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);text-decoration:none;">SPONSOR OL →</a>
   </div>
 </sc-if>
 
@@ -88,9 +155,9 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
   <div style="position:absolute;bottom:26px;right:26px;width:30px;height:30px;border-right:2px solid rgba(110,205,235,.3);border-bottom:2px solid rgba(110,205,235,.3);z-index:5;pointer-events:none;"></div>
 
   <!-- top HUD -->
-  <div style="position:absolute;top:78px;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:0 clamp(20px,6vw,80px);font-family:'IBM Plex Mono',monospace;font-size:clamp(8.5px,2.3vw,11px);letter-spacing:.16em;color:#7d88b5;pointer-events:none;">
-    <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#d2232a;animation:recPulse 1.4s infinite;"></span><span>REC&nbsp;&nbsp;ZIFIR // PROTOTYPE-01</span></div>
-    <div style="text-align:right;line-height:1.7;"><div>41.0082°N&nbsp;&nbsp;28.9784°E</div><div style="color:#38e0ff;">DURUM: GİZLİ</div></div>
+  <div data-m="hud" style="position:absolute;top:78px;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:0 clamp(20px,6vw,80px);font-family:'IBM Plex Mono',monospace;font-size:clamp(8.5px,2.3vw,11px);letter-spacing:.16em;color:#7d88b5;pointer-events:none;">
+    <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#d2232a;animation:recPulse 1.4s infinite;flex:none;"></span><span>REC&nbsp;&nbsp;ZIFIR // PROTOTYPE-01</span></div>
+    <div style="text-align:right;line-height:1.7;flex:none;"><div data-m="hud-coords">41.0082°N&nbsp;&nbsp;28.9784°E</div><div style="color:#38e0ff;">DURUM: GİZLİ</div></div>
   </div>
 
   <!-- loading -->
@@ -112,34 +179,34 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
   </sc-if>
 
   <!-- bottom slogan overlay -->
-  <div ref="{{ heroRef }}" style="position:absolute;left:0;right:0;bottom:0;z-index:6;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 clamp(18px,6vw,80px) clamp(34px,6vh,72px);pointer-events:none;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:clamp(10px,1.4vw,13px);letter-spacing:.42em;color:#38e0ff;margin-bottom:22px;">TEKNOFEST 2027 · SAVAŞAN İHA</div>
-    <div style="line-height:.82;">{{ heroWord }}</div>
+  <div data-m="hero-copy" ref="{{ heroRef }}" style="position:absolute;left:0;right:0;bottom:0;z-index:6;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 clamp(18px,6vw,80px) clamp(34px,6vh,72px);pointer-events:none;">
+    <div data-m="hero-eyebrow" style="font-family:'IBM Plex Mono',monospace;font-size:clamp(10px,1.4vw,13px);letter-spacing:.42em;color:#38e0ff;margin-bottom:22px;">TEKNOFEST 2027 · SAVAŞAN İHA</div>
+    <div data-m="hero-word" style="line-height:.82;">{{ heroWord }}</div>
     <div style="margin-top:6px;">{{ heroLine }}</div>
-    <div style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
-      <span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:6px;height:6px;background:#d2232a;border-radius:50%;"></span>TASARIM YAKINDA AÇIKLANACAK</span>
+    <div data-m="hero-note" style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <span style="display:inline-flex;align-items:center;gap:7px;"><span style="width:6px;height:6px;background:#d2232a;border-radius:50%;flex:none;"></span>TASARIM YAKINDA AÇIKLANACAK</span>
     </div>
-    <div style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;color:#5c6391;"><span>KEŞFET</span><span style="font-size:18px;animation:chevBob 1.8s infinite;">↓</span></div>
+    <div data-m="hero-scroll" style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;color:#5c6391;"><span>KEŞFET</span><span style="font-size:18px;animation:chevBob 1.8s infinite;">↓</span></div>
   </div>
 </section>
 
 <!-- ============ SPONSOR BANDI ============ -->
 <section data-screen-label="Sponsor bandı" style="position:relative;padding:clamp(32px,5vh,54px) clamp(20px,6vw,90px);background:#0a0f1e;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
   <div style="width:100%;max-width:1280px;margin:0 auto;">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px;">
+    <div data-m="band-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px;">
       <div>
         <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>DESTEKÇİLER</span></div>
         <div style="margin-top:10px;">{{ tSponsor }}</div>
       </div>
-      <a href="Sponsorluk.dc.html#paketler" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:#38e0ff;text-decoration:none;border-bottom:1px solid rgba(56,224,255,0.4);padding-bottom:3px;transition:color .25s;" style-hover="color:#fff;">TÜM PAKETLER →</a>
+      <a data-m="band-link" href="Sponsorluk.dc.html#paketler" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:#38e0ff;text-decoration:none;border-bottom:1px solid rgba(56,224,255,0.4);padding-bottom:3px;transition:color .25s;" style-hover="color:#fff;">TÜM PAKETLER →</a>
     </div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6f7aa6;margin-bottom:14px;">// DESTEKÇİ KONTENJANI AÇIK</div>
-    <a href="Sponsorluk.dc.html#iletisim" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;text-decoration:none;padding:26px 28px;border:1px dashed rgba(56,224,255,0.4);border-radius:4px;background:linear-gradient(120deg,rgba(56,224,255,0.08),rgba(255,255,255,0.012));transition:border-color .25s,background .25s;" style-hover="border-color:rgba(56,224,255,0.75);background:linear-gradient(120deg,rgba(56,224,255,0.14),rgba(255,255,255,0.02));">
+    <a data-m="cta-card" href="Sponsorluk.dc.html#iletisim" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;text-decoration:none;padding:26px 28px;border:1px dashed rgba(56,224,255,0.4);border-radius:4px;background:linear-gradient(120deg,rgba(56,224,255,0.08),rgba(255,255,255,0.012));transition:border-color .25s,background .25s;" style-hover="border-color:rgba(56,224,255,0.75);background:linear-gradient(120deg,rgba(56,224,255,0.14),rgba(255,255,255,0.02));">
       <div>
         <div style="font-family:'Chakra Petch';font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#EAECF5;transform:skewX(-6deg);">Bu yolculuğun ilk destekçisi siz olun.</div>
         <div style="margin-top:8px;font-size:14.5px;line-height:1.5;color:#9AA2C2;font-weight:300;max-width:60ch;">Zifir henüz ilk adımda — markanızı sıfırdan yükselen bir takımın hikâyesine yazın. Logonuz burada, İHA'nın üzerinde ve sahada yer alsın.</div>
       </div>
-      <span style="flex:none;display:inline-flex;align-items:center;gap:10px;font-family:'Chakra Petch';font-weight:700;font-size:16px;letter-spacing:.08em;color:#fff;padding:13px 24px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);">SPONSOR OL →</span>
+      <span data-m="cta-btn" style="flex:none;display:inline-flex;align-items:center;gap:10px;font-family:'Chakra Petch';font-weight:700;font-size:16px;letter-spacing:.08em;color:#fff;padding:13px 24px;background:linear-gradient(120deg,#a51a20,#d2232a);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);">SPONSOR OL →</span>
     </a>
   </div>
 </section>
@@ -149,7 +216,7 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
   <div data-parallax="0.06" style="position:absolute;top:-30px;right:-2vw;font-family:'Chakra Petch';font-weight:900;font-size:clamp(120px,28vw,360px);color:rgba(56,224,255,0.04);line-height:.8;letter-spacing:-.03em;pointer-events:none;transform:skewX(-9deg);">2027</div>
   <div style="position:relative;width:100%;max-width:1180px;margin:0 auto;">
     <div data-reveal="up" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.34em;color:#38e0ff;margin-bottom:22px;">// MİSYONUMUZ</div>
-    <div data-reveal="up" data-delay="80" style="max-width:14ch;">{{ manifesto }}</div>
+    <div data-m="manifesto" data-reveal="up" data-delay="80" style="max-width:14ch;">{{ manifesto }}</div>
     <p data-reveal="up" data-delay="160" style="margin:30px 0 0;max-width:62ch;font-size:clamp(16px,2vw,21px);line-height:1.6;color:#AEB6D6;font-weight:300;">Yeni kurulan bir takımız; henüz çizdiğimiz her hat gizli. Ama hedefimiz net: otonom hava muharebesinde Zifir ile gökyüzünün en sessiz, en hızlı gölgesi olmak.</p>
   </div>
 </section>
@@ -157,7 +224,7 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
 <!-- ============ ZİFİR TEASER ============ -->
 <section id="zifir" data-screen-label="Zifir teaser" style="position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);background:#0a0f1e;border-top:1px solid rgba(255,255,255,0.05);overflow:hidden;">
   <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;">
-    <div data-reveal="up" style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:40px;">
+    <div data-m="head-row" data-reveal="up" style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:40px;">
       <div>
         <div style="display:inline-flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:#38e0ff;text-transform:uppercase;"><span style="width:30px;height:1px;background:linear-gradient(90deg,transparent,#38e0ff);"></span><span>İHA</span></div>
         <div style="margin-top:14px;">{{ tZifir }}</div>
@@ -172,7 +239,7 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
     </div>
 
     <div data-reveal="up" style="margin-top:40px;">
-      <a href="Zifir.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#EAECF5;padding:15px 32px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;transition:background .25s,border-color .25s;" style-hover="background:rgba(56,224,255,0.12);border-color:rgba(56,224,255,0.5);">ZİFİR'İ KEŞFET <span style="font-size:1.2em;">→</span></a>
+      <a data-m="btn" href="Zifir.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#EAECF5;padding:15px 32px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;transition:background .25s,border-color .25s;" style-hover="background:rgba(56,224,255,0.12);border-color:rgba(56,224,255,0.5);">ZİFİR'İ KEŞFET <span style="font-size:1.2em;">→</span></a>
     </div>
   </div>
 </section>
@@ -192,7 +259,7 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
       </div>
     </div>
     <div data-reveal="up" data-delay="240" style="margin-top:38px;">
-      <a href="Takim.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#EAECF5;padding:15px 32px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;transition:background .25s,border-color .25s;" style-hover="background:rgba(56,224,255,0.12);border-color:rgba(56,224,255,0.5);">EKİBİ TANI <span style="font-size:1.2em;">→</span></a>
+      <a data-m="btn" href="Takim.dc.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-family:'Chakra Petch';font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.08em;color:#EAECF5;padding:15px 32px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;transition:background .25s,border-color .25s;" style-hover="background:rgba(56,224,255,0.12);border-color:rgba(56,224,255,0.5);">EKİBİ TANI <span style="font-size:1.2em;">→</span></a>
     </div>
   </div>
 </section>
@@ -200,7 +267,7 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
 <!-- ============ FOOTER ============ -->
 <footer id="iletisim" data-screen-label="İletişim" style="position:relative;padding:clamp(70px,9vh,110px) clamp(20px,6vw,90px) 36px;background:#070b16;border-top:1px solid rgba(255,255,255,0.07);">
   <div style="width:100%;max-width:1280px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
+    <div data-m="fgrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;">
       <div>
         <img src="assets/alacakaranliklogo.png" alt="ALACAKARANLIK" style="height:74px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(56,224,255,.25));">
         <p style="margin:0;max-width:30ch;font-size:14.5px;line-height:1.6;color:#7d88b5;font-weight:300;">İnsansız hava araçları takımı. Zifir ile gökyüzünün yeni gölgesi olmaya geliyoruz.</p>
@@ -209,8 +276,8 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// İLETİŞİM</div>
         <div style="font-family:'Chakra Petch';font-weight:700;font-size:18px;color:#EAECF5;">Eren Can Dönertaş</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:#38e0ff;margin:4px 0 12px;">TAKIM KAPTANI</div>
-        <a href="mailto:eren208can@gmail.com" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:7px;">eren208can@gmail.com</a>
-        <a href="tel:+905425623440" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:12px;">0 542 562 34 40</a>
+        <a data-m="flink" href="mailto:eren208can@gmail.com" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:7px;">eren208can@gmail.com</a>
+        <a data-m="flink" href="tel:+905425623440" style="display:block;font-size:15.5px;color:#D4DAF0;text-decoration:none;margin-bottom:12px;">0 542 562 34 40</a>
         <div style="font-size:14px;color:#7d88b5;line-height:1.7;">TOBB ETU · Ankara<br>Türkiye</div>
       </div>
       <div>
@@ -224,15 +291,15 @@ body::-webkit-scrollbar-thumb{background:#13314a;border-radius:8px;}
       </div>
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;color:#38e0ff;margin-bottom:18px;">// SAYFALAR</div>
-        <a href="Hakkimizda.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Hakkımızda</a>
-        <a href="Zifir.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
-        <a href="Zifir.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
-        <a href="Sponsorluk.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Sponsorluk</a>
-        <a href="Takim.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Takım</a>
-        <a href="oyun.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Test Uçuşu</a>
+        <a data-m="flink" href="Hakkimizda.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Hakkımızda</a>
+        <a data-m="flink" href="Zifir.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">İHA Zifir</a>
+        <a data-m="flink" href="Zifir.dc.html#yarisma" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Yarışma</a>
+        <a data-m="flink" href="Sponsorluk.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Sponsorluk</a>
+        <a data-m="flink" href="Takim.dc.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;margin-bottom:9px;">Takım</a>
+        <a data-m="flink" href="oyun.html" style="display:block;font-size:14.5px;color:#9AA2C2;text-decoration:none;">Test Uçuşu</a>
       </div>
     </div>
-    <div style="margin-top:54px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
+    <div data-m="fbar" style="margin-top:54px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d5680;">
       <span>© {{ year }} ALACAKARANLIK · TÜM HAKLARI SAKLIDIR</span>
       <span>ZİFİR · GÖKLERİN YENİ GÖLGESİ</span>
     </div>
@@ -369,11 +436,14 @@ class Component extends DCLogic {
       const vis = this.props.hologram !== false;
       this._wires.forEach(w => { w.visible = vis; });
     }
+    // menü açıkken arkadaki sayfa kaymasın
+    document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
   }
   componentWillUnmount(){
     if (this._raf) cancelAnimationFrame(this._raf);
     if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
     if (this._onResizeVW) window.removeEventListener('resize', this._onResizeVW);
+    document.body.style.overflow = '';
     (this._disposers || []).forEach(fn => { try { fn(); } catch(e){} });
     try { if (this._renderer) this._renderer.dispose(); } catch(e){}
   }
@@ -499,9 +569,8 @@ class Component extends DCLogic {
     this._scene = scene;
 
     const cam = new THREE.PerspectiveCamera(40, w/h, 0.1, 100);
-    cam.position.set(0, 3.0, 7.55);
-    cam.lookAt(0, -0.15, 0);
     this._cam = cam;
+    this.frameCamera();
 
     // platform
     const disc = new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.7, 0.22, 80), new THREE.MeshStandardMaterial({ color: 0x070b16, metalness: 0.7, roughness: 0.45 }));
@@ -565,11 +634,43 @@ class Component extends DCLogic {
     this.setState({ stageMode: '3d' });
   }
 
+  // Kadraj, en-boy oranına göre kurulur. Masaüstünde (geniş ekran) özgün
+  // çerçeveleme korunur. Dikey telefonda yatay görüş alanı çok daralıyor ve
+  // platform tamamen kadraj dışında kalıyordu; orada kamera yukarı çekilip
+  // geriye alınır, böylece örtülü İHA + platform + halkalar birlikte görünür.
+  frameCamera(){
+    const cam = this._cam;
+    if (!cam) return;
+    const a = cam.aspect || 1.6;
+    const D0 = Math.hypot(3.0, 7.55);   // masaüstü kamera mesafesi
+    if (a >= 1.05){
+      cam.fov = 40;
+      cam.position.set(0, 3.0, 7.55);
+      cam.lookAt(0, -0.15, 0);
+      if (this._scene && this._scene.fog) this._scene.fog.density = 0.05;
+    } else {
+      // dikey: daha tepeden bak — disk elips olarak açılır ve dar/uzun
+      // kadrajı çok daha iyi doldurur
+      const fov = 46;
+      const el = 0.60;                            // ~34° yükseliş açısı
+      const t = Math.tan(fov * Math.PI / 360);
+      const halfW = 3.3;                          // kadraja sığması istenen yarı genişlik
+      const halfH = 3.3 * Math.sin(el) + 0.95;    // diskin dikey izdüşümü + pay
+      const dist = Math.max(halfW / (t * a), halfH / t, D0);
+      cam.fov = fov;
+      cam.position.set(0, dist * Math.sin(el), dist * Math.cos(el));
+      // metin bloğu alt %40'ı kapladığı için sahneyi kadrajda yukarı taşı
+      cam.lookAt(0, -0.15 - dist * 0.055, 0);
+      if (this._scene && this._scene.fog) this._scene.fog.density = 0.05 * (D0 / dist);
+    }
+    cam.updateProjectionMatrix();
+  }
+
   resize3D(){
     const mount = this.stageRef.current;
     if (!mount || !this._renderer || !this._cam) return;
     const w = mount.clientWidth || window.innerWidth, h = mount.clientHeight || window.innerHeight;
-    this._cam.aspect = w/h; this._cam.updateProjectionMatrix(); this._renderer.setSize(w, h);
+    this._cam.aspect = w/h; this.frameCamera(); this._renderer.setSize(w, h);
   }
 
   // ---------- reveal on scroll ----------

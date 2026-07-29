@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>ZİFİR // Test Uçuşu — ALACAKARANLIK</title>
 <meta name="description" content="Zifir Test Uçuşu — Alacakaranlık Savaşan İHA takımının mini uçuş oyunu.">
 <meta name="theme-color" content="#070b16">
@@ -43,10 +43,11 @@
   .topbar{
     width:100%;max-width:560px;display:flex;align-items:center;justify-content:space-between;gap:12px;
   }
-  .brand{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.26em;color:var(--dim);}
+  .brand{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.26em;color:var(--dim);min-width:0;}
+  .dot{flex:none;}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.4s infinite;}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-  .back{font-size:11px;letter-spacing:.18em;border-bottom:1px solid rgba(56,224,255,.4);padding-bottom:2px;}
+  .back{font-size:11px;letter-spacing:.18em;border-bottom:1px solid rgba(56,224,255,.4);padding:11px 2px 3px;white-space:nowrap;flex:none;display:inline-block;}
   .back:hover{color:#fff;}
 
   /* ---- title ---- */
@@ -127,6 +128,12 @@
   @media (hover:none) and (pointer:coarse){ .touch{display:flex;} .help .keys{display:none;} }
 
   .foot{font-size:10px;letter-spacing:.2em;color:#4d5680;margin-top:2px;}
+
+  /* dar telefon: üst şeritteki uzun etiket sarmasın */
+  @media (max-width:420px){
+    .brand{font-size:9.5px;letter-spacing:.16em;}
+    .back{font-size:10px;letter-spacing:.12em;}
+  }
 </style>
 </head>
 <body>
